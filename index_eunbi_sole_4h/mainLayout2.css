@@ -1,0 +1,80 @@
+@charset "UTF-8";
+body{
+	margin: 0px auto;
+	width: 1150px;
+	color: #444444;
+}
+header{
+	width: 1150px;
+	height: 20px;
+}
+header nav{
+	text-align: center;
+	font-size: 22px;
+	color: skyblue;
+}
+header nav li{
+	list-style-type: none;
+	text-decoration: none;
+	display: inline;
+	margin-left: 50px;
+	float: center;
+}
+
+#introImg{
+	width: 1150px;
+	float: center;
+}
+#introImg img{
+	width: 1150px;
+	height: 430px;
+	
+}
+#centerImg{
+	width: 1150px;
+	float: center;
+}
+#centerImg img{
+	width: 1150px;
+	height: 430px;
+	
+}
+#navigate{
+	margin: 0px auto;
+	text-align: center;
+}
+#logoImg{
+	width: 75px;
+	float: left;
+}
+#logoImg img{
+	width: 75px;
+	height: 75px;
+	
+}
+#loginImg{
+	width: 43px;
+	float: right;
+	bottom: 0px auto;
+}
+#loginImg img{
+	width: 43px;
+	height: 43px;
+	bottom: 0px auto;	
+}
+#main{
+	text-align: center;
+}
+#contents{
+	list-style-type: none;
+	width: 230px;
+	height: 250px;
+}
+
+footer{
+	width: 1150px;
+	height: 300px;
+	float: center;
+	background: #d2d2d2;
+	text-align: left;	
+}
