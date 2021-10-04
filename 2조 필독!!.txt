@@ -6,6 +6,8 @@ https://www.youtube.com/watch?v=HMly4frh500&feature=youtu.be
 버튼폰트 
 arial
 
+211005 0102: 세미프로젝트 관련 보고서 회의록 추가한 상태로 업로드 완료 서기역할을 하는 주호씨가 잘 봐주셔야하는 파일입니다.
+
 211005 ~1210
 유스케이스
 스토리보드
