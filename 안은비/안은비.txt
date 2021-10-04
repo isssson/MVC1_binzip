@@ -1,3 +1,127 @@
 안은비
 이런식으로 하시고 커밋 한번 해보시겠어요? 최근 커밋은 10시간전에 제가한게 다라서 은비씨도 이용할줄 아셔야 일이 진행이 되니까
 아 네네 여기구나
+
+[header2 수정_1005]
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<header>
+<style>
+.navbar{
+	justify-content: space-between;
+	align-items: center;
+}
+a:link{
+	color:black;
+	text-decoration:none;
+}
+a:visited{
+	color:black;
+	text-decoration:none;
+}
+a:hover{
+	color:black;
+	text-decoration:none;
+}
+</style>
+	<nav class="navbar">
+	<section>
+		<ul>
+			<li><a href="#">WHERE</a></li>
+			<li><a href="#">FIND ZIP</a></li>
+			<li><a href="#">BE A HOST</a></li>
+			<li><a href="#">HELP</a></li>
+		</ul>	
+	</nav>
+	</section>	
+	<section>
+	<article id="logoImg">
+		<a href="/myweb/index2.jsp"><image src="img/logo.JPG" alt="로고이미지">	</a>
+	</article>
+	</section>
+	<section>
+	<article id="loginImg">
+		<a href="join_input.jsp"><image src="img/login.JPG" alt="로그인이미지"></a>	
+	</article>
+	</section>
+</header>
+
+[join_input 회원가입_1005]
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/mainLayout2.css">
+<style>
+h1{
+	font-size: 30px;
+	text-align: center;
+}
+h3{
+	font-size: 25px;
+	text-align: center;
+}
+table{
+	width: 550px;
+	margin: 0px auto;
+}
+</style>
+</head>
+<body>
+<%@include file="header2.jsp" %>
+<section>
+<h1>J O I N</h1>
+<h3>회 원 가 입</h3>
+<table>
+	<tr>
+		<td>아이디</td>
+		<td><input type="text" name="userid" size="30" maxlength="16"></td>
+	</tr>
+	<tr>
+		<td>비밀번호</td>
+		<td><input type="password" name="userpwd" size="30" maxlength="16"></td>
+	</tr>
+	<tr>
+		<td>비밀번호 확인</td>
+		<td><input type="password" name="userpwd" size="30" maxlength="16"></td>
+	</tr>
+	<tr>
+		<td>질문</td>
+		<td><select name="question">
+			<option value="고향">태어난 곳은 어디입니까?</option>
+			<option value="색깔">제일 좋아하는 색은 무엇입니까?</option>
+			<option value="별명">기억에 남는 별명은 무엇입니까?</option>
+			<option value="음식">가장 좋아하는 음식은 무엇입니까?</option>
+			</select></td>
+	</tr>
+	<tr>
+		<td>질문 답변</td>
+		<td><input type="text" name="answer" size="30"></td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td><input type="text" name="name" size="30"></td>
+	</tr>
+	<tr>
+		<td>생년월일</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>핸드폰</td>
+		<td><input type="text" name="tel" size="30"></td>
+	</tr>
+	<tr>
+		<td>이메일</td>
+		<td><input type="text" name="email" size="30"></td>
+	</tr>
+	<tr>
+		<td>주소</td>
+		<td><input type="text" name="addr" size="30"></td>
+	</tr>
+</table>
+</section>
+</body>
+</html>
