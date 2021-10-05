@@ -80,6 +80,7 @@ binzip_option에 option칼럼 이름변경 -> op
 테이블 생성 쿼리문 업로드 isssson/semi/권세윤/create_table_query.txt
 
 211006기준 총 테이블 캡처본 업로드 isssson/semi/권세윤/211006총테이블.png
+           정확한 erd업로드  isssson/semi/권세윤/db_erd(정확).png
 
 ***
 외래키 예제)
