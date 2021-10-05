@@ -1,5 +1,8 @@
 semi_memo
 
+가이드
+https://www.stayfolio.com/
+
 sql_dev 
 https://www.youtube.com/watch?v=HMly4frh500&feature=youtu.be
 
