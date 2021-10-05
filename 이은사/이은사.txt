@@ -3,3 +3,4 @@
 
 프로토 타이핑 마무리 작업 완료
   https://ovenapp.io/view/dKm8fHfXhGf2qVeoyCNnjOphD0h2BYcM/i8rX0
+    캘린더 대신 셀렉트박스로 교체 / 리뷰 & 별점 기능 제거 / 가격(cost)통일 (주말 및 성수기 가격 제외) / 약관 저장 x /  
