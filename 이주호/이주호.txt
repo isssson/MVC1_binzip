@@ -2,3 +2,5 @@
 10.4
   ERD 작성
   
+ERD 링크
+https://dbdiagram.io/d/61566270825b5b01461b99aa
