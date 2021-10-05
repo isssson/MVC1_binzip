@@ -84,7 +84,7 @@ binzip_option에 option칼럼 이름변경 -> op
 
 ***
 외래키 예제)
-create table Neworders(
+create table NewOrders(
 orderid number primary key,
 custid number not null,
 bookid number not null,
@@ -93,8 +93,9 @@ foreign key (custid) references NewCustomer(custid) on delete cascade
 
 폼) foreign key (속성이름) references 테이블이름(속성이름) on delete (cascade|set null)
 고로 위의 예제는
-외래키 custid 는 NewCustomer테이블의 custid를 참조하고 해당 튜플(레코드)(가로로한줄)이 삭제되면(on delete) 종속된다(cascade)
-위의 cascade의 의미는 연쇄삭제라고 생각하시면 될것같습니다 다같이 죽자 이정도로 이해하심댈듯
+NewOrders란 테이블을 만드는데 본 테이블의 외래키인 custid라는 컬럼은 NewCustomer테이블의 custid란 컬럼을 참조(references)하고
+해당 튜플(레코드)(가로로한줄)이 삭제되면(on delete) 종속된다(cascade)
+위의 on delete cascade의 의미는 연쇄삭제라고 생각하시면 될것같습니다 다같이 죽자 이정도로 이해하심댈듯
 다른 옵션으로는 디폴트값인 no option(파생되는효과가없음)과 set null(null값으로 세팅)이 있습니다
 
 대충 테이블은 조정을 했구여 내일 각자 테이블 만들다가보면 오늘의 저처럼 의문점들이 생길수 있습니다
