@@ -3,6 +3,9 @@ semi_memo
 sql_dev 
 https://www.youtube.com/watch?v=HMly4frh500&feature=youtu.be
 
+프로토타이핑
+https://ovenapp.io/view/dKm8fHfXhGf2qVeoyCNnjOphD0h2BYcM/i8rX0
+
 버튼폰트 
 arial
 
