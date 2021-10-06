@@ -132,4 +132,17 @@ addr_~테이블에
 추가해서 임폴트하면대는데 전 안대네요 계속 데이터는 들어가는데 널값이 뜸
 전 다시해야함
 
-
+나머지동일
+post_number
+si_do
+si_gun_gu
+eup_myeon
+road_name
+building_bonbun varchar2(40)
+building_bubun varchar2(40)
+building_name
+bubjung_dong_name
+lee_name
+haengjung_dong_name
+jibun_bonbun varchar2(40)
+jibun_bubun varchar2(40)
