@@ -112,6 +112,7 @@ CREATE TABLE "SCOTT"."BINZIP_MEMBER"
 
 
 ***BINZIP_HOST_BBS*****************************
+// addcost 가 그냥 cost
 
  CREATE TABLE "SCOTT"."BINZIP_HOST_BBS" 
    (	"IDX" NUMBER(10,0), 
