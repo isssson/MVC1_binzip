@@ -121,7 +121,7 @@ isssson/semi/권세윤/create_table_query.txt
 순서대로 정렬함
 테이블 변경점
 member테이블에 id를 not null로
-addr_~테이블에 load를 road로
+addr_~테이블에 속성 load_name을 road_name로
 addr_~테이블에 
 건물번호본번(building_bonbun)
 건물번호부번(building bubun)
