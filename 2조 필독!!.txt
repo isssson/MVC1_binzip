@@ -124,10 +124,10 @@ member테이블에 id를 not null로
 addr_~테이블에 속성 load_name을 road_name로
 addr_~테이블에 속성 si_gun_gu_building_name을 그냥 building_name으로
 addr_~테이블에
-건물번호본번(building_bonbun)
-건물번호부번(building bubun)
-지번본번(jibun_bonbun)
-지번부번(jibun-bubun)
+건물번호본번(building_bonbun) varchar2(40)
+건물번호부번(building bubun) varchar2(40)
+지번본번(jibun_bonbun) varchar2(40)
+지번부번(jibun-bubun) varchar2(40)
 추가해서 임폴트하면대는데 전 안대네요 계속 데이터는 들어가는데 널값이 뜸
 전 다시해야함
 
