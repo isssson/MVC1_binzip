@@ -7,8 +7,8 @@ header{
 	width: 1200px;
 }
 .binzipLogo img{
-	width: 60px;
-	height: 60px;
+	width: 90px;
+	height: 90px;
 	display: inline;
 	margin-right: 260px;
 	float: left;
@@ -67,10 +67,11 @@ footer{
 	width: 1200px;
 	height: 300px;
 	background-color: lightgray;
+	margin-top: 80px;
 }
 .footerImg img{
 	width: 60px;
-	height: 60px;
+	height: 60px;	
 }
 .footerPanel{
 	font-size: 12px;
@@ -81,8 +82,7 @@ footer{
 .zipOffer table{
 	width: 900px;
 	height: 800px;
-	margin: 0px auto;
-	
+	margin: 0px auto;	
 }
 .zipOffer img{
 	width: 280px;
@@ -93,13 +93,97 @@ footer{
 .zipOffer a{
 	margin-left: 10px;
 }
-
+.myButton {
+	background-color:#000000;
+	border-radius:30px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:15px 30px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
+.btlogin{
+	background-color:#5E5E5E;
+	border-radius:5px;
+	border:1px solid #5E5E5E;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:40px 30px;
+	text-decoration:none;
+}
+.btlogin:hover{
+	background-color:#ffffff;
+	color:#000000;
+}
+.btjoin{
+    background-color:#5E5E5E;
+	border-radius:5px;
+	border:1px solid #5E5E5E;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:5px 15px;
+	text-decoration:none;
+}
+.btjoin:hover{
+    background-color:#ffffff;
+	color:#000000;
+}
+.btjoin2{
+    background-color:#5E5E5E;
+	border-radius:5px;
+	border:1px solid #5E5E5E;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:10px 40px;
+	text-decoration:none;
+}
+.btjoin2:hover{
+    background-color:#ffffff;
+	color:#000000;
+}
+.btnreserve {
+	background-color:#000000;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:15px 60px;
+	text-decoration:none;
+}
+.btnreserve:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
+.bthold{
+    background-color:#5E5E5E;
+	border-radius:5px;
+	border:1px solid #5E5E5E;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 10px;
+	text-decoration:none;
+}
 .bthold:hover{
     background-color:#ffffff;
 	color:#000000;
 }
 
-.btset {  
+.btset {
 	background-color:#000000;
 	border-radius:30px;
 	border:1px solid #000000;
@@ -121,4 +205,8 @@ footer{
 	padding: 2px 2px;
 	border: 1px solid #ffffff;
 	font-family: Arial;
-} 
+
+
+
+
+
