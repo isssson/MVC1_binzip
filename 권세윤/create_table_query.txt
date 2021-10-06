@@ -234,5 +234,21 @@ CREATE TABLE "SCOTT"."BINZIP_OPTION"
   TABLESPACE "USERS" ;
 
 
+각 테이블 시퀀스 쿼리
 
+create sequence binzip_member_idx
+
+create sequence binzip_help_bbs_idx
+
+create sequence binzip_host_idx
+
+create sequence binzip_host_bbs_imgs_idx
+
+create sequence binzip_host_bbs_idx
+
+create sequence binzip_bookmark_idx
+
+create sequence binzip_option_idx
+
+create sequence binzip_reserve_idx
 
