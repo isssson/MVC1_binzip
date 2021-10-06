@@ -123,6 +123,7 @@ isssson/semi/권세윤/create_table_query.txt
 member테이블에 id를 not null로
 addr_~테이블에 속성 load_name을 road_name로
 addr_~테이블에 속성 si_gun_gu_building_name을 그냥 building_name으로
+addr_~테이블에 속성 행정동 법정동 '정'자에 영어 컬럼명다른거 jung로 통일
 addr_~테이블에
 건물번호본번(building_bonbun) varchar2(40)
 건물번호부번(building bubun) varchar2(40)
