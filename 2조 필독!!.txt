@@ -119,7 +119,14 @@ NewOrders란 테이블을 만드는데 본 테이블의 외래키인 custid라�
 추가)
 isssson/semi/권세윤/create_table_query.txt
 순서대로 정렬함
-
-
+테이블 변경점
+member테이블에 id를 not null로
+addr_~테이블에 load를 road로
+addr_~테이블에 
+건물번호본번(building_bonbun)
+건물번호부번(building bubun)
+지번본번(jibun_bonbun)
+지번부번(jibun-bubun)
+추가해서 임폴트
 
 
