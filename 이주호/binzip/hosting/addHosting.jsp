@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/binzip/binzip_css/mainLayout.css">
+<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 </head>
 <script>
 function addrSearch(){
-	window.open('addrSearch.jsp','addrSearch',' width=500px, height=400px, toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizable=no, left=300px, top=100px ')
+	window.open('addrSearch.jsp','addrSearch','top=200, left=400, width=400, height=250, location=no, menubar=no, toolbar=no, status=no scrollbars=yes')
 }
 </script>
 <body>
