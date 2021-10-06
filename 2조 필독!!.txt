@@ -138,14 +138,14 @@ si_do
 si_gun_gu
 eup_myeon
 road_name
-building_bonbun varchar2(40)
-building_bubun varchar2(40)
-building_name
+building_bonbun varchar2(40)    건물 본번
+building_bubun varchar2(40)     건물 부번
+building_name                   
 bubjung_dong_name
 lee_name
 haengjung_dong_name
-jibun_bonbun varchar2(40)
-jibun_bubun varchar2(40)
+jibun_bonbun varchar2(40)       지번 본번
+jibun_bubun varchar2(40)        지번 부번
 
 서울컬럼 모자라실겁니다 제경로에 csv파일 업데이트 했습니다.
 서울도 utf-8로 하시면됩니다 어예해서 utf-8로 설정하는지는 알았는데 다시하자니 2시간은 걸릴꺼같아서 서울경기를 제외한 포맷은 MS949그대로 가겠습니다 다른분들
@@ -155,8 +155,12 @@ jibun_bubun varchar2(40)
 테이블은 다 같이 수정할꺼고 
 내일 아침에는 다 같이 취합하는 시간 한시간 가지고 스타트해봅시다 수고하셨습니다.
 
+저는 이걸로 오늘은좀 쉬겠습니다 근래 남을 너무 못자서.. 내일봐용
+
+****************************************************************************************************************************************************************************************
 
 
+211007공지
 
 
 
