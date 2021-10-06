@@ -3,7 +3,9 @@
 
 프로토 타이핑 마무리 작업 완료
   https://ovenapp.io/view/dKm8fHfXhGf2qVeoyCNnjOphD0h2BYcM/i8rX0
-    캘린더 대신 셀렉트박스로 교체 / 리뷰 & 별점 기능 제거 / 가격(cost)통일 (주말 및 성수기 가격 제외) / 약관 저장 x /  
+    캘린더 대신 셀렉트박스로 교체 / 리뷰 & 별점 기능 제거 / 가격(cost)통일 (주말 및 성수기 가격 제외) / 약관 저장 x /
+    인기순 정렬 대신 마감임박순으로 교체.
+    
 binzip_addr 전국  DB 셋팅 완료
   ALTER TABLE emp RENAME COLUMN editid TO edit_id
     얼터기능 수업때 쓰지 말라고 했는데, 오타 때문에 다시하기 너무 힘들어서 그냥 썼는데 문제 없었음. 잘 보고 쓰면 지금 같은 상황에서 아주 유용한 기능이니, 겁내지 말고 쓰길 추천.
