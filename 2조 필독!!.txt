@@ -116,6 +116,10 @@ NewOrders란 테이블을 만드는데 본 테이블의 외래키인 custid라�
 
 개발기간동안은 대면 수업일에는 매일 야근하신다고 생각하시면 댑니다.
 
+추가)
+isssson/semi/권세윤/create_table_query.txt
+순서대로 정렬함
+
 
 
 
