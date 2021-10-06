@@ -14,10 +14,14 @@ h2{
 h3{
 	text-align: center;
 }
+.input-box{
+	float: right;
+	margin-right: 20px
+}
 .hostTable{	
 	float: center;
 	margin: 0px auto;
-	width: 300px;
+	width: 400px;
 	height: 400px;
 }
 </style>
@@ -32,8 +36,7 @@ h3{
 	<div class="input-box">
 	<input type="text" placeholder="아이디 검색">
 	</div>
-	<div class="hostTable">
-		<table>
+	<table class="hostTable">		
 			<tr>
 				<td>name</td>
 				<td>ID</td>
@@ -65,7 +68,6 @@ h3{
 				<td>탈퇴</td>
 			</tr>
 		</table>
-	</div>
 </section>
 <%@include file="/footer3.jsp" %>
 </body>
