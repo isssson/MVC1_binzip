@@ -11,27 +11,68 @@
 	text-align: center;
 	clear: both;
 	margin-top: 50px;
-	font-size: 18px;
+	font-size: 22px;
 	border-width: 1px;
 }
 .findzipMainText span{
 	font-size: 14px;
 }		
-findzip_list_row{
-			display: inline;
+div.findzip_list_row{	
+	width: 500px;
+}
+.findzip_list_object_img{
+	width: 200px;
 }
 .findzip_list_object_img img{
-	width: 400px;
+	width: 200px;
 	height: auto;
 }
 .findzip_list_object_right{
 	float: right;
 }
-hr{
-	border-width: 1px;
+.findzip_list_object_contents{
+	width: 200px;	
 }
-h1{
-	font-size: 25px;
+.search ul{
+	list-style-type: none;		
+}
+.search li{
+	float: left;
+	margin-left: 40px;	
+}
+.condition ul{
+	list-style-type: none;		
+}
+.condition li{
+	float: left;
+	margin-left: 40px;
+}
+.btn_search{
+	clear: both;
+	text-align: center;	
+}
+.priority li{
+	float: left;
+	margin-left: 40px;
+}
+.priority{
+	float: right;
+	margin-bottom: 10px;
+	font-size: 10px;
+}
+.search li{
+	float: left;
+	margin-left: 40px;	
+}
+.myButton{
+	margin-top: 40px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+hr{
+	border-width: 2px;
+	margin-top: 30px;
+	margin-bottom: 35px;
 }
 </style>
 	
@@ -46,54 +87,16 @@ h1{
 			</div>
 			<hr>
 			<div>
-				<form>
-				<table class="findZip_main" action="#">
-					<tr>
-						<td class="">숙소명</td>
-						<td><input type="text" name="zip_search"></td>
-						<td class="">여행지</td>
-						<td><input type="text" name="des_search"></td>
-						<td class="">체크인</td>
-						<td><input type="text"></td>
-						<td class="">체크아웃</td>
-						<td><input type="text"></td>						
-					</tr>
-					<tr>
-						<td>
-							<select name="" style=width:310px;height:30px;margin-left:4px>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							</select>
-						</td>
-						<td>
-							<select name="" style=width:310px;height:30px;margin-left:4px>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							</select>
-						</td>
-						<td>
-							<select name="" style=width:310px;height:30px;margin-left:4px>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							<option value=""></option>
-							</select>
-						</td>
-					</tr>
-				
-					<div>
+				<form name="findZip_main" action="#">
+					<div class="search">
 						<ul>
 							<li>
 								<label>숙소명</label>
-								<input type="text" name="zipname">
+								<input type="text" name="zipname" style=width:150px;height:25px>
 							</li>
 							<li>
 								<label>여행지</label>
-								<input type="text" name="siname" value=" ex) 서울시">
+								<input type="text" name="siname" value=" ex) 서울시" style=width:150px;height:25px>
 							</li>
 							<li>
 								<label>체크 인</label>
@@ -115,18 +118,18 @@ h1{
 									<select name="startdate">
 									<option value="checkin">MM</option>
 								</select>
-								<select name="startdate">
+								<select name="startdate" style=margin-right:10px;>
 									<option value="checkin">DD</option>
 								</select>
 							</li>	
 						</ul>
-						<img src="/myweb/img/button_reset.jpg" alt="초기화버튼" style=width:25px;height:25px;>
+						<img src="/myweb/img/button_reset.jpg" alt="초기화버튼" style=width:30px;height:30px>
 						<br>
 					</div>
-					<div>
+					<div class="condition">
 						<ul>
-							<li>
-								<select name="peoplenum">
+							<li>인원수
+								<select name="peoplenum" style=width:150px;height:30px;margin-left:4px>
 									<option value="인원">1인</option>
 									<option value="인원">2인</option>
 									<option value="인원">3인</option>
@@ -137,16 +140,16 @@ h1{
 									<option value="인원">8인</option>
 								</select>
 							</li>	
-							<li>
-								<select name="costscope">
+							<li>가격대
+								<select name="costscope" style=width:200px;height:30px;margin-left:4px>
 									<option value="cost">0~80,000원</option>
 									<option value="cost">80,000~120,000원</option>
 									<option value="cost">120,000~160,000원</option>
 									<option value="cost">160,000~200,000원</option>
 								</select>	
 							</li>
-							<li>
-								<select name="ziptype">
+							<li>숙소 유형
+								<select name="ziptype" style=width:150px;height:30px;margin-left:4px>
 									<option value="type">아파트</option>
 									<option value="type">빌라</option>
 									<option value="type">주택</option>
@@ -155,20 +158,20 @@ h1{
 							</li>
 						</ul>
 					</div>
-					<div>
-						<input type="submit" value="SEARCH">
+					<div class="btn_search">
+						<input type="button" value="SEARCH" class="myButton">
 					</div>
 				</form>
 			</div>
-			<div>
+			<div class="priority">
 				<ul>
 					<li>최신순</li>
 					<li>인기순</li>
 					<li>높은가격순</li>
 					<li>낮은가격순</li>
-				</ul>
-				<hr>
+				</ul>				
 			</div>
+			<hr style=clear:both;>
 		</nav>
 	</section>	
 	<section>
