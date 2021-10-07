@@ -28,7 +28,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="">회원가입</a></td>
+<td><a href="join.jsp">회원가입</a></td>
 <td><a href="">아이디 찾기</a></td>
 <td><a href="">비밀번호 찾기</a></td>
 </tr>
