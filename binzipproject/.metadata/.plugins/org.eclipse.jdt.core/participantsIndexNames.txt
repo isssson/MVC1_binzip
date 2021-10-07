@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-C:\±Ç¼¼À±\semi\binzipproject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3866181735.index
-\binzip\src\main\java
-C:\±Ç¼¼À±\semi\binzipproject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3655731565.index
-\binzip\src\main\java
-C:\±Ç¼¼À±\binzipproject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3866181735.index
-\binzip\src\main\java
