@@ -7,6 +7,9 @@
 <title>BE A HOST</title>
 	<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 	<style type="text/css">
+		.beahost_main_text{
+			text-align: center
+		}
 		.terms_box{
 			border: 2px solid lightgray;
 			text-align: center; 
@@ -20,35 +23,35 @@
 	<section>
 		<div class="beahost_main_text">
 			<h1>HOST 등록 요청하기</h1>
-			<span>머무는 것 자체로 여행이 되는 공간</span>
 		</div>
 		<hr>
-		<div class="terms_box">
-			<div class="terms_agreement">
-				<h3>약관동의</h3>
-				<hr>
-			</div>
-			<div class="terms_use">
-				<h4>이용약관</h4>
-				<textarea rows="15" cols="100" readonly="readonly">
-개인정보 수집 및 이용 동의\r\n
+		<form action="beAHost_next.jsp">
+			<div class="terms_box">
+				<div class="terms_agreement">
+					<h3>약관동의</h3>
+					<hr>
+				</div>
+				<div class="terms_use">
+					<h4>이용약관</h4>
+					<textarea rows="15" cols="100" readonly="readonly">
+개인정보 수집 및 이용 동의
 1. 수집항목: [필수] 이름, 연락처, 이메일주소, 인원정보
-2. 수집 및 이용목적: 사업자회원과 예약이용자의 원활한 거래 진행, 고객상담, 불만처리 등 민원 처리, 분쟁조정 해결을 위한 기록보존, 스테이폴리오 멤버십 및 프로모션, 이벤트 안내\r\n
-3. 보관기간: 회원탈퇴 등 개인정보 이용목적 달성 시까지 보관. 단, 상법 및 ‘전자상거래 등에서의 소비자 보호에 관한 법률’ 등 관련 법령에 의하여 일정 기간 보관이 필요한 경우에는 해당 기간 동안 보관함\r\n
-4. 동의 거부권 등에 대한 고지: 정보주체는 개인정보의 수집 및 이용 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.\r\n
-\r\n
-개인정보 제3자 제공 동의\r\n
-1. 개인정보를 제공받는 자: 스테이 호스트\r\n
-2. 제공하는 개인정보 항목: [필수] 스테이폴리오 아이디, 이름, 연락처, 이메일주소, 인원정보\r\n
-3. 개인정보를 제공받는 자의 이용목적: 사업자회원과 예약이용자의 원활한 거래 진행, 고객상담, 불만처리 등 민원 처리, 분쟁조정 해결을 위한 기록보존\r\n
-4. 개인정보를 제공받는 자의 개인정보 보유 및 이용기간: 개인정보 이용목적 달성 시 까지 보존합니다.\r\n
-5. 동의 거부권 등에 대한 고지: 정보주체는 개인정보 제공 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.\r\n
-				</textarea><br>
-				<input type="checkbox" name="agreement_cb1" value="agreement">
-				<label>서비스 이용 약관 동의(필수)</label>
-				<br>
-				<h4>가입정보관리정책</h4>
-				<textarea rows="15" cols="100" readonly="readonly">
+2. 수집 및 이용목적: 사업자회원과 예약이용자의 원활한 거래 진행, 고객상담, 불만처리 등 민원 처리, 분쟁조정 해결을 위한 기록보존, 스테이폴리오 멤버십 및 프로모션, 이벤트 안내
+3. 보관기간: 회원탈퇴 등 개인정보 이용목적 달성 시까지 보관. 단, 상법 및 ‘전자상거래 등에서의 소비자 보호에 관한 법률’ 등 관련 법령에 의하여 일정 기간 보관이 필요한 경우에는 해당 기간 동안 보관함
+4. 동의 거부권 등에 대한 고지: 정보주체는 개인정보의 수집 및 이용 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.
+
+개인정보 제3자 제공 동의
+1. 개인정보를 제공받는 자: 스테이 호스트
+2. 제공하는 개인정보 항목: [필수] 스테이폴리오 아이디, 이름, 연락처, 이메일주소, 인원정보
+3. 개인정보를 제공받는 자의 이용목적: 사업자회원과 예약이용자의 원활한 거래 진행, 고객상담, 불만처리 등 민원 처리, 분쟁조정 해결을 위한 기록보존
+4. 개인정보를 제공받는 자의 개인정보 보유 및 이용기간: 개인정보 이용목적 달성 시 까지 보존합니다.
+5. 동의 거부권 등에 대한 고지: 정보주체는 개인정보 제공 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.
+					</textarea><br>
+					<input type="checkbox" name="agreement_cb1" value="agreement_cb1">
+					<label>서비스 이용 약관 동의(필수)</label>
+					<br>
+					<h4>가입정보관리정책</h4>
+					<textarea rows="15" cols="100" readonly="readonly">
 제 1조 (총칙)
 1. 개인정보란 생존하는 개인에 관한 정보로서 당해 정보에 포함되어 있는 성명, 주민등록번호 등의 사항에 의하여 당해 개인을 식별할 수 있는 정보 (당해 정보만으로는 특정 개인을 식별할 수 없더라도 다른 정보와 용이하게 결합하여 식별할 수 있는 것을 포함합니다.) 를 말합니다.
 2. 스테이폴리오는 귀하의 개인정보 보호를 매우 중요시하며, ‘정보통신망이용촉진 및 정보보호에 관한 법률’ 상의 개인정보 보호규정 및 정보통신부가 제정한 ‘개인정보 보호지침’을 준수하고 있습니다.
@@ -71,16 +74,17 @@
 6. 비회원의 개인정보보호
 - 스테이폴리오는 비회원 주문의 경우에도 예약정보, 대금결제, 예약내역 조회 및 예약확인, 실명여부 확인을 위하여 필요한 개인정보만을 요청하고 있으며, 이 경우 그 정보는 대금결제 및 객실예약 관련된 용도 이외에는 다른 어떠한 용도로도 사용되지 않습니다.
 - 스테이폴리오는 비회원의 개인정보도 회원과 동등한 수준으로 보호합니다.
-				</textarea><br>
-				<input type="checkbox" name="agreement_cb2" value="agreement">
-				<label>개인정보 취급방침 동의 (필수)</label>
-				<br><br>
-				<div>
-					<button type="button" onclick="#">약관동의</button>
-					<button type="button" onclick="#">취소</button>
+					</textarea><br>
+					<input type="checkbox" name="agreement_cb2" value="agreement_cb2">
+					<label>개인정보 취급방침 동의 (필수)</label>
+					<br><br>
+					<div>
+						<button type="reset">선택해제</button>
+						<button type="submit" value="next">다음으로</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</section>
 	<%@include file="../footer.jsp" %>
 </body>
