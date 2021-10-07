@@ -147,6 +147,25 @@ haengjung_dong_name
 jibun_bonbun varchar2(40)       지번 본번(추가
 jibun_bubun varchar2(40)        지번 부번(추가
 
+binzip_addr_busan
+binzip_addr_chungbuk
+binzip_addr_chungnam
+binzip_addr_daegu
+binzip_addr_daejeon
+binzip_addr_gangwon
+binzip_addr_gwangju
+binzip_addr_gyeongbuk
+binzip_addr_gyeonggi
+binzip_addr_gyeongnam
+binzip_addr_incheon
+binzip_addr_jeju
+binzip_addr_jeonbuk
+binzip_addr_jeonnam
+binzip_addr_sejong
+binzip_addr_seoul
+binzip_addr_ulsan
+
+
 방법은 유튜브에 올려놨습니다 
 필요하실 주소 텍스트 파일은 단톡방에서 다운받아주세요
 시행착오가 꽤나 나오는것같아서 일단은 혹시몰라서 경기도랑 서울특별시만 임폴트하시기를 권장해드립니다 아마 파일자체는 전부다
