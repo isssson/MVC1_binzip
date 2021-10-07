@@ -189,6 +189,26 @@ addr외의 테이블에서 몇몇의 컬럼명이 바뀌었고 binzip_~_imgs 의
 1200~
 컨텐츠 뼈대 설계 계속진행 및 관련 기능구현
 
+***DB 테이블 문제 발생 및 해결***
+1. binzip_member.address: not null -> nullable
+2. binzip_host_bbs_imgs.binzip_host_idx -> binzip_host_bbs_idx , data type: varchar2 -> number(10)
+3. binzip_reserve.binzip_host_bbs_idx  data type; varchar2 -> number(10)
+
+4. drop table binzip_bookmark purge;
+
+5. semi/권세윤/create_table_query.txt 에서 binzip_bookmark 시트에 넣으시고 실행시켜주시고 새로고침 commit 테이블 잘있는지 확인
+********************************
+
+
+
+****************************************************************************************************************************************************************************************
+
+
+211008 공지
+
+
+
+
 
 
 
