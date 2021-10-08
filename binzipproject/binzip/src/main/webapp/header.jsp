@@ -32,7 +32,7 @@
 					<a href="#">HELP</a>
 				</li>
 				<li class="myMenu">
-					<a href="#"><img src="/binzip/img/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon"></a>
+					<a href="/binzip/member/join.jsp"><img src="/binzip/img/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon"></a>
 				</li>			
 			</ul>
 		</nav>

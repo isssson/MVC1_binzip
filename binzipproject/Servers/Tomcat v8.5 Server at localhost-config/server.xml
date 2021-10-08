@@ -33,6 +33,12 @@
        Documentation at /docs/jndi-resources-howto.html
   -->
   <GlobalNamingResources>
+  
+<Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
+              url="jdbc:oracle:thin:@localhost:1521:xe"
+              username="scott" password="1234" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
