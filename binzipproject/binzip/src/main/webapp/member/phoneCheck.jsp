@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="idcheck" action="idCheck_ok.jsp">
+	<form name="phonecheck" action="phoneCheck_ok.jsp">
 		<fieldset>
-			<legend>아이디 중복검사</legend>
-			<label>아이디</label>	
-			<input type="text" name="userid" minlength="4" maxlength="16" placeholder="4~16자리">
+			<legend>전화번호 중복검사</legend>
+			<label>전화번호</label>	
+			<input type="text" name="userphone" placeholder="'-'을 빼고 넣어주세요">
 			<input type="submit" value="중복검사">
 		</fieldset>
 	</form>

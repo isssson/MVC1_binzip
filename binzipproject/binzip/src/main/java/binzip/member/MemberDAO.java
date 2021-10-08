@@ -17,7 +17,7 @@ public class MemberDAO {
 		System.out.println("MemberDAO 생성자 호출");
 	}	
 	
-
+	
 	 public int MemberJoin(MemberDTO dto) {
 		 	try {
 				conn=binzip.db.BinzipDB.getConn();
@@ -44,16 +44,15 @@ public class MemberDAO {
 					
 				}
 			}
-	}
+	 }
  
- 
+	 //회원가입아이디중복체크
 	 public boolean checkId(String userid) {
 		 try {
 				conn=binzip.db.BinzipDB.getConn();
-				String sql="select id from binzip_member where id="+"'"+userid+"'";
-				System.out.println(sql);
+				String sql="select id from binzip_member where id=?";
 				ps=conn.prepareStatement(sql);
-//				ps.setString(1,	userid);
+				ps.setString(1,	userid);
 				rs=ps.executeQuery();
 				return rs.next();
 			}catch(Exception e) {
@@ -70,12 +69,12 @@ public class MemberDAO {
 			}
 	}		
 	
-	 
+	//회원가입휴대폰중복체크
 	public boolean phoneCheck(String userphone) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
 			String sql="select * from binzip_member where phone=?";
-			ps.getConnection().prepareStatement(sql);
+			ps=conn.prepareStatement(sql);
 			ps.setString(1, userphone);
 			rs=ps.executeQuery();
 			return rs.next();

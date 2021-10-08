@@ -47,11 +47,11 @@ h4{
 </style>
 <script>
 function popupIdcheck(){
-	window.open('idCheck.jsp','idcheck','width=450,height=250');
+	window.open('idCheck.jsp','idcheck','width=450,height=250, left=800, top=300');
 }
 
 function popupPhonecheck(){
-	window.open('phoneCheck.jsp','phonecheck','width=450,height=250');
+	window.open('phoneCheck.jsp','phonecheck','width=450,height=250, left=800, top=300');
 }
 </script>
 <body>
@@ -64,12 +64,12 @@ function popupPhonecheck(){
 		<table class="join_table">
 			<tr>
 				<td class="tx01">아이디</td>
-				<td class="tx02"><input type="text" name="id" id="txsize" maxlength="16" placeholder="중복검사를 눌러 진행해주세요" readonly></td>
+				<td class="tx02"><input type="text" name="id" id="txsize" minlength="4" maxlength="16" placeholder="중복확인을 눌러 진행해주세요" readonly></td>
 				<td><input type="button" value="중복 확인" class="btjoin" onclick="popupIdcheck();"></td>
 			</tr>
 			<tr>
 				<td class="tx01">비밀번호</td>
-				<td class="tx02"><input type="password" name="pwd" id="txsize" maxlength="16" placeholder="특수문자(!,@,#),영어,숫자 조합으로 8~16자 입력해주세요"></td>
+				<td class="tx02"><input type="password" name="pwd" id="txsize" minlength="4" maxlength="16" placeholder="4~16자리"></td>
 			</tr>
 			<tr>
 				<td class="tx01">비밀번호 확인</td>
@@ -97,8 +97,8 @@ function popupPhonecheck(){
 				<td><input type="text" name="birthdate" id="txsize" placeholder="yyyymmdd"></td>
 			</tr>
 			<tr>
-				<td class="tx01">핸드폰</td>
-				<td class="tx02"><input type="text" name="phone" id="txsize"  placeholder="'-'을 빼고 넣어주세요"></td>
+				<td class="tx01">전화번호</td>
+				<td class="tx02"><input type="text" name="phone" id="txsize" minlength="10" maxlength="16"  placeholder="중복확인을 눌러 진행해주세요" readonly></td>
 				<td><input type="button" value="중복 확인" class="btjoin" onclick="popupPhonecheck();"></td>
 			</tr>
 			<tr>
