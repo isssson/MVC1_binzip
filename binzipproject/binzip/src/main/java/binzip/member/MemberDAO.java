@@ -13,6 +13,11 @@ public class MemberDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public static final int NOT_ID=1;
+	public static final int NOT_PWD=2;
+	public static final int LOGIN_OK=3;
+	public static final int ERROR=-1;
+	
 	public MemberDAO() {
 		System.out.println("MemberDAO 생성자 호출");
 	}	
@@ -92,4 +97,58 @@ public class MemberDAO {
 		}
 	
 	}
+	
+	//로그인검증
+	public int loginCheck(String userid, String userpwd) {
+		
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select pwd from binzip_member where id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				String dbpwd=rs.getString(1); //어차피 가져올꺼 하나밖에 없음.
+				if(dbpwd.equals(userpwd)) {
+					return LOGIN_OK;
+				}else {
+					return NOT_PWD;
+				}
+			}else {
+				return NOT_ID;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
+	//세션에 저장
+	public String getUserInfo(String userid) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select name from binzip_member where id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs=ps.executeQuery();
+			rs.next();
+			return rs.getString(1);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
 }

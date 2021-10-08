@@ -9,6 +9,9 @@
 	function openWhere(){
 		window.open("/binzip/where/where.jsp","where","width=500, height=300, left=800, top=300");
 	}
+	function openLogin(){
+		window.open("/binzip/member/login.jsp","where","width=500, height=300, left=800, top=300");
+	}
 </script>
 </head>
 <body>
@@ -33,6 +36,8 @@
 				</li>
 				<li class="myMenu">
 					<a href="/binzip/member/join.jsp"><img src="/binzip/img/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon"></a>
+					<!--임시링크-->
+					<a href="javascript:openLogin();" alt="로그인">임시로그인링크</a>
 				</li>			
 			</ul>
 		</nav>

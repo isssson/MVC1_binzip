@@ -4,3 +4,7 @@
 
 슬라이드 참고
 https://codepen.io/kkt9102/pen/XWXbqKV
+
+***뺀기능
+
+join - 비밀번호 특수문자 포함
