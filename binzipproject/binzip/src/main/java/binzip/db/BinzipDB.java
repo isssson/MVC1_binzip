@@ -1,10 +1,10 @@
-package yong.db;
+package binzip.db;
 
 import java.sql.*;
 import javax.naming.*;
 import javax.sql.*;
 
-public class yongDB {
+public class BinzipDB {
 	
 	static DataSource ds;
 	
