@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script>
 function openLogin(){
-	window.open('/binzip/login.jsp','login','width=650,height=350');
+	window.open('/binzip/login.jsp','login','width=600,height=450');
 }
 </script>
 </head>

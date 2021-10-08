@@ -51,7 +51,20 @@ function popupIdcheck(){
 }
 
 function popupPhonecheck(){
-	window.open('phoneCheck.jsp','phonecheck','width=450,height=250');
+	window.open('phoneCheck.jsp','phonecheck','width=500,height=250');
+}
+
+function pwdchcek(){
+	var pw=document.getElementById('password').value;
+	if(pw.length<17){
+		return false;
+	}
+	if(pwd!=pwd1){
+		alert("비밀번호 불일치");
+		return false;
+	}else{
+		return true;
+	}
 }
 </script>
 <body>
@@ -64,7 +77,7 @@ function popupPhonecheck(){
 		<table class="join_table">
 			<tr>
 				<td class="tx01">아이디</td>
-				<td class="tx02"><input type="text" name="id" id="txsize" maxlength="16" placeholder="영어 소문자, 숫자 조합으로 8~16자 입력해주세요"></td>
+				<td class="tx02"><input type="text" name="id" id="txsize" maxlength="16" placeholder="영어 소문자, 숫자 조합으로 8~16자 입력해주세요" readonly></td>
 				<td><input type="button" value="중복 확인" class="btjoin" onclick="popupIdcheck();"></td>
 			</tr>
 			<tr>
@@ -73,7 +86,7 @@ function popupPhonecheck(){
 			</tr>
 			<tr>
 				<td class="tx01">비밀번호 확인</td>
-				<td class="tx02"><input type="password" name="pwd" id="txsize" maxlength="16" placeholder="내용을 입력해주세요"></td>
+				<td class="tx02"><input type="password" name="pwd1" id="txsize" maxlength="16" placeholder="내용을 입력해주세요" onchange="pwdcheck();"></td>
 			</tr>
 			<tr>
 				<td class="tx01">질문</td>
@@ -98,8 +111,8 @@ function popupPhonecheck(){
 			</tr>
 			<tr>
 				<td class="tx01">핸드폰</td>
-				<td class="tx02"><input type="text" name="phone" id="txsize"  placeholder="내용을 입력해주세요"></td>
-				<td><input type="button" value="중복 확인" class="btjoin" onclick="popupPhonecheck();"></td>
+				<td class="tx02"><input type="text" name="phone" id="txsize"  placeholder="내용을 입력해주세요" readonly></td>
+				<td><input type="button" value="중복 확인" class="btjoin" onclick="popupPhonecheck();" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">이메일</td>

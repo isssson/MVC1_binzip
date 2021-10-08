@@ -15,7 +15,7 @@ if(result){
 	%>
 	<script>
 	window.alert('<%= userphone %>는 사용가능한 전화번호입니다');
-	opener.document.join.id.value='<%= userphone %>';
+	opener.document.join.phone.value='<%= userphone %>';
 	window.self.close();
 	</script>
 	<%
