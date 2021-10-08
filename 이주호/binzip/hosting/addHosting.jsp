@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="binzip.zipoption.*" %>
+<%@ page import="java.util.*" %>
+<jsp:useBean id="binzipoptiondao" class="binzip.zipoption.Binzip_ZipOptionDAO" scope="session"></jsp:useBean>
+<%
+String ziptype=request.getParameter("ziptype");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +15,11 @@
 </head>
 <script>
 function addrSearch(){
-	window.open('addrSearch.jsp','addrSearch','top=200, left=400, width=400, height=250, location=no, menubar=no, toolbar=no, status=no scrollbars=yes')
+	var width = '500';
+	var height = '350';
+	var x = Math.ceil((window.screen.width-width)/2);
+	var y = Math.ceil((window.screen.height-height)/2);
+	window.open('addrSearch.jsp','addrSearch','top='+y+', left='+x+', width='+width+', height='+height+', location=no, menubar=no, toolbar=no, status=no scrollbars=yes')
 }
 </script>
 <body>
@@ -27,27 +37,27 @@ function addrSearch(){
 		<div>
 			<fieldset>
 				<legend>호스트 정보 입력</legend>
-				<div>
+				<div class="hosting_div">
 					<label>아이디</label>
 					<input type="text" name="hostid">
 				</div>
-				<div>
+				<div class="hosting_div">
 					<label>이름</label>
 					<input type="text" name="hostname">
 				</div>
-				<div>
+				<div class="hosting_div">
 					<label>이메일</label>
 					<input type="text" name="hostemail">
 				</div>
-				<div>
+				<div class="hosting_div">
 					<label>전화번호</label>
 					<input type="text" name="hosttel">
 				</div>
-				<div>
+				<div class="hosting_div">
 					<label>은행명</label>
 					<input type="text" name="hostbank">
 				</div>
-				<div>
+				<div class="hosting_div">
 					<label>계좌번호</label>
 					<input type="text" name="hostacnumber">
 				</div>				
@@ -61,32 +71,32 @@ function addrSearch(){
 		<div>
 			<fieldset>
 				<legend>집 정보 입력</legend>
-				<div>
+				<div class="hosting_lb">
 					<label>ZIP 이름</label>
 					<input type="text" name="zipname">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>ZIP 유형</label>
-					<input type="text" name="type">
+					<input type="text" name="type" value="<%=ziptype%>" readonly>
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>주소</label>
 					<input type="text" name="zipaddr" readonly>
-					<input type="button" value="주소검색" onclick="addrSearch();">
+					<input type="button" value="주소검색" readonly onclick="addrSearch();">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>상세주소</label>
 					<input type="text" name="zipdetailaddr">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>인원</label>
 					<input type="text" name="zippeoplenum">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>비용</label>
 					<input type="text" name="zipcost">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>시작날짜</label>
 					<select name="zipstartdateyear">
 						<option value="년">년</option>
@@ -98,7 +108,7 @@ function addrSearch(){
 						<option value="일">일</option>
 					</select>
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>마지막날짜</label>
 					<select name="zipenddateyear">
 						<option value="년">년</option>
@@ -110,52 +120,87 @@ function addrSearch(){
 						<option value="일">일</option>
 					</select>
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>은행명</label>
 					<input type="text" name="zipbank">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>계좌번호</label>
 					<input type="text" name="zipacnumber"><br>
 					-빼고 입력해주세요.
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>사진</label>
 					<input type="text" name="zipimg" readonly><br>
 					png,jpg,jfif의 파일만 최대 10개 까지 가능합니다.
 					<input type="submit" value="사진올리기" formaction="imgUpload_ok.jsp" formmethod="post" formenctype="multipart/form-data">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label class="zip_op">기본옵션</label>
 					<p>
 						화장실&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						싱크대&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						이불&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						에어컨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						침구류&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						화재경보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						소화기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						구급상자
 					</p>
 				</div>
-				<div>
-					<label>욕실 비품</label>
-					<p>
-						욕실 체크박스
-					</p>
+				<div class="hosting_lb">
+					<label>집 옵션</label>
+					<%
+					ArrayList<Binzip_ZipOptionDTO> arr1=binzipoptiondao.zipOptionList();
+					if(arr1==null||arr1.size()==0){
+						%>
+						<label><input type="checkbox" name="zipop" value="benotin">없음</label>
+						<%
+					}else{
+						for(int i=0;i<arr1.size();i++){
+							%>
+							<label><input type="checkbox" name="zipop" value="<%=arr1.get(i).getOp()%>"><%=arr1.get(i).getOp()%></label>
+							<%
+						}
+					}
+					%>
 				</div>
-				<div>
-					<label>주방 비품</label>
-					<p>
-						주방 체크박스
-					</p>
+				<div class="hosting_lb">
+					<label>주방 옵션</label>
+					<%
+					ArrayList<Binzip_ZipOptionDTO> arr2=binzipoptiondao.kitchenOptionList();
+					if(arr2==null||arr2.size()==0){
+						%>
+						<label><input type="checkbox" name="zipop" value="benotin">없음</label>
+						<%
+					}else{
+						for(int i=0;i<arr2.size();i++){
+							%>
+							<label><input type="checkbox" name="kitop" value="<%=arr2.get(i).getOp()%>"><%=arr2.get(i).getOp()%></label>
+							<%
+						}
+					}
+					%>
 				</div>
-				<div>
-					<label>구비 시설</label>
-					<p>
-						구비시설 체크박스
-					</p>
+				<div class="hosting_lb">
+					<label>욕실 옵션</label>
+					<%
+					ArrayList<Binzip_ZipOptionDTO> arr3=binzipoptiondao.bathOptionList();
+					if(arr3==null||arr3.size()==0){
+						%>
+						<label><input type="checkbox" name="zipop" value="benotin">없음</label>
+						<%
+					}else{
+						for(int i=0;i<arr3.size();i++){
+							%>
+							<label><input type="checkbox" name="kitop" value="<%=arr3.get(i).getOp()%>"><%=arr3.get(i).getOp()%></label>
+							<%
+						}
+					}
+					%>
 				</div>
-				<div>
-					기타<input type="text" name="zip_opetc">
+				<div class="hosting_lb">
+					<label>기타옵션</label>
+					<input type="text" name="zip_opetc">
 				</div>
-				<div>
+				<div class="hosting_lb">
 					<label>이것만은 지켜주세요~</label>
 					<textarea cols="35" rows="12"></textarea>
 				</div>

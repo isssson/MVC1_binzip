@@ -27,7 +27,7 @@
 					<a href="/binzip/help/help.jsp">HELP</a>
 				</li>
 				<li class="myMenu">
-					<a href="#"><img src="/binzip/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon"></a>
+					<a href="/binzip/join/join.jsp"><img src="/binzip/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon"></a>
 				</li>			
 			</ul>
 		</nav>
