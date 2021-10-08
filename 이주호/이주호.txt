@@ -5,3 +5,4 @@
 ERD 링크
 https://dbdiagram.io/d/61566270825b5b01461b99aa
 binzip_bookmark 페이지 드랍 후 host_bbs_idx 외래키 타입 넘버로 바꿈
+foreign key 때문에 테스트 데이터 안들어가서 전부 끊어줌 
