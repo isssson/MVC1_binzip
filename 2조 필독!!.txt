@@ -137,10 +137,10 @@ post_number   number(20)
 si_do   varchar2(40)
 si_gun_gu   varchar2(40)
 eup_myeon   varchar2(40)
-road_name   varchar2(40)
+road_name   varchar2(80)
 building_bonbun   varchar2(40)    건물 본번(추가
 building_bubun   varchar2(40)     건물 부번(추가
-building_name   varchar2(40)
+building_name   varchar2(80)
 bubjung_dong_name   varchar2(40)
 lee_name   varchar2(40)
 haengjung_dong_name   varchar2(40)
