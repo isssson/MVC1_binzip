@@ -12,3 +12,4 @@ member_grade = 1 = 관리자
 binzip_option_category = 1 = 집옵션
                          2 = 주방옵션
                          3 = 욕실옵션
+binzip_option 에서 op 타입 varchar2 (100) 으로 수정 
