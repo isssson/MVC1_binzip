@@ -5,15 +5,21 @@
 String question=request.getParameter("question");
 String answer=request.getParameter("answer");
 String id=request.getParameter("id");
-//작성중
+
+boolean result=mdao.findPwdInfo(question, answer, id);
+
+if(result){
+	%>
+	<script>
+	location.href="/binzip/member/editPwd.jsp?id=<%=id%>";
+	</script>
+	<%
+}else{
+	%>
+	<script>
+	window.alert('존재하지 않는 정보입니다.');
+	location.href='/binzip/member/findPwd.jsp';
+	</script>
+	<%
+}
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	
-</body>
-</html>

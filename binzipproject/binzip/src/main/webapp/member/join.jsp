@@ -94,7 +94,7 @@ function popupPhonecheck(){
 			</tr>
 			<tr>
 				<td class="tx01">생년월일</td>			
-				<td><input type="text" name="birthdate" id="txsize" placeholder="yyyymmdd"></td>
+				<td><input type="text" name="birthdate" id="txsize" minlength="8" maxlength="8" placeholder="yyyymmdd"></td>
 			</tr>
 			<tr>
 				<td class="tx01">전화번호</td>

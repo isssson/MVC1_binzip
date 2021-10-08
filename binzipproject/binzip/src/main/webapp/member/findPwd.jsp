@@ -10,7 +10,7 @@
 <body>
 <%@include file="../header.jsp" %>
 <section>
-	<form name="findpwd" action="findPwd_ok.jsp">
+	<form name="findpwd" action="findPwd_ok.jsp ">
 		<h2>FIND PASSWORD</h2>
 		<p>가입 당시 입력하셨던 정보를 입력해주세요</p>
 			<table>

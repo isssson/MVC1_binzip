@@ -5,6 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function joinOpen(){
+    self.close();
+    opener.parent.location.replace("/binzip/member/join.jsp");
+}
+function findIdOpen(){
+    self.close();
+    opener.parent.location.replace("/binzip/member/findId.jsp");
+}
+function findPwdOpen(){
+    self.close();
+    opener.parent.location.replace("/binzip/member/findPwd.jsp");
+}
+</script>
 </head>
 <%
 Cookie cks[]=request.getCookies();
@@ -34,9 +48,9 @@ if(cks!=null){
 			<div><input type="checkbox" name="saveid" value="on" <%=saveid.equals("")?"":"checked" %>>
 			아이디 기억하기
 			<hr>
-			<input type="button" value="회원가입"></div>
-			<input type="button" value="아이디찾기"></div>
-			<input type="button" value="비밀번호찾기"></div>
+			<input type="button" value="회원가입" onclick="joinOpen();"></div>
+			<input type="button" value="아이디찾기" onclick="findIdOpen();"></div>
+			<input type="button" value="비밀번호찾기" onclick="findPwdOpen();"></div>
 		</fieldset>
 	</form>
 </body>

@@ -179,15 +179,13 @@ public class MemberDAO {
 	}
 	
 	//비밀번호 수정하기
-	public int pwdUpdate(String pwd, String question, String answer, String id) {
+	public int pwdUpdate(String pwd, String id) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="Update binzip_member set pwd=? where id=? and question=? and answer=?";
+			String sql="Update binzip_member set pwd=? where id=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, pwd);
-			ps.setString(2, question);
-			ps.setString(3, answer);
-			ps.setString(4, id);
+			ps.setString(2, id);
 			int count=ps.executeUpdate();
 			return count;
 		}catch(Exception e) {
@@ -226,6 +224,33 @@ public class MemberDAO {
 				
 			}
 		}
+	}
+	
+	
+	//비밀번호찾기 정보존재검증
+	public boolean findPwdInfo(String question, String answer, String userid) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select * from binzip_member where question=? and answer=? and id=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, question);
+			ps.setString(2, answer);
+			ps.setString(3, userid);
+			rs=ps.executeQuery();
+			return rs.next();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			try {
+				 if(rs!=null)rs.close();
+				 if(ps!=null)ps.close();
+				 if(conn!=null)conn.close();
+			}catch(Exception e2) {
+				
+			}
+		}
+	
 	}
 	
 }
