@@ -5,7 +5,7 @@
 <jsp:useBean id="mdao" class="binzip.member.MemberDAO"></jsp:useBean>
 
 <%
-int result=mdao.MemberJoin(mdto);
+int result=mdao.memberJoin(mdto);
 String msg=result>0?"회원가입 성공":"회원가입 실패";
 %>
 <script>

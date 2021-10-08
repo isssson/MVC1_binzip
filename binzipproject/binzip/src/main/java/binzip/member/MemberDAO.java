@@ -23,7 +23,7 @@ public class MemberDAO {
 	}	
 	
 	
-	 public int MemberJoin(MemberDTO dto) {
+	 public int memberJoin(MemberDTO dto) {
 		 	try {
 				conn=binzip.db.BinzipDB.getConn();
 				String sql="insert into binzip_member values(binzip_member_idx.nextval,?,?,?,?,?,?,?,?,'주소',sysdate,0)";
@@ -147,8 +147,90 @@ public class MemberDAO {
 				if(rs!=null)rs.close();
 				if(ps!=null)ps.close();
 				if(conn!=null)conn.close();
-			}catch(Exception e2) {}
+			}catch(Exception e2) {
+				
+			}
+		}
+	}
+	
+	//아이디 찾기
+	public String findid(String username, String userphone) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select id from binzip_member where name=? and phone=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, userphone);
+			rs=ps.executeQuery();
+			rs.next();
+			return rs.getString(1); 
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {
+				
+			}
+		}
+	}
+	
+	//비밀번호 수정하기
+	public int infoPwd(String question, String answer, String id) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="Update pwd set pwd=? where id=? and question=? and answer=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, question);
+			ps.setString(2, answer);
+			ps.setString(3, id);
+			int count=ps.executeUpdate();
+			return count;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {
+				
+			}
+		}
+	}
+	
+	//grade 가져오기
+	public String getSgrade(String userid, String userpwd) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select grade from binzip_member where id=? and pwd=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			ps.setString(2, userpwd);
+			rs=ps.executeQuery();
+			rs.next();
+			return rs.getString(1); 
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {
+				
+			}
 		}
 	}
 	
 }
+
+
+
+
+
+

@@ -6,12 +6,16 @@ request.setCharacterEncoding("utf-8");
 String userid=request.getParameter("userid");
 String userpwd=request.getParameter("userpwd");
 String saveid=request.getParameter("saveid");
+String usergrade=mdao.getSgrade(userid, userpwd);
+
+System.out.println(usergrade);
 
 int result=mdao.loginCheck(userid, userpwd);
 if(result==mdao.LOGIN_OK){
 	String username=mdao.getUserInfo(userid);
 	session.setAttribute("sid", userid);
 	session.setAttribute("sname", username);
+	session.setAttribute("sgrade", usergrade);
 	
 	if(saveid==null){
 		Cookie ck=new Cookie("saveid",userid);
