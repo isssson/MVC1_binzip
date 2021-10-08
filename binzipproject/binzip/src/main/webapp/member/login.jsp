@@ -20,7 +20,8 @@ if(cks!=null){
 <body>
 	<form name="login" action="login_ok.jsp" method="post">
 		<fieldset>
-			<legend>Login</legend>
+			<h3>Login</h3>
+			<hr>
 			<ul>
 				<li><label>ID</label>
 				<input type="text" name="userid" placeholder="아이디" value="<%=saveid%>">
@@ -29,9 +30,11 @@ if(cks!=null){
 				<input type="password" name="userpwd" placeholder="비밀번호">
 				</li>
 			</ul>
-			<div><input type="checkbox" name="saveid" value="on" <%=saveid.equals("")?"":"checked" %>>
-			ID 기억하기
 			<input type="submit" value="LOGIN"></div>
+			<div><input type="checkbox" name="saveid" value="on" <%=saveid.equals("")?"":"checked" %>>
+			아이디 기억하기
+			<hr>
+			<input type="button" value="회원가입"></div>
 			<input type="button" value="아이디찾기"></div>
 			<input type="button" value="비밀번호찾기"></div>
 		</fieldset>
