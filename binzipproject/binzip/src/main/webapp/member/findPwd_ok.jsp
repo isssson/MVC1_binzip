@@ -5,14 +5,7 @@
 String question=request.getParameter("question");
 String answer=request.getParameter("answer");
 String id=request.getParameter("id");
-
-String userid=mdao.findid(name, phone);
-String msg="";
-if(userid==null){
-	msg="일치하는 정보가 없습니다";
-}else{
-	msg="고객님의 아이디는 '"+userid+"' 입니다.";	
-}
+//작성중
 %>
 <!DOCTYPE html>
 <html>

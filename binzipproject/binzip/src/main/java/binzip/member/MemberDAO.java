@@ -179,14 +179,15 @@ public class MemberDAO {
 	}
 	
 	//비밀번호 수정하기
-	public int infoPwd(String question, String answer, String id) {
+	public int pwdUpdate(String pwd, String question, String answer, String id) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="Update pwd set pwd=? where id=? and question=? and answer=?";
+			String sql="Update binzip_member set pwd=? where id=? and question=? and answer=?";
 			ps=conn.prepareStatement(sql);
-			ps.setString(1, question);
-			ps.setString(2, answer);
-			ps.setString(3, id);
+			ps.setString(1, pwd);
+			ps.setString(2, question);
+			ps.setString(3, answer);
+			ps.setString(4, id);
 			int count=ps.executeUpdate();
 			return count;
 		}catch(Exception e) {
