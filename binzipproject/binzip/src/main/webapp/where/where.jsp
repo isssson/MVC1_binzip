@@ -13,9 +13,12 @@
 	font-weight: bold;
 }
 </style>
-<%
-
-%>
+<script>
+var now=new Date();
+var year=now.getFullYear();
+var month=now.getMonth()+1;
+var day=now.getDate();
+</script>
 <body>
 	<div>
 		<h3>어디로 떠날까요?</h3>
