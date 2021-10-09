@@ -202,7 +202,7 @@ public class MemberDAO {
 	}
 	
 	//grade 가져오기
-	public String getSgrade(String userid, String userpwd) {
+	public int getSgrade(String userid, String userpwd) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
 			String sql="select grade from binzip_member where id=? and pwd=?";
@@ -211,10 +211,10 @@ public class MemberDAO {
 			ps.setString(2, userpwd);
 			rs=ps.executeQuery();
 			rs.next();
-			return rs.getString(1); 
+			return rs.getInt(1);
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
+			return -1;
 		}finally {
 			try {
 				if(rs!=null)rs.close();

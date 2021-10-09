@@ -6,7 +6,7 @@ request.setCharacterEncoding("utf-8");
 String userid=request.getParameter("userid");
 String userpwd=request.getParameter("userpwd");
 String saveid=request.getParameter("saveid");
-String usergrade=mdao.getSgrade(userid, userpwd);
+int usergrade=mdao.getSgrade(userid, userpwd);
 
 System.out.println(usergrade);
 

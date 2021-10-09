@@ -13,6 +13,9 @@
 	font-weight: bold;
 }
 </style>
+<%
+
+%>
 <body>
 	<div>
 		<h3>어디로 떠날까요?</h3>
