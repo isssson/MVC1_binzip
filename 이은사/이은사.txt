@@ -27,4 +27,3 @@ findzip 페이지 html 구조 잡고 css일부 적용했습니다.
 다들 본인 워크스페이스에 취합해서 확인 해주세요. 
 memberDAO, memberDTO 전체 바뀌었습니다.
 
-memberDAO에 회원가입메소드 디폴트값 쿼리 6으로 바꿔서 다시 커밋했습니다.
