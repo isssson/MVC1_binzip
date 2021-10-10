@@ -1,3 +1,4 @@
+<%@page import="javax.print.attribute.HashPrintRequestAttributeSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="binzip.zipoption.*" %>
@@ -41,17 +42,21 @@ String ziptype=request.getParameter("ziptype");
 </script>
 <body>
 <%@include file="/header.jsp" %>
+
 <%
-String id="test1";//test code
-if(id==null || id.equals("")){
+
+String id = (String)(session.getAttribute("sid"));
+
+if(id==null || id.equals("")){	
 	%>
 	<script>
 	window.alert('호스트만 사용가능합니다. 호스트 요청을 먼저 해주세요.');
 	location.hre="/binzip/beahost/beAHost.jsp";
 	</script>
 	<%
-	return;
+	return;	
 }
+
 %>
 <jsp:useBean id="imgwf" class="binzip.wf.ImgWebFolder" scope="session"></jsp:useBean>
 <%
@@ -168,9 +173,13 @@ long freeSize=imgwf.getFreeSize()/1024;
 				</div>
 				<div class="hosting_lb">
 					<label>사진</label>
-					<input type="text" name="zipimg" readonly><br>
-					png,jpg,jfif의 파일만 최대 10개, 최대용량 10MB(10,000KB) 까지 가능합니다.
-					<input type="button" value="사진올리기" onclick="openImgUpload();"><br>
+					<input type="text" name="zipimg" readonly>
+					<input type="file" name="imgupload" multiple accept=".png, .jpg, .jfif">
+					<input type="submit" value="사진올리기" formaction="imgUpload.jsp" 
+					formmethod="post" formenctype="multipart/form-data"><br>
+					
+					png,jpg,jfif의 파일만 최대 10개, 최대용량 10MB(10,240KB) 까지 가능합니다.<br>
+					
 					<label class="sizemeter">총 용량</label>
 					<meter min="0" max="<%=imgwf.getTotalSize() %>" value="<%=imgwf.getTotalSize()%>"></meter>(<%=totalSize%> KB)<br>
 					<label class="sizemeter">사용 용량</label>

@@ -20,7 +20,7 @@
 	 	<nav>
 	        <ul>
 	             <li><a href="#">개인정보</a></li>
-	             <li><a href="#">예약현황</a></li>
+	             <li><a href="/binzip/mypage/hostmypage/host_Mp_Img.jsp">예약현황</a></li>
 	             <li><a href="#">취소 내역</a></li>
 	             <li><a href="#">문의 내역</a></li>
 	             <li><a href="#">관심ZIP</a></li>
