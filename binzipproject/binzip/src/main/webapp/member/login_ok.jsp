@@ -1,21 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %> 
+<%@ page import="binzip.member.*" %>
+<jsp:useBean id="mdto" class="binzip.member.MemberDTO"></jsp:useBean>
 <jsp:useBean id="mdao" class="binzip.member.MemberDAO"></jsp:useBean>    
 <%
 request.setCharacterEncoding("utf-8");
+
 String userid=request.getParameter("userid");
 String userpwd=request.getParameter("userpwd");
 String saveid=request.getParameter("saveid");
-int usergrade=mdao.getSgrade(userid, userpwd);
-
-System.out.println(usergrade);
 
 int result=mdao.loginCheck(userid, userpwd);
+ArrayList<MemberDTO>arr=mdao.getUserInfo(userid);
+String sname="";
+int grade=0;
+
+for(int i=0;i<arr.size();i++){
+	sname=arr.get(i).getName();
+	grade=arr.get(i).getGrade();
+}
+
+String sgrade=Integer.toString(grade);
+
 if(result==mdao.LOGIN_OK){
-	String username=mdao.getUserInfo(userid);
 	session.setAttribute("sid", userid);
-	session.setAttribute("sname", username);
-	session.setAttribute("sgrade", usergrade);
+	session.setAttribute("sname", sname);
+	session.setAttribute("sgrade", sgrade);
 	
 	if(saveid==null){
 		Cookie ck=new Cookie("saveid",userid);
@@ -27,10 +38,9 @@ if(result==mdao.LOGIN_OK){
 		response.addCookie(ck);
 	}
 	
-	
 	%>
 	<script>
-	window.alert('<%=username%>님 환영합니다.');
+	window.alert('<%=sname%>님 환영합니다.');
 	opener.location.reload();
 	window.self.close();
 	</script>

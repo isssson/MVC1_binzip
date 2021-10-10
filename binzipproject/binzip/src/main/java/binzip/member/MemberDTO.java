@@ -38,6 +38,12 @@ public class MemberDTO {
 		this.joindate = joindate;
 		this.grade = grade;
 	}
+	
+	public MemberDTO(String name, int grade) {
+		super();
+		this.name=name;
+		this.grade=grade;
+	}
 
 	public int getIdx() {
 		return idx;

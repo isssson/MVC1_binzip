@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BINZIP-로그인</title>
 <script>
 function joinOpen(){
     self.close();
@@ -44,13 +44,13 @@ if(cks!=null){
 				<input type="password" name="userpwd" placeholder="비밀번호">
 				</li>
 			</ul>
-			<input type="submit" value="LOGIN"></div>
-			<div><input type="checkbox" name="saveid" value="on" <%=saveid.equals("")?"":"checked" %>>
+			<input type="submit" value="LOGIN">
+			<input type="checkbox" name="saveid" value="on" <%=saveid.equals("")?"":"checked" %>>
 			아이디 기억하기
 			<hr>
-			<input type="button" value="회원가입" onclick="joinOpen();"></div>
-			<input type="button" value="아이디찾기" onclick="findIdOpen();"></div>
-			<input type="button" value="비밀번호찾기" onclick="findPwdOpen();"></div>
+			<input type="button" value="회원가입" onclick="joinOpen();">
+			<input type="button" value="아이디찾기" onclick="findIdOpen();">
+			<input type="button" value="비밀번호찾기" onclick="findPwdOpen();">
 		</fieldset>
 	</form>
 </body>

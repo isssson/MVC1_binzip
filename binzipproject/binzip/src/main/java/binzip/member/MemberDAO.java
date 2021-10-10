@@ -1,32 +1,36 @@
 package binzip.member;
 
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
-import java.text.*;
-import javax.naming.*;
-import javax.sql.*;
 
 public class MemberDAO {
 
+	//db connect var
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	//login check const
 	public static final int NOT_ID=1;
 	public static final int NOT_PWD=2;
 	public static final int LOGIN_OK=3;
 	public static final int ERROR=-1;
 	
+	//grade const
+	public static final String ADMIN = "4";
+	public static final String GUEST = "5";
+	public static final String HOST = "6";
+	
+	//constructor
 	public MemberDAO() {
 		System.out.println("MemberDAO 생성자 호출");
 	}	
 	
-	
-	 public int memberJoin(MemberDTO dto) {
-		 	try {
+	//회원가입
+	public int memberJoin(MemberDTO dto) {
+			try {
 				conn=binzip.db.BinzipDB.getConn();
-				String sql="insert into binzip_member values(binzip_member_idx.nextval,?,?,?,?,?,?,?,?,'주소',sysdate,0)";
+				String sql="insert into binzip_member values(binzip_member_idx.nextval,?,?,?,?,?,?,?,?,'주소',sysdate,6)";
 				ps=conn.prepareStatement(sql);
 				ps.setString(1, dto.getId());
 				ps.setString(2, dto.getPwd());
@@ -36,11 +40,12 @@ public class MemberDAO {
 				ps.setString(6, dto.getBirthdate());
 				ps.setString(7, dto.getPhone());
 				ps.setString(8, dto.getEmail());
+				
 				int count=ps.executeUpdate();
 				return count;
 			}catch(Exception e) {
 				e.printStackTrace();
-				return -1;
+				return ERROR;
 			}finally {
 				try {
 					if(ps!=null)ps.close();
@@ -51,7 +56,7 @@ public class MemberDAO {
 			}
 	 }
  
-	 //회원가입아이디중복체크
+	 //회원가입_아이디 중복체크
 	 public boolean checkId(String userid) {
 		 try {
 				conn=binzip.db.BinzipDB.getConn();
@@ -74,7 +79,7 @@ public class MemberDAO {
 			}
 	}		
 	
-	//회원가입휴대폰중복체크
+	//회원가입_휴대폰 중복체크
 	public boolean phoneCheck(String userphone) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
@@ -82,6 +87,7 @@ public class MemberDAO {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userphone);
 			rs=ps.executeQuery();
+			
 			return rs.next();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -98,7 +104,7 @@ public class MemberDAO {
 	
 	}
 	
-	//로그인검증
+	//로그인_검증
 	public int loginCheck(String userid, String userpwd) {
 		
 		try {
@@ -107,6 +113,7 @@ public class MemberDAO {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
+			
 			if(rs.next()) {
 				String dbpwd=rs.getString(1); //어차피 가져올꺼 하나밖에 없음.
 				if(dbpwd.equals(userpwd)) {
@@ -129,16 +136,26 @@ public class MemberDAO {
 		}
 	}
 	
-	//세션에 저장
-	public String getUserInfo(String userid) {
+	//로그인_정보가져오기
+	public ArrayList<MemberDTO> getUserInfo(String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
 			String sql="select name from binzip_member where id=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
-			rs.next();
-			return rs.getString(1);
+			
+			ArrayList<MemberDTO> arr=new ArrayList<MemberDTO>();
+			
+			while(rs.next()) {
+				String name=rs.getString("name");
+				int grade=rs.getInt("grade");
+				
+				MemberDTO dto=new MemberDTO(name, grade);
+				arr.add(dto);
+			}
+			
+			return arr;			
 		}catch(Exception e) {
 			e.printStackTrace();
 			return null;
@@ -154,7 +171,7 @@ public class MemberDAO {
 	}
 	
 	//아이디 찾기
-	public String findid(String username, String userphone) {
+	public String findId(String username, String userphone) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
 			String sql="select id from binzip_member where name=? and phone=?";
@@ -163,6 +180,7 @@ public class MemberDAO {
 			ps.setString(2, userphone);
 			rs=ps.executeQuery();
 			rs.next();
+			
 			return rs.getString(1); 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -178,7 +196,7 @@ public class MemberDAO {
 		}
 	}
 	
-	//비밀번호 수정하기
+	//아이디 찾기_비밀번호 수정하기
 	public int pwdUpdate(String pwd, String id) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
@@ -186,11 +204,12 @@ public class MemberDAO {
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, pwd);
 			ps.setString(2, id);
+			
 			int count=ps.executeUpdate();
 			return count;
 		}catch(Exception e) {
 			e.printStackTrace();
-			return -1;
+			return ERROR;
 		}finally {
 			try {
 				if(ps!=null)ps.close();
@@ -201,33 +220,7 @@ public class MemberDAO {
 		}
 	}
 	
-	//grade 가져오기
-	public int getSgrade(String userid, String userpwd) {
-		try {
-			conn=binzip.db.BinzipDB.getConn();
-			String sql="select grade from binzip_member where id=? and pwd=?";
-			ps=conn.prepareStatement(sql);
-			ps.setString(1, userid);
-			ps.setString(2, userpwd);
-			rs=ps.executeQuery();
-			rs.next();
-			return rs.getInt(1);
-		}catch(Exception e) {
-			e.printStackTrace();
-			return -1;
-		}finally {
-			try {
-				if(rs!=null)rs.close();
-				if(ps!=null)ps.close();
-				if(conn!=null)conn.close();
-			}catch(Exception e2) {
-				
-			}
-		}
-	}
-	
-	
-	//비밀번호찾기 정보존재검증
+	//비밀번호찾기_정보일치 검증
 	public boolean findPwdInfo(String question, String answer, String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
@@ -237,6 +230,7 @@ public class MemberDAO {
 			ps.setString(2, answer);
 			ps.setString(3, userid);
 			rs=ps.executeQuery();
+			
 			return rs.next();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -251,6 +245,29 @@ public class MemberDAO {
 			}
 		}
 	
+	}
+	
+	//호스트 권한 부여
+	public int gradeUpdate(String id) {
+		try {
+			conn = binzip.db.BinzipDB.getConn();
+			String sql = "Update binzip_member set grade = 6 where id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			
+			int count = ps.executeUpdate();
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		} finally {
+			try {
+				if(ps != null)ps.close();
+				if(conn != null)conn.close();
+			} catch (Exception e2) {
+				
+			}
+		}
 	}
 	
 }

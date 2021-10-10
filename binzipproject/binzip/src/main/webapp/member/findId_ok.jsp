@@ -5,7 +5,7 @@
 String name=request.getParameter("name");
 String phone=request.getParameter("phone");
 
-String userid=mdao.findid(name, phone);
+String userid=mdao.findId(name, phone);
 String msg="";
 if(userid==null){
 	msg="일치하는 정보가 없습니다";
