@@ -13,17 +13,54 @@ String ziptype=request.getParameter("ziptype");
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 </head>
+<style>
+.sizemeter{
+	width:90px;
+	float: left;
+}
+.hosting_lb meter{
+	width: 250px;
+}
+</style>
 <script>
-function addrSearch(){
 	var width = '500';
 	var height = '350';
 	var x = Math.ceil((window.screen.width-width)/2);
 	var y = Math.ceil((window.screen.height-height)/2);
-	window.open('addrSearch.jsp','addrSearch','top='+y+', left='+x+', width='+width+', height='+height+', location=no, menubar=no, toolbar=no, status=no scrollbars=yes')
-}
+	function addrSearch(){
+		
+		window.open('addrSearch.jsp','addrSearch','top='+y+', left='+x+', width='+width+', height='+height+', location=no, menubar=no, toolbar=no, status=no scrollbars=yes')
+	}
+	
+	function openImgUpload(){
+		
+		window.open('imgUpload.jsp','imgUpload','top='+y+', left='+x+', width='+width+', height='+height+', location=no, menubar=no, toolbar=no, status=no scrollbars=yes')
+		
+	}
+	
 </script>
 <body>
 <%@include file="/header.jsp" %>
+<%
+String id="test1";//test code
+if(id==null || id.equals("")){
+	%>
+	<script>
+	window.alert('호스트만 사용가능합니다. 호스트 요청을 먼저 해주세요.');
+	location.hre="/binzip/beahost/beAHost.jsp";
+	</script>
+	<%
+	return;
+}
+%>
+<jsp:useBean id="imgwf" class="binzip.wf.ImgWebFolder" scope="session"></jsp:useBean>
+<%
+imgwf.setId(id);
+imgwf.hostImgFolderExist();
+long totalSize=imgwf.getTotalSize()/1024;
+long usedSize=imgwf.getUsedSize()/1024;
+long freeSize=imgwf.getFreeSize()/1024;
+%>
 <section>
 	<article>
 		<h2>HOSTING</h2>
@@ -132,8 +169,14 @@ function addrSearch(){
 				<div class="hosting_lb">
 					<label>사진</label>
 					<input type="text" name="zipimg" readonly><br>
-					png,jpg,jfif의 파일만 최대 10개 까지 가능합니다.
-					<input type="submit" value="사진올리기" formaction="imgUpload_ok.jsp" formmethod="post" formenctype="multipart/form-data">
+					png,jpg,jfif의 파일만 최대 10개, 최대용량 10MB(10,000KB) 까지 가능합니다.
+					<input type="button" value="사진올리기" onclick="openImgUpload();"><br>
+					<label class="sizemeter">총 용량</label>
+					<meter min="0" max="<%=imgwf.getTotalSize() %>" value="<%=imgwf.getTotalSize()%>"></meter>(<%=totalSize%> KB)<br>
+					<label class="sizemeter">사용 용량</label>
+					<meter min="0" max="<%=imgwf.getTotalSize()  %>" value="<%=imgwf.getUsedSize()%>"></meter>(<%=usedSize%> KB)<br>
+					<label class="sizemeter">남은 용량</label>
+					<meter min="0" max="<%=imgwf.getTotalSize()  %>" value="<%=imgwf.getFreeSize()%>"></meter>(<%=freeSize%> KB)
 				</div>
 				<div class="hosting_lb">
 					<label class="zip_op">기본옵션</label>
