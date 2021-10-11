@@ -4,70 +4,122 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HostList</title>
 <link rel="stylesheet" type="text/css" href="/myweb/css/mainLayout3.css">
 <style>
-h2{
+h1{
+	font-size: 40px;
 	text-align: center;
 	clear: both;
 }
-h3{
+h4{
+	font-size: 20px;
 	text-align: center;
 }
-.input-box{
+.input_box{
 	float: right;
-	margin-right: 20px
+	margin-right: 40px;	
 }
 .hostTable{	
-	float: center;
-	margin: 0px auto;
-	width: 400px;
-	height: 400px;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;	
+	margin: 100px auto;		
+	width: 60%;
+	height: 350px;
+	text-align: center;	
+}
+th{
+	font-size: 18px;
+}
+th, td{
+	border-bottom: 1px solid #444444;	
+	padding: 10px;	
+}
+th:first-child, td:first-child{
+	border-left: none;
+}
+
+#alert{
+	width: 180px;
+	height: 170px;
+	background-color: lightgray;
+	position: absolute;
+	top: 470px;
+	left: 650px;
+	display: none;		
 }
 </style>
 </head>
+<script>
+var bDisplay=true;
+function doDisplay(){
+	var con=document.getElementById("alert");
+		if(con.style.display=='block'){
+			con.style.display='none';			
+		}else{
+			con.style.display='block';
+		}	
+}
+</script>
 <body>
 <%@include file="/header3.jsp" %>
 <section>
 	<article>
-		<h2>HOST LIST</h2>
-		<h3>호스트 관리</h3>
+		<h1>HOST LIST</h1>
+		<h4>호스트 관리</h4>
 	</article>
-	<div class="input-box">
-	<input type="text" placeholder="아이디 검색">
-	</div>
-	<table class="hostTable">		
-			<tr>
-				<td>name</td>
-				<td>ID</td>
-				<td>Lock</td>
-				<td>탈퇴</td>									
-			</tr>
-			<tr>
-				<td>홍길동</td>
-				<td><a href="#">hong</a></td>
-				<td>잠그기</td>
-				<td>탈퇴</td>
-			</tr>
-			<tr>
-				<td>둘리</td>
-				<td><a href="#">doll</a></td>
-				<td>잠그기</td>
-				<td>탈퇴</td>
-			</tr>
-			<tr>
-				<td>깐따삐야</td>
-				<td><a href="#">Bbi</a></td>
-				<td>잠그기</td>
-				<td>탈퇴</td>
-			</tr>
-			<tr>
-				<td>또치</td>
-				<td><a href="#">chichi</a></td>
-				<td>잠그기</td>
-				<td>탈퇴</td>
-			</tr>
-		</table>
+	<article>
+		<div class="input_box">
+			<input type="text" placeholder="아이디 검색">
+			<button>검색</button>
+		</div>
+	</article>
+	<article>
+		<div>
+			<table class="hostTable">		
+					<tr>
+						<th>NAME</th>
+						<th>ID</th>
+						<th>LOCK</th>
+						<th>탈퇴</th>									
+					</tr>
+					<tr>
+						<td>홍길동</td>
+						<td><a href="javascript:doDisplay();">hong</a></td>
+						<td><input type="button" value="잠그기" class="btjoin"></td>
+						<td><input type="button" value="탈퇴" class="btjoin"></td>
+					</tr>
+					<tr>
+						<td>둘리</td>
+						<td><a href="javascript:doDisplay();">doll</a></td>
+						<td><input type="button" value="잠그기" class="btjoin"></td>
+						<td><input type="button" value="탈퇴" class="btjoin"></td>
+					</tr>
+					<tr>
+						<td>깐따삐야</td>
+						<td><a href="javascript:doDisplay();">Bbi</a></td>
+						<td><input type="button" value="잠그기" class="btjoin"></td>
+						<td><input type="button" value="탈퇴" class="btjoin"></td>
+					</tr>
+					<tr>
+						<td>또치</td>
+						<td><a href="javascript:doDisplay();">chichi</a></td>
+						<td><input type="button" value="잠그기" class="btjoin"></td>
+						<td><input type="button" value="탈퇴" class="btjoin"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="alert_menu" id="alert">
+				<ul>
+					<li><a href="#">개인 정보</a></li>
+					<li><a href="#">예약 현황</a></li>
+					<li><a href="#">지난 예약 현황</a></li>
+					<li><a href="#">취소 요청 내역</a></li>
+					<li><a href="#">내가 올린 집</a></li>
+					<li><a href="#">질문 내역</a></li>
+				</ul>
+			</div>
+	</article>
 </section>
 <%@include file="/footer3.jsp" %>
 </body>
