@@ -10,7 +10,7 @@ String id=request.getParameter("id");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BINZIP-비밀번호 수정</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 </head>
 <body>

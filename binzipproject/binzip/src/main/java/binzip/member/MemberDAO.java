@@ -30,7 +30,7 @@ public class MemberDAO {
 	public int memberJoin(MemberDTO dto) {
 			try {
 				conn=binzip.db.BinzipDB.getConn();
-				String sql="insert into binzip_member values(binzip_member_idx.nextval,?,?,?,?,?,?,?,?,'주소',sysdate,6)";
+				String sql="insert into binzip_member values(binzip_member_idx.nextval,?,?,?,?,?,?,?,?,'주소',sysdate,5)";
 				ps=conn.prepareStatement(sql);
 				ps.setString(1, dto.getId());
 				ps.setString(2, dto.getPwd());
@@ -140,7 +140,7 @@ public class MemberDAO {
 	public ArrayList<MemberDTO> getUserInfo(String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="select name from binzip_member where id=?";
+			String sql="select name, grade from binzip_member where id=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();

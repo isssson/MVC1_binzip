@@ -4,8 +4,6 @@
 <%
 String sid = (String)session.getAttribute("sid");
 String sgrade = (String)session.getAttribute("sgrade");
-
-System.out.println(sgrade); //test code
 %>
     
 <!DOCTYPE html>
@@ -23,13 +21,13 @@ function openLogin(){
 </head>
 <header>
 	<div class="binzipLogo">
-		<a href="/binzip/index.jsp"><img src="/binzip/main_imgs/binzip_logo.png" alt="빈집로고"></a>
+		<a href="/binzip/index.jsp"><img src="/binzip/img/main_imgs/binzip_logo.png" alt="빈집로고"></a>
 	</div>
 	<nav>
 		<ul>
 			<li class="whereMenu">
-				<img src="/binzip/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
-				<a href="#">WHERE ?</a>
+				<img src="/binzip/img/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
+				<a href="javascript:openWhere();">WHERE ?</a>
 			</li>
 			<li class="otherMenu">
 				<a href="/binzip/findzip/findZip.jsp">FIND ZIP</a>
@@ -73,7 +71,7 @@ function openLogin(){
 					}
 				} 
 				%>
-					<img src="/binzip/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon">
+					<img src="/binzip/img/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon">
 				</a>
 			</li>		
 		</ul>

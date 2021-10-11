@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BE A HOST</title>
+<title>BINZIP-BE A HOST</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style type="text/css">
 .beahost_main_text{

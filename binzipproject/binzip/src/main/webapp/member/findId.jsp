@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BINZIP-아이디 찾기</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 </head>
 <body>
