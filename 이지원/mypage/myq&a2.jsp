@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>일반회원 마이페이지-상세(카카오오븐30페이지)</title>
 <link rel="stylesheet" type="text/css" href="/binzip/binzip_css/mainLayout.css">
 <link rel="stylesheet" type="text/css" href="css/btn.css">
 </head>

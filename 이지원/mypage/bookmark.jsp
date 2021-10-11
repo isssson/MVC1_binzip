@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>일반회원 마이페이지- 북마크</title>
 <link rel="stylesheet" type="text/css" href="/binzip/binzip_css/mainLayout.css">
-<link rel="stylesheet" type="text/css" href="css/btn.css">
 </head>
 <body>
 <%@include file="/header.jsp" %>
-<section>
 	<nav>
         <ul>
              <li><a href="#">개인정보</a></li>
@@ -20,6 +18,7 @@
              <li><a href="#">관심ZIP</a></li>
          </ul>
     </nav>
+<section>
     <article>
     		<h1>BOOKMARK</h1>
     		<h5>관심가는 집</h5><hr>

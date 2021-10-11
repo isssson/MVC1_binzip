@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>일반회원 마이페이지- 회원 탈퇴</title>
+<title>일반회원 마이페이지- 나의 예약 현황</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
 .list{
 	list-style: none;
 }
 ul{
-	text-align: center;
+	text-align: left;
 	background-color: lightgray;
 }
 li{
@@ -46,16 +46,16 @@ h4{
 	text-align: center;
 	margin-bottom: 50px;
 }
+.zipres img{
+	width: 380px;
+	height: auto;
+	float: left;
+}
 .info{
-	text-align: center;
+		float: left;
 }
-table{
-	margin: 0px auto;
-}
-.bt01{
-	text-align:center;
-	display:block;
-	margin: 0px auto;
+.info2{
+	
 }
 </style>
 </head>
@@ -65,29 +65,37 @@ table{
 	<nav id="menu">
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
-             <li><a href="#">예약현황</a></li>
+             <li><a href=../mypage/myreservation.jsp">예약현황</a></li>
              <li><a href="#">취소 내역</a></li>
              <li><a href="#">문의 내역</a></li>
              <li><a href="#">관심ZIP</a></li>
          </ul>
     </nav>
+	<article>
 	<div>
-		<h2>EXIT MEMBER</h2>
-		<h4>회원 탈퇴</h4><hr>
-	</div>
-	<div class="info">
-		<h4>탈퇴 안내</h4>
-		<h6>탈퇴 신청하기 전에 안내 사항을 꼭 확인해주세요</h6>
-	<table>
-		<tr>
-			<td>사용하고 계신 아이디 binzip001 는 탈퇴 할 경우 재사용 및 복구가 불가능합니다</td>
-		</tr>
-		<tr>
-			<td>이름,아이디,비밀번호는 재사용이 불가능하며 신중하게 선택해주시기 바랍니다</td>
-		</tr>
-	</table><br>
-	</div>
-	<div class="bt01"><input type="button" value="탈퇴하기"></div>
+		<div>
+		<h2>MY RESERVATION</h2>
+		<h4>나의 예약 현황</h4><hr>
+		</div>
+		<div>
+		<div class="zipres">
+		<img src="/binzip/mainLayout_imgs/testimg.jfif" alt="추천집이미지">
+		</div>
+		<div class="info">
+		<h3> 모노가든</h3>
+		<h4> 디자인 하우스 /  제주</h4>
+		<h4>check in:      &nbsp;&nbsp;&nbsp; check out:   </h4>
+		<h4>예약인원 :   2명</h4>
+		<h3>가격</h3>
+		</div>
+		 <div class="info2">
+	 	입금 대기 중 &nbsp;&nbsp;&nbsp; <input type="button" value="예약정보 변경">&nbsp;<input type="button" value="예약취소">
+		 </div>
+	 </div>
+	
+	<br>
+	 </div>
+	</article>
 </section>
 <%@include file="../footer.jsp" %>
 </body>
