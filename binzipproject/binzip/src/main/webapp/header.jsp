@@ -40,7 +40,7 @@ function openLogin(){
 					<%
 				} else if(sgrade.equals(mdao_header.HOST) || sgrade.equals(mdao_header.ADMIN)) {
 					%>
-					<a href="#">HOSTING</a>
+					<a href="/binzip/hosting/hosting.jsp">HOSTING</a>
 					<%
 				}
 				 %>
