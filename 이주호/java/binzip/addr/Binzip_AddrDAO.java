@@ -12,11 +12,11 @@ public class Binzip_AddrDAO {
 	public Binzip_AddrDAO() {
 		System.out.println("주소 DAO 호출");
 	}
-	//서울시군구 셀렉트박스 관련 메서드
+		//시도 셀렉트박스 관련 메서드
 		public ArrayList<String> si(String workType,String si_do){
 			try {
 				conn=binzip.db.BinzipDB.getConn();
-			System.out.println(workType);
+			
 				String sql= "SELECT "+si_do+" FROM"
 						+ "("
 						+ " SELECT "+si_do+" FROM BINZIP_ADDR_BUSAN UNION ALL"
@@ -45,8 +45,8 @@ public class Binzip_AddrDAO {
 				rs=ps.executeQuery();
 				ArrayList<String> arr = new ArrayList<String>();
 				while(rs.next()) {
-					String seoulsi_gun_gu=rs.getString("si_do");
-					arr.add(seoulsi_gun_gu);
+					String addrsi_do=rs.getString("si_do");
+					arr.add(addrsi_do);
 				}
 				return arr;
 				
@@ -62,6 +62,7 @@ public class Binzip_AddrDAO {
 				}catch(Exception e2) {}
 			}
 		}
+		//시군구 셀렉트박스 관련 메서드
 		public ArrayList<String> gu(String workType,String si_do){
 			try {
 				String group = "si_gun_gu";
@@ -91,21 +92,17 @@ public class Binzip_AddrDAO {
 						+ " SELECT "+group+" FROM BINZIP_ADDR_JEONNAM "+subQuery+" UNION ALL"
 						+ " SELECT "+group+" FROM BINZIP_ADDR_SEJONG "+subQuery+" UNION ALL"
 						+ " SELECT "+group+" FROM BINZIP_ADDR_SEOUL "+subQuery+" UNION ALL"
-						+ " SELECT "+group+" FROM BINZIP_ADDR_ULSAN )"
+						+ " SELECT "+group+" FROM BINZIP_ADDR_ULSAN "+subQuery+")"
 						
 						+ " GROUP BY "+group
 						+ " ORDER BY "+group;
-				ps=conn.prepareStatement(sql);
-			
-				rs=ps.executeQuery();
-				
+				ps=conn.prepareStatement(sql);			
+				rs=ps.executeQuery();				
 				while(rs.next()) {
-					String seoulsi_gun_gu=rs.getString("si_gun_gu");
-					arr.add(seoulsi_gun_gu);
+					String addrsi_gun_gu=rs.getString("si_gun_gu");
+					arr.add(addrsi_gun_gu);
 				}
 				return arr;
-				
-					
 			}catch(Exception e) {
 				e.printStackTrace();
 				return null;
@@ -117,6 +114,7 @@ public class Binzip_AddrDAO {
 				}catch(Exception e2) {}
 			}
 		}
+		//도로명 셀렉트박스 관련 메서드
 		public ArrayList<String> ro(String workType,String si_do,String si_gun_gu){
 			try {
 				String group = "road_name";
@@ -146,21 +144,17 @@ public class Binzip_AddrDAO {
 						+ " SELECT "+group+" FROM BINZIP_ADDR_JEONNAM "+subQuery+" UNION ALL"
 						+ " SELECT "+group+" FROM BINZIP_ADDR_SEJONG "+subQuery+" UNION ALL"
 						+ " SELECT "+group+" FROM BINZIP_ADDR_SEOUL "+subQuery+" UNION ALL"
-						+ " SELECT "+group+" FROM BINZIP_ADDR_ULSAN )"
+						+ " SELECT "+group+" FROM BINZIP_ADDR_ULSAN "+subQuery+")"
 					
 						+ " GROUP BY "+group
 						+ " ORDER BY "+group;
 				ps=conn.prepareStatement(sql);
-				
-				rs=ps.executeQuery();
-				
+				rs=ps.executeQuery();				
 				while(rs.next()) {
-					String seoulsi_gun_gu=rs.getString(1);
-					arr.add(seoulsi_gun_gu);
+					String addrroad_name=rs.getString(1);
+					arr.add(addrroad_name);
 				}
 				return arr;
-				
-					
 			}catch(Exception e) {
 				e.printStackTrace();
 				return null;
@@ -170,8 +164,8 @@ public class Binzip_AddrDAO {
 					if(ps!=null)ps.close();
 					if(conn!=null)conn.close();
 				}catch(Exception e2) {}
-			}
-			
-			
+			}			
 		}
+		
+		
 }

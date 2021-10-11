@@ -1,33 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="binzip.addr.*" %>
+<%@ page import="java.util.*" %>
+<jsp:useBean id="binzipaddrdao" class="binzip.addr.Binzip_AddrDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+request.setCharacterEncoding("utf-8");
+String si_do = request.getParameter("si_do");
+String si_gun_gu = request.getParameter("si_gun_gu");
+String road_name = request.getParameter("road_name");
+String workType = request.getParameter("workType");
+String ziptype = request.getParameter("ziptype");
+%>
+<script>
+	function selectVal(status){
+		var sido = document.all.addrsido.value;
+		var sigungu = document.all.addrsigungu.value;
+		var roadname = document.all.addrro.value;
+		var workType = status;
+		location.href="/binzip/hosting/addrSearch.jsp?si_do="+sido+"&si_gun_gu="+sigungu+"&road_name="+roadname+"&workType="+workType;
+	}	
+	
+</script>
 <style>
 #addrtext{
-	width: 300px;
+	width: 200px;
 }
 </style>
 </head>
 <body>
 <section>
-	<form name="addr_search_div" action="addrSearch_ok.jsp">
+	<form name="addr_search_div" action="addrSearch_ok.jsp" method="post">
+	<input type="hidden" name="ziptype" value="<%=ziptype%>">
 		<div class="addrsearch">
-			<input type="text" name="zipaddr" id="addrtext" placeholder="예) 판교역로 235, 삼폄동 681">
-			<input type="reset" value="다시작성">
-			<input type="submit" value="검색">
-		</div>
-		<div>
-			<p class="addr_search_tip">tip</p>
-			<p class="addr_search_info">아래와 같은 조합으로 검색을 하시면 더욱 정확한 결과가 검색됩니다.</p>
-			<p class="addr_search_ex1">도로명 &#43; 건물번호</p>
-			<p class="addr_search_ex2">예&#41; 판교역로 235&#44; 제주 첨단로 242</p>
-			<p class="addr_search_ex1">지역명&#40;동&#47;리&#41; &#43; 번지</p>
-			<p class="addr_search_ex2">예&#41; 삼평동 681&#44; 제주 영평동 2181</p>
+			<select name="addrsido" onchange="selectVal('getGu');">
+				<option value="">시/도</option>
+				<%
+					ArrayList<String> si = binzipaddrdao.si(workType,"si_do");				
+					for(int i = 0;i<si.size();i++){
+						System.out.println("파라미터22"+si_do);
+						System.out.println(si.get(i));
+						System.out.println("");
+						si_do = si_do+"";
+						String temp = si.get(i);
+						if(!(si_do.equals(temp))){
+							%><option value="<%=si.get(i) %>"><%=si.get(i) %></option><% 
+						}else{
+							%><option value="<%=si.get(i) %>" selected="selected"><%=si.get(i) %></option><% 
+						}
+					}
+				%>
+			</select>
+			<select name="addrsigungu" onchange="selectVal('getRo');">
+				<option value="">시/군/구</option>
+				<%
+					ArrayList<String> gun = binzipaddrdao.gu(workType,si_do);				
+					for(int j = 0;j<gun.size();j++){
+						si_gun_gu = si_gun_gu+"";
+						String temp = gun.get(j);
+						if(!(si_gun_gu.equals(temp))){
+							%><option value="<%=gun.get(j) %>">
+								<%=gun.get(j) %>
+							</option><% 
+						}else{
+							%><option value="<%=gun.get(j) %>" selected="selected"><%=gun.get(j) %></option><% 
+						}
+					}				
+				%>				
+			</select>
+			<select name="addrro" onchange="selectVal('getLast');">
+				<option value="">도로명</option>
+				<%
+					ArrayList<String> road = binzipaddrdao.ro(workType,si_do,si_gun_gu);
+										
+					for(int k = 0;k<road.size();k++){
+						road_name = road_name+"";
+						String temp = road.get(k);
+						if(!(road_name.equals(temp))){
+							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%									
+						}else{
+							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%
+					}
+				}
+
+				%>
+			</select>
+			<input type="hidden" name="lastaddr" value="<%=si_do%> <%=si_gun_gu%> <%=road_name%>">			
+			<input type="submit" value="선택하기">	
 		</div>
 	</form>
 </section>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
