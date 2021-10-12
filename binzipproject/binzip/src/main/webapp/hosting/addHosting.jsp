@@ -52,7 +52,7 @@ if(id==null || id.equals("")){
 	%>
 	<script>
 	window.alert('호스트만 사용가능합니다. 호스트 요청을 먼저 해주세요.');
-	location.hre="/binzip/beahost/beAHost.jsp";
+	location.href="/binzip/beahost/beAHost.jsp";
 	</script>
 	<%
 	return;	
@@ -121,7 +121,7 @@ if(si_si == null || si_si.equals("")){
 				</div>
 				<div class="hosting_lb">
 					<label>주소</label>
-					<input type="text" name="zipaddr" readonly value="<%=si_si%>"> 
+					<input type="text" name="zipaddr" id="firstAddr" readonly> 
 					<input type="button" value="주소검색" readonly onclick="addrSearch();">
 				</div>
 				<div class="hosting_lb">

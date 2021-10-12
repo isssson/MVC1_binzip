@@ -10,15 +10,24 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <%
-request.setCharacterEncoding("utf-8");
-session.setAttribute("si_do", request.getParameter("si_do"));
+request.setCharacterEncoding("UTF-8");
 String si_do = request.getParameter("si_do");
+String si_gun_gu = request.getParameter("si_gun_gu");
+String startDate = request.getParameter("startDate");
+String endDate = request.getParameter("endDate");
 %>
 <script>
 	function selectVal(){
-		var sido = document.all.selectRegion.value; 
-		location.href="/binzip/where/where.jsp?si_do="+sido;
-	}	
+		var sido = document.all.selectRegion.value;
+		var siGunGu = document.all.selectSiGunGu.value;
+		var startDate = document.all.cInDate.value;
+		var endDate = document.all.cOutDate.value;
+		location.href="binzip/findzip/findZip.jsp?si_do="+si_do+"&si_gun_gu="+si_gun_gu+"&startDate="+startDate+"&endDate="+endDate;
+	}
+	
+	function shift(){
+		window.close();
+	}
 	
 </script>
 </head>
@@ -30,46 +39,46 @@ String si_do = request.getParameter("si_do");
 </style>
 <body>
 	<h3>어디로 떠날까요?</h3>
-	<form name="setRegion" action="/binzip/findzip/findZip.jsp" method="post">
+	<form name="where" action="/binzip/findzip/FindZip.jsp";>
 		<table>
 			<tr>
 				<td>
 					<select name="selectRegion" onchange="selectVal();">
+						<option value="">시/도</option>
 						<%
-						String str1="";
-						String str2=null;
-						ArrayList<String>
-						if(){
-							
-						}else{
-							%>
-							<option value="" selected>시/도</option>
-							<%	
-						}
-						%>
-						
-						<%
-						ArrayList<String> si=binzipaddrdao.whereSi();
+						ArrayList<String> si = binzipaddrdao.whereSi();
 						for(int i=0;i<si.size();i++){
-							%>
-							<option value="<%=si.get(i)%>"><%=si.get(i) %></option>
-							<%
+							si_do=si_do+"";
+							String temp = si.get(i);
+							if(!(si_do.equals(temp))){
+								%><option value="<%=si.get(i) %>"><%=si.get(i) %></option><%
+							}else{
+								%><option value="<%=si.get(i) %>" selected="selected"><%=si.get(i) %></option><%
+							}
 						}
-						%>
+						%>	
 					</select>
 				<td>
 					<span class="sp-bold">&nbsp;시.도</span>
 				</td>
 			<tr>
 				<td>
-					<select name="selectSiGunGu">
-						<option value="" selected>시/군/구</option>
+					<select name="selectSiGunGu" onchange="selectVal();">
+						<option value="">시/군/구</option>
 						<%
 						ArrayList<String> gun = binzipaddrdao.whereSiGunGu(si_do);
 						for(int j=0;j<gun.size();j++){
-							%>
-							<option value="<%=gun.get(j)%>"><%=gun.get(j)%></option>
-							<%
+							si_gun_gu=si_gun_gu+"";
+							String temp=gun.get(j);
+							if(!(si_gun_gu.equals(temp))){
+								%>
+								<option value="<%=gun.get(j)%>"><%=gun.get(j)%></option>
+								<%
+							}else{
+								%>
+								<option value="<%=gun.get(j)%>" selected><%=gun.get(j)%></option>
+								<%
+							}
 						}
 						%>
 					</select>
@@ -81,64 +90,22 @@ String si_do = request.getParameter("si_do");
 		</table>
 		<h3>언제 떠날까요?</h3>
 		<table>
+		<%
+		Calendar myDate=Calendar.getInstance();
+		int year=myDate.get(Calendar.YEAR);
+		int month=myDate.get(Calendar.MONTH)+1;
+		int date=myDate.get(Calendar.DATE);
+		String s_year=Integer.toString(year);
+		String s_month=Integer.toString(month);
+		String s_date=Integer.toString(date);
+		String s_minDate=s_year+"-"+s_month+"-"+s_date;
+		%>
 			<tr>
 				<td>
 					<span class="sp-bold">체크인&nbsp;</span>
 				</td>
-				<%
-				Calendar myDate=Calendar.getInstance();
-				int year=myDate.get(Calendar.YEAR);
-				int month=myDate.get(Calendar.MONTH)+1;
-				int date=myDate.get(Calendar.DATE);
-				%>
 				<td>
-					<select name="startYear">
-					<%
-					for(int i=year;i<year+21;i++){
-						if(i==year){
-							%>
-							<option value=<%=i %> selected><%=i %>년</option>
-							<%
-						}else{
-							%>
-							<option value=<%=i %>><%=i %>년</option>
-							<%
-						}
-					}
-					%>
-					</select>
-					&nbsp;
-					<select name="startMonth">
-					<%
-					for(int j=1;j<13;j++){
-						if(j==month){
-							%>
-							<option value=<%=j %> selected><%=j %>월</option>
-							<%
-						}else{
-							%>
-							<option value=<%=j %>><%=j %>월</option>
-							<%
-						}
-					}
-					%>
-					</select>
-					&nbsp;
-					<select name="startDate">
-					<%
-					for(int k=1;k<32;k++){
-						if(k==date){
-							%>
-							<option value=<%=k %> selected><%=k %>일</option>
-							<%
-						}else{
-							%>
-							<option value=<%=k %>><%=k %>일</option>
-							<%
-						}
-					}
-					%>	
-					</select>
+					<input type="date" name="cInDate" min="<%=s_minDate%>" required pattern="\d{4}-\d{2}-\d{2}" value="<%=startDate %>" onchange="selectVal();">
 				</td>
 			</tr>
 			<br>
@@ -147,57 +114,11 @@ String si_do = request.getParameter("si_do");
 					<span class="sp-bold">체크아웃&nbsp;</span>
 				</td>
 				<td>
-					<select name="endYear">
-					<%
-					for(int i=year;i<year+21;i++){
-						if(i==year){
-							%>
-							<option value=<%=i %> selected><%=i %>년</option>
-							<%
-						}else{
-							%>
-							<option value=<%=i %>><%=i %>년</option>
-							<%
-						}
-					}
-					%>
-					</select>
-					&nbsp;
-					<select name="endMonth">
-					<%
-					for(int j=1;j<13;j++){
-						if(j==month){
-							%>
-							<option value=<%=j %> selected><%=j %>월</option>
-							<%
-						}else{
-							%>
-							<option value=<%=j %>><%=j %>월</option>
-							<%
-						}
-					}
-					%>
-					</select>
-					&nbsp;
-					<select name="endDate">
-					<%
-					for(int k=1;k<32;k++){
-						if(k==date){
-							%>
-							<option value=<%=k %> selected><%=k %>일</option>
-							<%
-						}else{
-							%>
-							<option value=<%=k %>><%=k %>일</option>
-							<%
-						}
-					}
-					%>
-					</select>
+					<input type="date" name="cOutDate" required pattern="\d{4}-\d{2}-\d{2}" value="<%=endDate%>" onchange="selectVal();">
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="search">
+		<input type="button" value="search" onclick="shift();">
 	</form>
 </body>
 </html>

@@ -25,6 +25,12 @@ String ziptype = request.getParameter("ziptype");
 		location.href="/binzip/hosting/addrSearch.jsp?si_do="+sido+"&si_gun_gu="+sigungu+"&road_name="+roadname+"&workType="+workType;
 	}	
 	
+	function finalSelect(){
+		let result = document.addrsido.value + " " + document.all.addsigungu.value + " " + document.all.addrro.value;
+		opener.firstAddr.value=result;
+		window.close();
+	}
+	
 </script>
 <style>
 #addrtext{
@@ -42,9 +48,6 @@ String ziptype = request.getParameter("ziptype");
 				<%
 					ArrayList<String> si = binzipaddrdao.si(workType,"si_do");				
 					for(int i = 0;i<si.size();i++){
-						System.out.println("파라미터22"+si_do);
-						System.out.println(si.get(i));
-						System.out.println("");
 						si_do = si_do+"";
 						String temp = si.get(i);
 						if(!(si_do.equals(temp))){
@@ -72,7 +75,7 @@ String ziptype = request.getParameter("ziptype");
 					}				
 				%>				
 			</select>
-			<select name="addrro" onchange="selectVal('getLast');">
+			<select name="addrro">
 				<option value="">도로명</option>
 				<%
 					ArrayList<String> road = binzipaddrdao.ro(workType,si_do,si_gun_gu);
@@ -83,14 +86,13 @@ String ziptype = request.getParameter("ziptype");
 						if(!(road_name.equals(temp))){
 							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%									
 						}else{
-							%><option value="<%=road.get(k) %>" selected="selected"><%=road.get(k) %></option><%
+							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%
 						}
 				}
 
 				%>
-			</select>
-			<input type="hidden" name="lastaddr" value="<%=si_do%> <%=si_gun_gu%> <%=road_name%>">			
-			<input type="submit" value="선택하기">	
+			</select>			
+			<input type="button" value="선택하기" onclick="finalSelect();">	
 		</div>
 	</form>
 </section>

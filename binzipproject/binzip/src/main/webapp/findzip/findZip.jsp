@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<jsp:useBean id="binzipaddrdao" class="binzip.addr.Binzip_AddrDAO"></jsp:useBean>
 <%
-String region=request.getParameter("region");
-String siGunGu=request.getParameter("siGunGu");
-int startYear=Integer.parseInt(request.getParameter("startYear"));
-int startMonth=Integer.parseInt(request.getParameter("startMonth"));
-int startDate=Integer.parseInt(request.getParameter("startDate"));
-int endYear=Integer.parseInt(request.getParameter("endYear"));
-int endMonth=Integer.parseInt(request.getParameter("endMonth"));
-int endDate=Integer.parseInt(request.getParameter("endDate"));
-String totalAddr=region+" "+siGunGu; 
+request.setCharacterEncoding("utf-8");
+String si_do = request.getParameter("si_do");
+String si_gun_gu = request.getParameter("si_gun_gu");
+String startDate = request.getParameter("startDate");
+String endDate = request.getParameter("endDate");
+String totalAddr = si_do+" "+si_gun_gu+"";
+System.out.println(si_do);
+System.out.println(si_gun_gu);
+System.out.println(startDate); 
+System.out.println(endDate);
+System.out.println(totalAddr);
 %>
 <!DOCTYPE html>
 <html>
@@ -145,6 +148,10 @@ String totalAddr=region+" "+siGunGu;
 	int year=myDate.get(Calendar.YEAR);
 	int month=myDate.get(Calendar.MONTH)+1;
 	int date=myDate.get(Calendar.DATE);
+	String s_year=Integer.toString(year);
+	String s_month=Integer.toString(month);
+	String s_date=Integer.toString(date);
+	String s_minDate=s_year+"-"+s_month+"-"+s_date;
 	%>
 </head>
 
@@ -171,103 +178,15 @@ String totalAddr=region+" "+siGunGu;
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>여행지</label> 
-								<input type="text" name="siname" value="<%=totalAddr%>">
+								<input type="text" name="spot" value="<%=totalAddr%>">
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>체크 인</label>
-								<select name="fz_startYear">
-									<%
-									for(int i=year;i<year+21;i++){
-										if(i==year){
-											%>
-											<option value=<%=i %> selected><%=startYear %>년</option>
-											<%
-										}else{
-											%>
-											<option value=<%=i %>><%=i %>년</option>
-											<%
-										}
-									}
-									%>
-								</select>
-								<select name="fz_startMonth">
-									<%
-									for(int j=1;j<13;j++){
-										if(j==month){
-											%>
-											<option value=<%=j %> selected><%=startMonth %>월</option>
-											<%
-										}else{
-											%>
-											<option value=<%=j %>><%=j %>월</option>
-											<%
-										}
-									}
-									%>
-								</select>
-								<select name="fz_startDate">
-									<%
-									for(int k=1;k<32;k++){
-										if(k==date){
-											%>
-											<option value=<%=k %> selected><%=startDate %>일</option>
-											<%
-										}else{
-											%>
-											<option value=<%=k %>><%=k %>일</option>
-											<%
-										}
-									}
-									%>
-								</select>
+								<input type="date" name="fz_cInDate" min="<%=s_minDate %>" required pattern="\d{4}-\d{2}-\d{2}" value="<%=startDate %>">
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>체크 아웃</label>
-									<select name="fz_endYear">
-										<%
-										for(int i=year;i<year+21;i++){
-											if(i==year){
-												%>
-												<option value=<%=i %> selected><%=endYear %>년</option>
-												<%
-											}else{
-												%>
-												<option value=<%=i %>><%=i %>년</option>
-												<%
-											}
-										}
-										%>
-									</select>
-									<select name="fz_endMonth">
-										<%
-										for(int j=1;j<13;j++){
-											if(j==month){
-												%>
-												<option value=<%=j %> selected><%=endMonth %>월</option>
-												<%
-											}else{
-												%>
-												<option value=<%=j %>><%=j %>월</option>
-												<%
-											}
-										}
-										%>
-									</select>
-									<select name="fz_endDate">
-										<%
-										for(int k=1;k<32;k++){
-											if(k==date){
-												%>
-												<option value=<%=k %> selected><%=endDate %>일</option>
-												<%
-											}else{
-												%>
-												<option value=<%=k %>><%=k %>일</option>
-												<%
-											}
-										}
-										%>
-									</select>
+								<input type="date" name="fz_cOutDate" required pattern="\d{4}-\d{2}-\d{2}" value="<%=endDate%>">
 							</li>
 						</ul>
 						<img src="findzip_imgs/button_reset.png" alt="초기화버튼" style="width:30px;float:right;" id="btn_init">
@@ -277,32 +196,32 @@ String totalAddr=region+" "+siGunGu;
 							<li id="let_empty" style=margin-left:10px>
 								<label>인원수</label>
 								<select name="peoplenum">
-									<option value="인원">1인</option>
-									<option value="인원">2인</option>
-									<option value="인원">3인</option>
-									<option value="인원">4인</option>
-									<option value="인원">5인</option>
-									<option value="인원">6인</option>
-									<option value="인원">7인</option>
-									<option value="인원">8인</option>
+									<option value="1">1인</option>
+									<option value="2">2인</option>
+									<option value="3">3인</option>
+									<option value="4">4인</option>
+									<option value="5">5인</option>
+									<option value="6">6인</option>
+									<option value="7">7인</option>
+									<option value="8">8인</option>
 								</select>
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>가격대</label>
 								<select name="costscope">
-									<option value="cost">0~80,000원</option>
-									<option value="cost">80,000~120,000원</option>
-									<option value="cost">120,000~160,000원</option>
-									<option value="cost">160,000~200,000원</option>
+									<option value="80000">0~80,000원</option>
+									<option value="120000">80,000~120,000원</option>
+									<option value="160000">120,000~160,000원</option>
+									<option value="200000">160,000~200,000원</option>
 								</select>
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>숙소 유형</label>
 								<select name="ziptype">
-									<option value="type">아파트</option>
-									<option value="type">빌라</option>
-									<option value="type">주택</option>
-									<option value="type">별장</option>
+									<option value="아파트">아파트</option>
+									<option value="빌라">빌라</option>
+									<option value="주택">주택</option>
+									<option value="별장">별장</option>
 								</select>
 							</li>
 						</ul>
