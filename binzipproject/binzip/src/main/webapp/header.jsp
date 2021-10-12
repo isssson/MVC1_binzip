@@ -12,7 +12,7 @@ String sgrade = (String)session.getAttribute("sgrade");
 <meta charset="UTF-8">
 <script>
 function openWhere(){
-	window.open("/binzip/where/where.jsp","where","width=500, height=300, left=800, top=300");
+	window.open("/binzip/where/where.jsp","where","width=800, height=400, left=700, top=300");
 }
 function openLogin(){
 	window.open("/binzip/member/login.jsp","where","width=500, height=300, left=800, top=300");

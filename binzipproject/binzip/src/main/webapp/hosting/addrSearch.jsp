@@ -85,7 +85,7 @@ String ziptype = request.getParameter("ziptype");
 						}else{
 							%><option value="<%=road.get(k) %>" selected="selected"><%=road.get(k) %></option><%
 						}
-					}
+				}
 
 				%>
 			</select>
