@@ -5,96 +5,101 @@
 <head>
 <meta charset="UTF-8">
 <title>일반회원 마이페이지- 취소 내역</title>
-<link rel="stylesheet" type="text/css" href="/binzip/binzip_css/mainLayout.css">
-<link rel="stylesheet" type="text/css" href="css/btn.css">
-
+<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
+<style>
+.list{
+	list-style: none;
+}
+ul{
+	text-align: left;
+	background-color: lightgray;
+}
+li{
+	float: left;
+}
+#menu{
+	width:1200px;
+	height: 150px;
+}
+#menu ul li{
+	float: left;
+	width:8%;
+	line-height: 45px;
+	text-align: center;
+	background: lightgray;
+}
+#menu ul li a{
+ 	display: block;
+}
+#menu ul li a:hover{
+	background: gray;
+	color: black;
+}
+h2{
+	font-size: 40px;
+	text-align: center;
+	margin-top: 80px;
+	clear: both;
+}
+h4{
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+.zipres img{
+	width: 380px;
+	height: 380px;
+	float:left;
+	margin-left: 250px;
+	margin-right: 10px;
+}
+.info{
+	margin-bottom: 500px;
+}
+.info2{
+	height: 380px;
+	width: 380px;
+	font-size: 10px; 
+	float:left;
+}
+</style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@include file="../header.jsp" %>
 <section>
-	<nav>
-        <ul>
-             <li><a href="#">개인정보</a></li>
-             <li><a href="#">예약현황</a></li>
-             <li><a href="#">취소 내역</a></li>
-             <li><a href="#">문의 내역</a></li>
-             <li><a href="#">관심ZIP</a></li>
+	<nav id="menu">
+        <ul class="list">
+             <li><a href="../mypage/mypage.jsp">개인정보</a></li>
+             <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
+             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
+             <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
     </nav>
  	<article>
 	<div>
 		<div>
-		<h2>MY RESERVATION</h2>
-		<h5>나의 예약 현황</h5><hr>
+			<h2>MY RESERVATION</h2>
+			<h4>나의 예약 현황</h4><hr>
 		</div>
-		<div>
+		<div class="info">
 		<div class="zipres">
-		<img src="/binzip/mainLayout_imgs/testimg.jfif" alt="추천집이미지">
+			<img src="/binzip/img/main_imgs/testimg.jfif" alt="추천집이미지">
 		</div>
-		 <div>
-		<h3> 모노가든</h3>
-		<h4> 디자인 하우스 /  제주</h4>
-		<h4>check in:      &nbsp;&nbsp;&nbsp; check out:   </h4>
-		<h4>예약인원 :   2명</h4>
-		<h3>가격</h3>
-		 </div>
-		 <div>
-	 	취소 진행중 &nbsp;&nbsp;&nbsp; <input type="button" value="재예약">
-		 </div>
+		<div class="info2">
+			<h3> 모노가든</h3>
+			<h3> 디자인 하우스 /  제주</h3>
+			<h3>check in:      &nbsp;&nbsp;&nbsp; check out:   </h3>
+			<h3>예약인원 :   2명</h3>
+			<h3>가격</h3>
+			<h3>취소 진행중</h3>
+			<input type="button" value="재예약">
+		</div>
 	 </div>
-	 
-	 <div>
-	 	<div class="zipres">
-		<img src="/binzip/mainLayout_imgs/testimg.jfif" alt="추천집이미지">
-		</div>
-		<div>
-		<h3> 모노가든</h3>
-		<h4> 디자인 하우스 /  제주</h4>
-		<h4>check in:      &nbsp;&nbsp;&nbsp; check out:   </h4>
-		<h4>예약인원 :   2명</h4>
-		<h3>가격</h3>
-		 </div>
-	  	<div>
-	 	취소 완료 &nbsp;&nbsp;&nbsp; <input type="button" value="지난 내역 보기">
-	 	</div>
-	</div>
-		
-	<div>
-	 	<div class="zipres">
-		<img src="/binzip/mainLayout_imgs/testimg.jfif" alt="추천집이미지">
-		</div>
-		<div>
-		<h3> 모노가든</h3>
-		<h4> 디자인 하우스 /  제주</h4>
-		<h4>check in:      &nbsp;&nbsp;&nbsp; check out:   </h4>
-		<h4>예약인원 :   2명</h4>
-		<h3>가격</h3>
-	 	</div>
-	  	<div>
-	 	만료된 예약 &nbsp;&nbsp;&nbsp; <input type="button" value="지난 내역 보기">
-	 	</div>
-	</div>
-	
-	<div>
-	 	<div class="zipres">
-		<img src="/binzip/mainLayout_imgs/testimg.jfif" alt="추천집이미지">
-		</div>
-		<div>
-		<h3> 모노가든</h3>
-		<h4> 디자인 하우스 /  제주</h4>
-		<h4>check in:      &nbsp;&nbsp;&nbsp; check out:   </h4>
-		<h4>예약인원 :   2명</h4>
-		<h3>가격</h3>
-		 </div>
-	  	<div>
-	 	만료된 예약 &nbsp;&nbsp;&nbsp; <input type="button" value="지난 내역 보기">
-		 </div>
-	</div>
-	
 	<br>
 	 </div>
 	</article>   
 </section>
-<%@include file="/footer.jsp" %>
+<%@include file="../footer.jsp" %>
 </body>
 </html>

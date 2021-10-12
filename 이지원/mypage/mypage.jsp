@@ -73,13 +73,6 @@ table{
 	margin: 0px auto;
 }
 </style>
-<script>
-var y=now.getFullYear();
-var m=now.getMonth()+1;
-var d=now.getDate();
-
-
-</script>
 </head>
 <body>
 <%@include file="../header.jsp" %>
@@ -87,10 +80,10 @@ var d=now.getDate();
  	<nav id="menu">
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
-             <li><a href="#">예약현황</a></li>
-             <li><a href="#">취소 내역</a></li>
-             <li><a href="#">문의 내역</a></li>
-             <li><a href="#">관심ZIP</a></li>
+             <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
+             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
+             <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
     </nav>
 	<article>
