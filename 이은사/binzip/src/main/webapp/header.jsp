@@ -23,7 +23,9 @@
 </head>
 <header>
 	<div class="binzipLogo">
-		<a href="/binzip/index.jsp"><img src="/binzip/main_imgs/binzip_logo.png" alt="빈집로고"></a>
+		<a href="/binzip/index.jsp">
+			<img src="/binzip/main_imgs/binzip_logo.png" alt="빈집로고">
+		</a>
 	</div>
 	<nav>
 		<ul>
@@ -42,13 +44,13 @@
 					<%
 				} else if(sgrade.equals(mdao_header.HOST) || sgrade.equals(mdao_header.ADMIN)) {
 					%>
-					<a href="#">HOSTING</a>
+					<a href="/binzip/hosting/hosting.jsp">HOSTING</a>
 					<%
 				}
 				 %>
 			</li>			
 			<li class="otherMenu">
-				<a href="#">HELP</a>
+				<a href="/binzip/help/help.jsp">HELP</a>
 			</li>
 			<!-- mypage session area -->
 			<li class="myMenu">

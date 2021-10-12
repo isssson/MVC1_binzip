@@ -9,7 +9,7 @@ boolean result=mdao.findPwdInfo(question, answer, id);
 if(result){
 	%>
 	<script>
-	location.href="/binzip/member/editPwd.jsp?id=<%=id%>";
+	location.href='/binzip/member/editPwd.jsp?id=<%=id%>';
 	</script>
 	<%
 }else{

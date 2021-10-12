@@ -135,8 +135,10 @@
 	<section>
 		<article>
 			<div class="findzipMainText">
-				<h1>F&nbsp; I&nbsp; N&nbsp;
-					D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Z&nbsp; I&nbsp; P</h1>
+				<h1>
+					F&nbsp; I&nbsp; N&nbsp;
+					D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Z&nbsp; I&nbsp; P
+				</h1>
 				<span>머무는 것 자체로 여행이 되는 공간</span>
 			</div>
 		</article>
