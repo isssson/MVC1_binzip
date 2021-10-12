@@ -17,6 +17,5 @@ MultipartRequest mr = new MultipartRequest(request,savePath,(int)imgwf.getFreeSi
 %>
 <script>
 window.alert('파일 업로드 성공!');
-openner.location.reload();
-window.self.close();
+location.href='addHosting.jsp?=cp<%=imgwf.getCrpath()%>';
 </script>

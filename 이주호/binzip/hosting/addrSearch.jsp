@@ -9,20 +9,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%
-String si_do=request.getParameter("si_do");
-System.out.println("파라미터값 : "+ si_do);
-String si_gun_gu=request.getParameter("si_gun_gu");
+request.setCharacterEncoding("utf-8");
+String si_do = request.getParameter("si_do");
+String si_gun_gu = request.getParameter("si_gun_gu");
+String road_name = request.getParameter("road_name");
 String workType = request.getParameter("workType");
+String ziptype = request.getParameter("ziptype");
 %>
 <script>
-
 	function selectVal(status){
-		var sido = document.all.sido.value;
-		var sigungu = document.all.sigungu.value;
+		var sido = document.all.addrsido.value;
+		var sigungu = document.all.addrsigungu.value;
+		var roadname = document.all.addrro.value;
 		var workType = status;
-		location.href="/binzip/hosting/addrSearch.jsp?si_do="+sido+"&si_gun_gu="+sigungu+"&workType="+workType;
+		location.href="/binzip/hosting/addrSearch.jsp?si_do="+sido+"&si_gun_gu="+sigungu+"&road_name="+roadname+"&workType="+workType;
 	}	
-
+	function finalSelect() {
+		let result = document.all.addrsido.value + " "+ document.all.addrsigungu.value + " " + document.all.addrro.value;
+		opener.firstAddr.value = result;
+		window.close();
+		
+	}
 </script>
 <style>
 #addrtext{
@@ -30,17 +37,16 @@ String workType = request.getParameter("workType");
 }
 </style>
 </head>
-<body onload="">
+<body>
 <section>
-	<form name="addr_search_div" action="addHosting.jsp">
+	<form name="addr_search_div" action="addrSearch_ok.jsp" method="post">
+	<input type="hidden" name="ziptype" value="<%=ziptype%>">
 		<div class="addrsearch">
-			<select name="addrsido" id="sido" onchange="javascript:selectVal('getGu');">
+			<select name="addrsido" onchange="selectVal('getGu');">
 				<option value="">시/도</option>
 				<%
 					ArrayList<String> si = binzipaddrdao.si(workType,"si_do");				
 					for(int i = 0;i<si.size();i++){
-						System.out.println("파라미터22"+si_do);
-						System.out.println(si.get(i));
 						System.out.println("");
 						si_do = si_do+"";
 						String temp = si.get(i);
@@ -52,7 +58,7 @@ String workType = request.getParameter("workType");
 					}
 				%>
 			</select>
-			<select name="addrsigungu" id="sigungu" onchange="selectVal('getRo');">
+			<select name="addrsigungu" onchange="selectVal('getRo');">
 				<option value="">시/군/구</option>
 				<%
 					ArrayList<String> gun = binzipaddrdao.gu(workType,si_do);				
@@ -60,29 +66,33 @@ String workType = request.getParameter("workType");
 						si_gun_gu = si_gun_gu+"";
 						String temp = gun.get(j);
 						if(!(si_gun_gu.equals(temp))){
-							%><option value="<%=gun.get(j) %>"><%=gun.get(j) %></option><% 
+							%><option value="<%=gun.get(j) %>">
+								<%=gun.get(j) %>
+							</option><% 
 						}else{
 							%><option value="<%=gun.get(j) %>" selected="selected"><%=gun.get(j) %></option><% 
 						}
 					}				
 				%>				
 			</select>
-			<select name="addrdong" id="dong">
-				<option value="">읍/면/동</option>
+			<select name="addrro" >
+				<option value="">도로명</option>
 				<%
-					ArrayList<String> ro = binzipaddrdao.ro(workType,si_do,si_gun_gu);
-				if(ro != null){
-					for(int k = 0;k<ro.size();k++){
-							%><option value="<%=ro.get(k) %>"><%=ro.get(k) %></option><% 
-						}
+					ArrayList<String> road = binzipaddrdao.ro(workType,si_do,si_gun_gu);
+										
+					for(int k = 0;k<road.size();k++){
+						road_name = road_name+"";
+						String temp = road.get(k);
+						if(!(road_name.equals(temp))){
+							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%									
+						}else{
+							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%
 					}
+				}
+
 				%>
-			</select><br>
-			<input type="text" name="zipaddr" id="addrtext" placeholder="상세주소">	
-			<input type="submit" value="저장하기">			
-		</div>
-		<div>
-			<p class="addr_search_tip">상세주소는 정확하게 입력해주세요.</p>			
+			</select>		
+			<input type="button" value="선택하기" onclick = "finalSelect();">	
 		</div>
 	</form>
 </section>
