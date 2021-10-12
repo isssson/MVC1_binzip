@@ -48,14 +48,19 @@ h4{
 }
 .zipres img{
 	width: 380px;
-	height: auto;
-	float: left;
+	height: 380px;
+	float:left;
+	margin-left: 250px;
+	margin-right: 40px;
 }
 .info{
-		float: left;
+	margin-bottom: 500px;
 }
 .info2{
-	
+	height: 380px;
+	width: 380px;
+	font-size: 10px; 
+	float:left;
 }
 </style>
 </head>
@@ -65,36 +70,34 @@ h4{
 	<nav id="menu">
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
-             <li><a href=../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="#">취소 내역</a></li>
-             <li><a href="#">문의 내역</a></li>
-             <li><a href="#">관심ZIP</a></li>
+             <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
+             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
+             <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
     </nav>
 	<article>
 	<div>
 		<div>
-		<h2>MY RESERVATION</h2>
-		<h4>나의 예약 현황</h4><hr>
-		</div>
-		<div>
-		<div class="zipres">
-		<img src="/binzip/mainLayout_imgs/testimg.jfif" alt="추천집이미지">
+			<h2>MY RESERVATION</h2>
+			<h4>나의 예약 현황</h4><hr>
 		</div>
 		<div class="info">
-		<h3> 모노가든</h3>
-		<h4> 디자인 하우스 /  제주</h4>
-		<h4>check in:      &nbsp;&nbsp;&nbsp; check out:   </h4>
-		<h4>예약인원 :   2명</h4>
-		<h3>가격</h3>
+		<div class="zipres">
+			<img src="/binzip/img/main_imgs/testimg.jfif" alt="추천집이미지">
 		</div>
-		 <div class="info2">
-	 	입금 대기 중 &nbsp;&nbsp;&nbsp; <input type="button" value="예약정보 변경">&nbsp;<input type="button" value="예약취소">
-		 </div>
+		<div class="info2">
+			<h3> 모노가든</h3>
+			<h3> 디자인 하우스 /  제주</h3>
+			<h3>check in:      &nbsp;&nbsp;&nbsp; check out:   </h3>
+			<h3>예약인원 :   2명</h3>
+			<h3>가격</h3>
+			<h3>입금 대기 중</h3>
+			<input type="button" value="예약정보 변경">&nbsp;<input type="button" value="예약취소">
+		</div>
+		</div>
 	 </div>
-	
 	<br>
-	 </div>
 	</article>
 </section>
 <%@include file="../footer.jsp" %>
