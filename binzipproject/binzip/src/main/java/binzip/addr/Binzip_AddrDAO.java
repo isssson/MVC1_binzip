@@ -167,7 +167,7 @@ public class Binzip_AddrDAO {
 			}			
 		}
 		
-		//where.jsp select option values si_do
+		//where.jsp select option values si
 		public ArrayList<String> whereSi(){
 			try {
 				conn=binzip.db.BinzipDB.getConn();

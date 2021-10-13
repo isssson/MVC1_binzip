@@ -4,16 +4,12 @@
 <jsp:useBean id="binzipaddrdao" class="binzip.addr.Binzip_AddrDAO"></jsp:useBean>
 <%
 request.setCharacterEncoding("utf-8");
-String si_do = request.getParameter("si_do");
-String si_gun_gu = request.getParameter("si_gun_gu");
+String si_do = request.getParameter("sido");
 String startDate = request.getParameter("startDate");
 String endDate = request.getParameter("endDate");
-String totalAddr = si_do+" "+si_gun_gu+"";
 System.out.println(si_do);
-System.out.println(si_gun_gu);
 System.out.println(startDate); 
 System.out.println(endDate);
-System.out.println(totalAddr);
 %>
 <!DOCTYPE html>
 <html>
@@ -178,7 +174,7 @@ System.out.println(totalAddr);
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>여행지</label> 
-								<input type="text" name="spot" value="<%=totalAddr%>">
+								<input type="text" name="spot" value="<%=si_do%>">
 							</li>
 							<li id="let_empty" style=margin-left:50px>
 								<label>체크 인</label>
