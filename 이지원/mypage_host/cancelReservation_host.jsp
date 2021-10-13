@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>호스트 마이페이지- 내가 올린 집</title>
+<title>호스트 마이페이지- 취소 요청 내역</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
 .list{
@@ -47,14 +47,21 @@ h4{
 	margin-left: 250px;
 	margin-right: 40px;
 }
-.info{
-	margin-bottom: 500px;
-}
 .info2{
 	height: 380px;
 	width: 380px;
 	font-size: 10px; 
 	float:left;
+}
+table{
+	margin: 0px auto;
+	width: 500px;
+	height: 300px;
+	text-align: center;
+}
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
 }
 </style>
 </head>
@@ -73,22 +80,36 @@ h4{
          </ul>
     </nav>
 <section>
-    <article>
-    		<h2>HOSTING MY ZIP</h2>
-    		<h4>내가 올린 집</h4><hr>
-		<div class="info">
-		<div class="zipres">
-			<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
+    <form action="">
+   	<div>
+		<h2>CANCLE RESERVATION</h2>
+		<h4>취소 요청 내역</h4><hr>
+	</div>
+    <div class="zipres">
+		<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
+	</div>
+	<div class="info2">
+		<h3> 모노가든</h3>
+		<h3> 디자인 하우스 /  제주</h3>
+		<h3>예약인원 :   2명</h3>
+		<h3>가격</h3>
+		<input type="button" value="내용수정"> &nbsp;&nbsp;&nbsp; <input type="button" value="영업종료">
 		</div>
-		<div class="info2">
-			<h3> 미온가바이</h3>
-			<h3> 서울/ 종로구</h3>
-			<h3>최소 2명 /최대 3명</h3>
-			<h3>290,000</h3>
-			<input type="button" value="예약하기">
-		</div>
-		</div>
-    </article>
+		<table>
+		<tr>
+			<td>예약날짜</td>
+			<td>아이디</td>
+			<td>입금상태</td>
+			<td>예약취소</td>
+		</tr>
+		<tr>
+			<td>2021-10-04-2021-10-06</td>
+			<td>홍길동</td>
+			<td>O</td>
+			<td><input type="button" value="승인"></td>
+		</tr>
+		</table>	
+    </form>
 </section>
 <%@include file="../footer.jsp" %>
 </body>

@@ -40,20 +40,25 @@ h4{
 	text-align: center;
 	margin-bottom: 50px;
 }
+table{
+	margin: 0px auto;
+	width: 600px;	
+	height: 550px;
+}
 </style>
 </head>
 <body>
-<%@include file="/header.jsp" %>
+<%@include file="../header.jsp" %>
  	<nav id="menu">
         <ul class="list">
              <li><a href="../mypage_host/mypage_host.jsp">개인정보</a></li>
-             <li><a href="#">예약현황</a></li>
-             <li><a href="#">지난 예약현황</a></li>
-             <li><a href="#">취소 요청 내역</a></li>
-             <li><a href="#">내가 올린 집</a></li>
-             <li><a href="#">총 매출</a></li>
-             <li><a href="#">나의 문의 내역</a></li>
-             <li><a href="#">관심ZIP</a></li>
+             <li><a href="../mypage_host/my reservation_host.jsp">예약현황</a></li>
+             <li><a href="../mypage_host/last reservation.jsp">지난 예약현황</a></li>
+             <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
+             <li><a href="../mypage_host/hosting_my_zip.jsp">내가 올린 집</a></li>
+             <li><a href="../mypage_host/total_Sales_host.jsp">총 매출</a></li>
+             <li><a href="../mypage_host/myq&a_host.jsp">나의 문의 내역</a></li>
+             <li><a href="../mypage_host/bookmark_host.jsp">관심ZIP</a></li>
          </ul>
     </nav>
 <section>
@@ -90,26 +95,8 @@ h4{
 				<td><input type="text" value="이름"></td>
 			</tr>
 			<tr>
-				<td>생년월일</td>
-				<td><select name="year">
-					<script>
-					for(var i=1960;i<=2021;i++){
-					document.write('<option value="'+i+'"'+(i==y?'selected':' ')+'selected>'+i+'</option>');}
-					</script>
-  					</select>일
-				<select name="month">
-					<script>
-					for(var i=1;i<=12;i++){
-					document.write('<option value="'+i+'"'+(i==m?'selected':' ')+'selected>'+i+'</option>');}
-					</script>
-  					</select>월
-				<select name="date">
-					<script>
-					for(var i=1;i<=31;i++){
-					document.write('<option value="'+i+'"'+(i==d?'selected':' ')+'selected>'+i+'</option>');}
-					</script>
-  					</select>일
-				</td>
+				<td class="tx01">생년월일</td>			
+				<td><input type="text" name="birthdate" id="txsize" minlength="8" maxlength="8" placeholder="yyyymmdd"></td>
 			</tr>
 			<tr>
 				<td>핸드폰</td>
@@ -138,6 +125,6 @@ h4{
 			<input type="button" value="탈퇴하기" class="btjoin">
 	</article>
 </section>
-<%@include file="/footer.jsp" %>
+<%@include file="../footer.jsp" %>
 </body>
 </html>
