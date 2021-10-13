@@ -168,7 +168,7 @@ if(si_si == null || si_si.equals("")){
 					<label>계좌번호</label>
 					<input type="text" name="zipacnumber"><br>
 					-빼고 입력해주세요.
-				</div>								
+				</div>
 				<div class="hosting_lb">
 					<label>이것만은 지켜주세요~</label>
 					<textarea cols="35" rows="12"></textarea>
