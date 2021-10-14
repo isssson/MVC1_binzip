@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="binzip.mypage.guest.*" %>
+<jsp:useBean id="gdao" class="binzip.mypage.guest.GuestDAO"></jsp:useBean>
+<jsp:useBean id="gdto" class="binzip.mypage.guest.GuestDTO"></jsp:useBean>
+<%
+String idx_s=request.getParameter("idx");
+if(idx_s==null||idx_s.equals("")){
+	idx_s="0";
+}
+int idx=Integer.parseInt(idx_s);
+GuestDTO dto=gdao.GuestUpdateForm(idx);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +32,7 @@ li{
 #menu{
 	width:1200px;
 	height: 150px;
+	display: none;
 }
 #menu ul li{
 	float: left;
@@ -73,11 +86,24 @@ table{
 	margin: 0px auto;
 }
 </style>
+<script>
+var bDisplay=true;
+function doDisplay(event){
+	var con=document.getElementById("menu");
+	if(con.style.display=='block'){
+		con.style.display='none';			
+	}else{
+		con.style.display='block';
+		con.style.left=(event.clientX+50) +'px';
+		con.style.top=event.clientY +'px';
+	}	
+}
+</script>
 </head>
 <body>
 <%@include file="../header.jsp" %>
 <section>
- 	<nav id="menu">
+ 	<nav id="menu" class="alert_menu">
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
@@ -94,44 +120,40 @@ table{
 		<table>
 			<tr>
 				<td class="tx01">아이디</td>
-				<td class="tx02"><input type="text" id="txsize" value="영어,소문자 조합으로 8-16자  입력해주세요"></td>
+				<td class="tx02"><input type="text" id="txsize" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">비밀번호</td>
-				<td class="tx02"><input type="text" id="txsize" value="특수문자(~!@#), 영어,숫자 조합으로 8-16자 입력해주세요"></td>
+				<td class="tx02"><input type="text" id="txsize" ></td>
 			</tr>
 						<tr>
 				<td class="tx01">질문</td>
-				<td class="tx02"><select name="question" style=width:310px;height:30px;margin-left:4px>
-				<option value="질문">좋아하는 색깔은?</option>
-				<option value="질문">좋아하는 음식은?</option>
-				<option value="질문">좋아하는 동물은?</option>
-				<option value="질문">좋아하는 동네는?</option>
+				<td class="tx02"><select name="question" style=width:310px;height:30px;margin-left:4px >
 				</select></td>
 			</tr>
 			<tr>
 		  		<td class="tx01">질문 답변</td>
-		  		<td class="tx02"><input type="text" id="txsize" value="질문답변"></td>	
+		  		<td class="tx02"><input type="text" id="txsize" ></td>	
 			</tr>
 			<tr>
 				<td class="tx01">이름</td>
-				<td class="tx02"><input type="text" id="txsize" value="이름"></td>
+				<td class="tx02"><input type="text" id="txsize" value="이름" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">생년월일</td>			
-				<td><input type="text" name="birthdate" id="txsize" minlength="8" maxlength="8" placeholder="yyyymmdd"></td>
+				<td><input type="text" name="birthdate" id="txsize" minlength="8" maxlength="8" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">핸드폰</td>
-				<td class="tx02"><input type="text" id="txsize" value="핸드폰번호"></td>
+				<td class="tx02"><input type="text" id="txsize" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">이메일</td>
-				<td class="tx02"><input type="text" id="txsize" value="email"></td>
+				<td class="tx02"><input type="text" id="txsize" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">주소</td>
-				<td class="tx02"><input type="text" id="txsize" value="주소"></td>
+				<td class="tx02"><input type="text" id="txsize" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">은행명</td>
@@ -142,8 +164,8 @@ table{
 				<td class="tx02"><input type="text" id="txsize" value="은행명"></td>
 			</tr>
 			</table><br>
-			<div class="bt01"><input type="button" value="정보수정하기" >
-			<input type="button" value="탈퇴하기"></div>
+			<div class="bt01"><input type="submit" value="정보수정하기" >
+			<input type="button" value="탈퇴하기" onclick="location.href='exitmember.jsp'"></div>
 	</article>
 </section>
 <%@include file="../footer.jsp" %>
