@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="binzip.mypage.guest.*" %>
+<jsp:useBean id="gdao" class="binzip.mypage.guest.GuestDAO"></jsp:useBean>
+<%
+String userid=(String)session.getAttribute("sid");
+GuestDTO dto=gdao.GuestUpdateForm(userid);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +27,7 @@ li{
 #menu{
 	width:1200px;
 	height: 150px;
+	display: none;
 }
 #menu ul li{
 	float: left;
@@ -73,12 +81,23 @@ table{
 	margin: 0px auto;
 }
 </style>
+<script>
+function doDisplay(event){
+	if(document.getElementById('menu').style.display==='block'){
+		document.getElementById('list').style.display='none';
+		docunment.getElementById('menu').textContent='보이기';
+	}else{
+		document.getElementById('list').style.display='block';
+		document.getElementById('menu').textContent='숨기기';
+	}	
+}
+</script>
 </head>
 <body>
 <%@include file="../header.jsp" %>
 <section>
- 	<nav id="menu">
-        <ul class="list">
+ 	<nav id="menu" class="alert_menu">
+        <ul class="list" id="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
              <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
@@ -91,59 +110,45 @@ table{
 		<h4>내 정보 보기</h4>
 	</article>
 	<article>
+	<form name="mypage" action="mypageUpdate_ok.jsp">
 		<table>
 			<tr>
 				<td class="tx01">아이디</td>
-				<td class="tx02"><input type="text" id="txsize" value="영어,소문자 조합으로 8-16자  입력해주세요"></td>
+				<td class="tx02"><input type="text" id="txsize" name="id" value="<%=dto.getId()%>" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">비밀번호</td>
-				<td class="tx02"><input type="text" id="txsize" value="특수문자(~!@#), 영어,숫자 조합으로 8-16자 입력해주세요"></td>
+				<td class="tx02"><input type="password" id="txsize" name="pwd" value="<%=dto.getPwd()%>"></td>
 			</tr>
 						<tr>
 				<td class="tx01">질문</td>
-				<td class="tx02"><select name="question" style=width:310px;height:30px;margin-left:4px>
-				<option value="질문">좋아하는 색깔은?</option>
-				<option value="질문">좋아하는 음식은?</option>
-				<option value="질문">좋아하는 동물은?</option>
-				<option value="질문">좋아하는 동네는?</option>
-				</select></td>
+				<td class="tx02"><input type="text" id="txsize" name="question" value="<%=dto.getQuestion().replaceAll(" ", "&nbsp;")%>"></td>
 			</tr>
 			<tr>
 		  		<td class="tx01">질문 답변</td>
-		  		<td class="tx02"><input type="text" id="txsize" value="질문답변"></td>	
+		  		<td class="tx02"><input type="text" id="txsize" name="answer" value="<%=dto.getAnswer()%>"></td>	
 			</tr>
 			<tr>
 				<td class="tx01">이름</td>
-				<td class="tx02"><input type="text" id="txsize" value="이름"></td>
+				<td class="tx02"><input  id="txsize" name="name" value="<%=dto.getName()%>"></td>
 			</tr>
 			<tr>
 				<td class="tx01">생년월일</td>			
-				<td><input type="text" name="birthdate" id="txsize" minlength="8" maxlength="8" placeholder="yyyymmdd"></td>
+				<td><input type="text" name="birthdate" id="txsize" minlength="4" maxlength="16" name="birthdate" value="<%=dto.getBirthdate()%>" ></td>
 			</tr>
 			<tr>
 				<td class="tx01">핸드폰</td>
-				<td class="tx02"><input type="text" id="txsize" value="핸드폰번호"></td>
+				<td class="tx02"><input type="text" id="txsize" name="phone" value="<%=dto.getPhone()%>"></td>
 			</tr>
 			<tr>
 				<td class="tx01">이메일</td>
-				<td class="tx02"><input type="text" id="txsize" value="email"></td>
+				<td class="tx02"><input type="text" id="txsize" name="email" value="<%=dto.getEmail()%>"></td>
 			</tr>
-			<tr>
-				<td class="tx01">주소</td>
-				<td class="tx02"><input type="text" id="txsize" value="주소"></td>
-			</tr>
-			<tr>
-				<td class="tx01">은행명</td>
-				<td class="tx02"><input type="text" id="txsize" value="은행명"></td>
-			</tr>
-			<tr>
-				<td class="tx01">계좌번호</td>
-				<td class="tx02"><input type="text" id="txsize" value="은행명"></td>
-			</tr>
-			</table><br>
-			<div class="bt01"><input type="button" value="정보수정하기" >
-			<input type="button" value="탈퇴하기"></div>
+		</table>
+		<br>
+		<div class="bt01"><input type="submit" value="정보수정하기" >
+		<input type="button" value="탈퇴하기" onclick="location.href='exitmember.jsp'"></div>
+	</form>
 	</article>
 </section>
 <%@include file="../footer.jsp" %>

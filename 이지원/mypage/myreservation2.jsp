@@ -93,7 +93,7 @@ padding-bottom: 20px;
 			<h5>나의 예약 보기</h5><hr>
 		</div>
 		<div class="zipres">
-		<img src="/binzip/img/main_imgs/testimg.jfif" alt="추천집이미지"></div>
+			<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지"></div>
 		<div class="info">
 		<h2> 모노가든</h2>
 		<h4> 디자인 하우스 /  제주</h4>

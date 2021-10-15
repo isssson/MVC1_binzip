@@ -84,7 +84,7 @@ h4{
 		</div>
 		<div class="info">
 		<div class="zipres">
-			<img src="/binzip/img/main_imgs/testimg.jfif" alt="추천집이미지">
+			<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
 		</div>
 		<div class="info2">
 			<h3> 모노가든</h3>
