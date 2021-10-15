@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>HostList</title>
-<link rel="stylesheet" type="text/css" href="/myweb/css/mainLayout3.css">
+<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
+hr{
+	width: 58%;
+	margin-right: 200px;
+}
 h1{
 	font-size: 40px;
 	text-align: center;
@@ -44,26 +48,34 @@ th:first-child, td:first-child{
 	height: 170px;
 	background-color: lightgray;
 	position: absolute;
-	top: 470px;
-	left: 650px;
+	top: 0px;
+	left: 0px;
 	display: none;		
+}
+
+span{
+background: red;
 }
 </style>
 </head>
 <script>
 var bDisplay=true;
-function doDisplay(){
+function doDisplay(event){
 	var con=document.getElementById("alert");
-		if(con.style.display=='block'){
-			con.style.display='none';			
-		}else{
-			con.style.display='block';
-		}	
+	if(con.style.display=='block'){
+		con.style.display='none';			
+	}else{
+		con.style.display='block';
+		con.style.left=(event.clientX+50) +'px';
+		con.style.top=event.clientY +'px';
+	}	
 }
+
 </script>
 <body>
-<%@include file="/header3.jsp" %>
+<%@include file="/header.jsp" %>
 <section>
+<hr>
 	<article>
 		<h1>HOST LIST</h1>
 		<h4>호스트 관리</h4>
@@ -85,25 +97,25 @@ function doDisplay(){
 					</tr>
 					<tr>
 						<td>홍길동</td>
-						<td><a href="javascript:doDisplay();">hong</a></td>
+						<td id="test"><span onclick="javascript:doDisplay(event);" id="hong">hong</span></td>
 						<td><input type="button" value="잠그기" class="btjoin"></td>
 						<td><input type="button" value="탈퇴" class="btjoin"></td>
 					</tr>
 					<tr>
 						<td>둘리</td>
-						<td><a href="javascript:doDisplay();">doll</a></td>
+						<td><span onclick="javascript:doDisplay(event);" id="doll">doll</span></td>
 						<td><input type="button" value="잠그기" class="btjoin"></td>
 						<td><input type="button" value="탈퇴" class="btjoin"></td>
 					</tr>
 					<tr>
 						<td>깐따삐야</td>
-						<td><a href="javascript:doDisplay();">Bbi</a></td>
+						<td><span onclick="javascript:doDisplay(event);" id="Bbi">Bbi</span></td>
 						<td><input type="button" value="잠그기" class="btjoin"></td>
 						<td><input type="button" value="탈퇴" class="btjoin"></td>
 					</tr>
 					<tr>
 						<td>또치</td>
-						<td><a href="javascript:doDisplay();">chichi</a></td>
+						<td><span onclick="javascript:doDisplay(event);" id="chichi">chichi</span></td>
 						<td><input type="button" value="잠그기" class="btjoin"></td>
 						<td><input type="button" value="탈퇴" class="btjoin"></td>
 					</tr>
@@ -121,6 +133,6 @@ function doDisplay(){
 			</div>
 	</article>
 </section>
-<%@include file="/footer3.jsp" %>
+<%@include file="/footer.jsp" %>
 </body>
 </html>
