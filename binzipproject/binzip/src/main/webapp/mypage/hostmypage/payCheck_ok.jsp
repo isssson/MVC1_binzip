@@ -4,7 +4,6 @@
 <%
 String userid=(String)session.getAttribute("sid");
 int bbsidx=Integer.parseInt(request.getParameter("bbsidx"));
-System.out.println(bbsidx);
 int result=hostreservationdao.payCheck(userid,bbsidx);
 String msg=result>0?"상태 변경 완료":"고객센터로 문의바랍니다.";
 %>

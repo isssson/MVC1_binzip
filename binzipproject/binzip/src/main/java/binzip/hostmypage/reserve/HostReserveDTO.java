@@ -41,13 +41,14 @@ public class HostReserveDTO {
 		this.reserver_phone = reserver_phone;
 	}
 
-	public HostReserveDTO(int peoplenum, String zipname, String ziptype, String zipaddr, int cost) {
+	public HostReserveDTO(int peoplenum, String zipname, String ziptype, String zipaddr, int cost, int bbsidx) {
 		super();
 		this.peoplenum = peoplenum;
 		this.zipname = zipname;
 		this.ziptype = ziptype;
 		this.zipaddr = zipaddr;
 		this.cost = cost;
+		this.bbsidx = bbsidx;
 	}
 	
 	public HostReserveDTO(String id, String reserver_startdate, String reserver_enddate, int status, int bbsidx) {

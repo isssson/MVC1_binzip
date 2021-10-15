@@ -7,6 +7,8 @@
 <%
 request.setCharacterEncoding("utf-8");
 String ziptype=request.getParameter("ziptype");
+int bbsidx=Integer.parseInt(request.getParameter("bbsidx"));
+System.out.println("받은 파라미터 BINZIP_HOST_BBS.IDX: "+bbsidx);
 %>
 <!DOCTYPE html>
 <html>

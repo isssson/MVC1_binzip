@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>호스트 마이페이지- 나의 예약 현황</title>
+<title>호스트 마이페이지- 지난 예약 현황</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
 .list{
@@ -73,7 +73,6 @@ th, td {
 </style>
 <%
 String userid=(String)session.getAttribute("sid");
-System.out.println(userid);
 %>
 </head>
 <body>
@@ -92,16 +91,16 @@ System.out.println(userid);
     </nav>
 <section>
 	<div>
-		<h2>MY RESERVATION</h2>
-		<h4>내가 받은 예약 현황</h4><hr>
+		<h2>PAST RESERVATION</h2>
+		<h4>지난 예약 내역</h4><hr>
 	</div>
-	
 		<%
 		ArrayList<HostReserveDTO> arr=hostmypagereservedao.reserveInfo(userid);
+		ArrayList<HostReserveDTO> arr2=hostmypagereservedao.reserveInfo2(userid);
 		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
 			%>
 			<div class="info">
-				<h3>업로드한 집이 없습니다.</h3>
+				<h2>업로드한 집이 없습니다.</h2>
 			</div>
 			<%
 		}else{
@@ -116,63 +115,76 @@ System.out.println(userid);
 						<h3> <%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h3>
 						<h3>예약최대인원 :  <%=arr.get(i).getPeoplenum() %> 명</h3>
 						<h3>&#8361;<%=arr.get(i).getCost() %></h3>
-						<input type="button" value="내가 올린 집으로 가기" onclick='location.href="/binzip/mypage/hostmypage/myZipUploaded.jsp"'>
 					</div>
 				</div>
+				<div>
+					<%
+					if(arr2==null||arr2.size()==0||arr2.get(0).getReserver_startdate()==null){
+						%>
+						<table>
+							<tr>
+								<td>예약날짜</td>
+								<td>아이디</td>
+								<td>상태</td>
+								<td>예약취소</td>
+							</tr>
+							<tr>
+								<td colspan="4" align="center"><h4>지난 예약내역이 없습니다.</h4></td>	
+							</tr>
+						</table>
+						<%
+					}else{
+						%>
+						<table>
+							<tr>
+								<td>예약날짜</td>
+								<td>아이디</td>
+								<td>상태</td>
+								<td>예약취소</td>
+							</tr>
+							<%
+							for(int j=0;j<arr2.size();j++){
+								if(arr2.get(j).getStatus()==2){
+									%>
+									<tr>
+										<td><%=arr2.get(j).getReserver_startdate() %> ~ <%=arr2.get(j).getReserver_enddate() %></td>
+										<td><%=arr2.get(j).getId() %></td>
+										<td>정상종료</td>
+										<td><input type="button" value="내역삭제" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
+									</tr>
+									<%
+								}
+							}
+							%>
+						</table>
+						<%
+					}
+					%>
+				</div>
+				<br>
 				<hr>
+				<br>
 				<%
 			}
 		}
-		%>	
-		<div>
-			<table>
-				<tr>
-					<td>예약날짜</td>
-					<td>아이디</td>
-					<td>입금상태</td>
-					<td>예약취소</td>
-				</tr>
-				<%
-				ArrayList<HostReserveDTO> arr2=hostmypagereservedao.reserveInfo2(userid);
-				if(arr2==null||arr2.size()==0||arr2.get(0).getReserver_startdate()==null){
-					%>
-					<tr>
-						<td colspan="4" align="center"><h2>예약내역이 없습니다.</h2></td>	
-					</tr>
-					<%
-				}else{
-					for(int i=0;i<arr.size();i++){
-						%>
-						<tr>
-							<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>
-							<td><a href="/binzip/mypage/hostmypage/moreInfo.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>"><%=arr2.get(i).getId() %></a></td>
-							<%
-							if(arr2.get(i).getStatus()==0){
-								%>
-								<td><input type="button" value="입금확인" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
-								<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
-								<%
-							}else if(arr2.get(i).getStatus()==1){
-								%>
-								<td><input type="button" value="만료" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
-								<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
-								<%	
-							}else{
-								%>
-								<td>예약만료</td>
-								<td><input type="button" value="삭제" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
-								<%
-							}
-							%>
-						</tr>
-						<%
-						
-					}
-				}
-				%>
-			</table>
-		</div>
+		%>
 </section>
 <%@include file="../../footer.jsp" %>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

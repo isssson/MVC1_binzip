@@ -18,7 +18,7 @@ public class HostReserveDAO {
 	public ArrayList<HostReserveDTO> reserveInfo(String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="select peoplenum, zipname, ziptype, zipaddr, cost from binzip_host_bbs where binzip_member_id=?";
+			String sql="select peoplenum, zipname, ziptype, zipaddr, cost, idx from binzip_host_bbs where binzip_member_id=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
@@ -29,7 +29,8 @@ public class HostReserveDAO {
 				String ziptype=rs.getString("ziptype");
 				String zipaddr=rs.getString("zipaddr");
 				int cost=rs.getInt("cost");
-				HostReserveDTO dto=new HostReserveDTO(peoplenum, zipname, ziptype, zipaddr, cost);
+				int bbsidx=rs.getInt("idx");
+				HostReserveDTO dto=new HostReserveDTO(peoplenum, zipname, ziptype, zipaddr, cost, bbsidx);
 				arr.add(dto);
 			}
 			return arr;
@@ -165,12 +166,12 @@ public class HostReserveDAO {
 	}
 	
 	/**zipClosed_ok.jsp**/
-	public int zipClosed(String userid) {
+	public int zipClosed(int idx) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="delete from ";
+			String sql="delete from binzip_host_bbs where idx=?";
 			ps=conn.prepareStatement(sql);
-			ps.setString(1, userid);
+			ps.setInt(1, idx);
 			int count=ps.executeUpdate();
 			return count;
 		}catch(Exception e){
