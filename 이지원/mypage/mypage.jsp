@@ -4,7 +4,7 @@
 <jsp:useBean id="gdao" class="binzip.mypage.guest.GuestDAO"></jsp:useBean>
 <%
 String userid=(String)session.getAttribute("sid");
-GuestDTO dto=gdao.GuestUpdateForm(userid);
+GuestDTO dto=gdao.guestUpdateForm(userid);
 %>
 
 <!DOCTYPE html>

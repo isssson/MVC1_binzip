@@ -4,7 +4,7 @@
 <jsp:useBean id="gdao" class="binzip.mypage.guest.GuestDAO"></jsp:useBean>
 <%
 String userid=(String)session.getAttribute("sid");
-GuestDTO dto=gdao.GuestUpdateForm(userid);
+GuestDTO dto=gdao.guestUpdateForm(userid);
 %>
 <!DOCTYPE html>
 <html>
@@ -77,7 +77,7 @@ table{
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
     </nav>
-    <form name="exitmember" action="exitmember_ok.jsp">
+    <form name="exitmember" action=exitmember_ok.jsp?id=<%= dto.getId() %>>
 	<div>
 		<h2>EXIT MEMBER</h2>
 		<h4>회원 탈퇴</h4><hr>

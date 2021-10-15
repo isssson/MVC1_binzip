@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="binzip.mypage.guest.*" %>
+<jsp:useBean id="gdao" class="binzip.mypage.guest.GuestDAO"></jsp:useBean>
+<%
+String userid=(String)session.getAttribute("sid");
+GuestDTO dto=
+%>
 <!DOCTYPE html>
 <html>
 <head>

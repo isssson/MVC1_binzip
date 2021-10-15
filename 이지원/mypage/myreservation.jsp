@@ -82,6 +82,7 @@ h4{
 			<h2>MY RESERVATION</h2>
 			<h4>나의 예약 현황</h4><hr>
 		</div>
+		<form action="myreservation2.jsp">
 		<div class="info">
 		<div class="zipres">
 			<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
@@ -96,6 +97,7 @@ h4{
 			<input type="button" value="예약정보 변경">&nbsp;<input type="button" value="예약취소">
 		</div>
 		</div>
+		</form>
 	 </div>
 	<br>
 	</article>
