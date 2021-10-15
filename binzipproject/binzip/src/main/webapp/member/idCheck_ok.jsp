@@ -4,7 +4,6 @@
 <%
 String userid=request.getParameter("userid");
 boolean result=mdao.checkId(userid);
-System.out.println(userid);
 if(result){
 %>
 	<script>

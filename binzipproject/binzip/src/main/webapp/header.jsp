@@ -28,7 +28,7 @@ function openLogin(){
 			<li class="whereMenu">
 				<img src="/binzip/img/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
 				<a href="javascript:openWhere();">WHERE ?</a>
-			</li>
+			</li>	
 			<li class="otherMenu">
 				<a href="/binzip/findzip/findZip.jsp">FIND ZIP</a>
 			</li>			
@@ -62,7 +62,7 @@ function openLogin(){
 						<%
 					} else if(sgrade.equals(mdao_header.HOST)) {
 						%>
-						<a href="/binzip/mypage/myPage.jsp">
+						<a href="/binzip/mypage/hostmypage/hostMyPage.jsp">
 						<%
 					} else if(sgrade.equals(mdao_header.ADMIN)) {
 						%>

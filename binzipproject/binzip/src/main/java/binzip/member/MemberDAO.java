@@ -23,7 +23,7 @@ public class MemberDAO {
 	
 	//constructor
 	public MemberDAO() {
-		System.out.println("MemberDAO 생성자 호출");
+		System.out.println("MemberDAO 호출");
 	}	
 	
 	//회원가입

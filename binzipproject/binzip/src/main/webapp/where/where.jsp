@@ -17,6 +17,30 @@
 		opener.parent.location.href="/binzip/findzip/findZip.jsp?sido="+sido+"&startDate="+startDate+"&endDate="+endDate+"";
 		window.close();
 	}
+	
+	function checkDate(){
+		 var firstDate = document.all.cInDate.value;
+		 var fdateSplit = firstDate.split("-");
+
+		 var fyear = fdateSplit[0];
+		 var fmonth = fdateSplit[1];
+		 var fday = fdateSplit[2];
+
+		 var sfirstDate = fyear +""+ fmonth +""+ fday;
+		 
+		 var secondDate = document.all.cOutDate.value;
+		 var sdateSplit = secondDate.split("-");
+
+		 var sfyear = sdateSplit[0];
+		 var sfmonth = sdateSplit[1];
+		 var sfday = sdateSplit[2];
+
+		 var ssecondDate = syear +""+ smonth +""+ sday;
+				 
+		 if (parseInt(sfirstDate) < parseInt(ssecondDate)){
+		      alert("체크인보다 이전 날짜입니다.");
+		      document.all.cOutDate.value = "";
+	}
 </script>
 </head>
 <style>
@@ -71,7 +95,7 @@
 					<span class="sp-bold">체크아웃&nbsp;</span>
 				</td>
 				<td>
-					<input type="date" name="cOutDate" required pattern="\d{4}-\d{2}-\d{2}">
+					<input type="date" name="cOutDate" min="<%=s_minDate %>" required pattern="\d{4}-\d{2}-\d{2}">
 				</td>
 			</tr>
 		</table>
