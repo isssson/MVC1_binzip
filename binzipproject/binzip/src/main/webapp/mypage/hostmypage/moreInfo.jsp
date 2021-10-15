@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="binzip.hostmypage.*" %>
-<jsp:useBean id="hostmypagedao" class="binzip.hostmypage.HostDAO"></jsp:useBean>
-<%
-String userid=(String)session.getAttribute("sid");
-HostDTO dto=hostmypagedao.hostInfo(userid);
-System.out.println(userid);
-%>
+<%@ page import="binzip.hostmypage.reserve.*" %>
+<jsp:useBean id="hostreservedao" class="binzip.hostmypage.reserve.HostReserveDAO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,15 +69,23 @@ th, td {
     padding: 10px;
 }
 </style>
-</head>
-<script>
-function popupPhonecheck(){
-	window.open('/binzip/member/phoneCheck.jsp','phonecheck','width=450,height=250, left=800, top=300');
+<%
+String userid = (String)session.getAttribute("sid");
+int bbsidx = Integer.parseInt(request.getParameter("bbsidx"));
+System.out.println(bbsidx);
+HostReserveDTO dto = hostreservedao.moreInfo(userid, bbsidx);
+String msg="test";
+if(dto.getStatus()==0){
+	msg="입금대기중";
+}else{
+	msg="입금완료";
 }
-</script>
+System.out.println(msg);
+%>
+</head>
 <body>
 <%@include file="../../header.jsp" %>
- 	<nav id="menu">
+	<nav id="menu">
         <ul class="list">
              <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
@@ -95,63 +98,45 @@ function popupPhonecheck(){
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
-<section>
-	<article>
-		<h2>MY PAGE</h2>
-		<h4>내 정보 보기</h4>
-	</article>
-	<article>
-		<form name="join" action="hostMyPage_ok.jsp">
+	<section>
+		<div>
+			<h2>MY RESERVATION</h2>
+			<h4>내가 받은 예약 현황</h4><hr>
+		</div>
+		<div>
 			<table>
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="id" value="<%=userid %>" readonly></td>
+					<td>입금여부</td>
+					<td><%=msg %></td>
 				</tr>
 				<tr>
-					<td>질문</td>
-					<td><input type="text" name="question" value=<%=dto.getQuestion().replaceAll(" ", "&nbsp;") %>></td>
+					<td>예약자명</td>
+					<td><%=dto.getReserver_name() %></td>
 				</tr>
 				<tr>
-			  		<td>질문 답변</td>
-			  		<td><input type="text" name="answer" value=<%=dto.getAnswer() %>></td>	
+					<td>입금자명</td>
+					<td><%=dto.getPayer() %></td>
 				</tr>
 				<tr>
-					<td>이름</td>
-					<td><input type="text" name="name" value=<%=dto.getName() %>></td>
+					<td>전화번호</td>
+					<td><%=dto.getReserver_phone() %></td>
 				</tr>
 				<tr>
-					<td class="tx01">생년월일</td>			
-					<td><input type="text" name="birthdate" id="txsize" minlength="4" maxlength="16" value=<%=dto.getBirthdate() %> readonly></td>
+					<td>기간</td>
+					<td><%=dto.getReserver_startdate() %> ~ <%=dto.getReserver_enddate() %></td>
 				</tr>
 				<tr>
-					<td>핸드폰</td>
-					<td><input type="text" name="phone" value=<%=dto.getPhone() %> readonly></td>
-					<td><input type="button" value="중복확인" class="btjoin" onclick="popupPhonecheck();"></td>
+					<td>인원</td>
+					<td><%=dto.getPeoplenum() %></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="email" value=<%=dto.getEmail() %>></td>
+					<td>금액</td>
+					<td><%=dto.getCost() %></td>
 				</tr>
-				<%
-				if(!(dto.getBank()==null||dto.getBank()=="")){
-					%>
-					<tr>
-						<td>은행명</td>
-						<td><input type="text" name="bank" value=<%=dto.getBank() %>></td>
-					</tr>
-					<tr>
-						<td>계좌번호</td>
-						<td><input type="text" name="acnumber" value=<%=dto.getAcnumber() %>></td>
-					</tr>
-					<%
-				}
-				%>
 			</table>
-			<input type="submit" value="정보수정하기">
-		</form>
-		<input type="button" value="탈퇴하기" class="btjoin" onclick="location.href='bridgeDeleteMember.jsp'">
-	</article>
-</section>
+		</div>
+		<input type="button" value="이전으로" onclick="history.back();">
+	</section>
 <%@include file="../../footer.jsp" %>
 </body>
 </html>

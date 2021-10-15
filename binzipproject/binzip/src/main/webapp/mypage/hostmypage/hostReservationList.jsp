@@ -69,7 +69,7 @@ table{
 th, td {
     border-bottom: 1px solid #444444;
     padding: 10px;
-  }
+}
 </style>
 <%
 String userid=(String)session.getAttribute("sid");
@@ -125,51 +125,52 @@ System.out.println(userid);
 			}
 		}
 		%>	
-	<div>
-		<table>
-			<tr>
-				<td>예약날짜</td>
-				<td>아이디</td>
-				<td>입금상태</td>
-				<td>예약취소</td>
-			</tr>
-			<%
-			ArrayList<HostReserveDTO> arr2=hostmypagereservedao.reserveInfo2(userid);
-			if(arr2==null||arr2.size()==0||arr2.get(0).getReserve_startdate()==null){
-				%>
+		<div>
+			<table>
 				<tr>
-					<td colspan="4" align="center">예약내역이 없습니다.</td>	
+					<td>예약날짜</td>
+					<td>아이디</td>
+					<td>입금상태</td>
+					<td>예약취소</td>
 				</tr>
 				<%
-			}else{
-				for(int i=0;i<arr.size();i++){
+				ArrayList<HostReserveDTO> arr2=hostmypagereservedao.reserveInfo2(userid);
+				if(arr2==null||arr2.size()==0||arr2.get(0).getReserver_startdate()==null){
 					%>
 					<tr>
-						<td><%=arr2.get(i).getReserve_startdate() %> ~ <%=arr2.get(i).getReserve_enddate() %></td>
-						<td><a href="#"><%=arr2.get(i).getId() %></a></td>
-						<%
-						if(arr2.get(i).getStatus()==0){
-							%>
-							<td><input type="button" value="입금확인" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp'"></td>
-							<%
-						}else if(arr2.get(i).getStatus()==1){
-							%>
-							<td><input type="button" value="만료" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp'"></td>
-							<%	
-						}else{
-							%>
-							<td>예약만료</td>
-							<%
-						}
-						%>
-						<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
+						<td colspan="4" align="center"><h2>예약내역이 없습니다.</h2></td>	
 					</tr>
 					<%
+				}else{
+					for(int i=0;i<arr.size();i++){
+						%>
+						<tr>
+							<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>
+							<td><a href="/binzip/mypage/hostmypage/moreInfo.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>"><%=arr2.get(i).getId() %></a></td>
+							<%
+							if(arr2.get(i).getStatus()==0){
+								%>
+								<td><input type="button" value="입금확인" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<%
+							}else if(arr2.get(i).getStatus()==1){
+								%>
+								<td><input type="button" value="만료" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<%	
+							}else{
+								%>
+								<td>예약만료</td>
+								<%
+							}
+							%>
+							<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
+						</tr>
+						<%
+						
+					}
 				}
-			}
-			%>
-		</table>
-	</div>	
+				%>
+			</table>
+		</div>
 </section>
 <%@include file="../../footer.jsp" %>
 </body>

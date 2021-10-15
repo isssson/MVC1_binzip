@@ -4,8 +4,8 @@ public class HostReserveDTO {
 
 	private int bbsidx;
 	private String id;
-	private String reserve_startdate;
-	private String reserve_enddate;
+	private String reserver_startdate;
+	private String reserver_enddate;
 	private int peoplenum;
 	private String zipname;
 	private String ziptype;
@@ -14,19 +14,21 @@ public class HostReserveDTO {
 	private int status;
 	private String imgpath;
 	private String reserver_name;
+	private String payer;
+	private String reserver_phone;
 	
 	public HostReserveDTO() {
 		super();
 		System.out.println("HostReserveDTO 호출");
 	}
 
-	public HostReserveDTO(int bbsidx, String id, String reserve_startdate, String reserve_enddate, int peoplenum, String zipname,
-			String ziptype, String zipaddr, int cost, int status, String imgpath, String reserver_name) {
+	public HostReserveDTO(int bbsidx, String id, String reserver_startdate, String reserver_enddate, int peoplenum, String zipname,
+			String ziptype, String zipaddr, int cost, int status, String imgpath, String reserver_name, String payer, String reserver_phone) {
 		super();
 		this.bbsidx = bbsidx;
 		this.id = id;
-		this.reserve_startdate = reserve_startdate;
-		this.reserve_enddate = reserve_enddate;
+		this.reserver_startdate = reserver_startdate;
+		this.reserver_enddate = reserver_enddate;
 		this.peoplenum = peoplenum;
 		this.zipname = zipname;
 		this.ziptype = ziptype;
@@ -35,6 +37,8 @@ public class HostReserveDTO {
 		this.status = status;
 		this.imgpath = imgpath;
 		this.reserver_name = reserver_name;
+		this.payer = payer;
+		this.reserver_phone = reserver_phone;
 	}
 
 	public HostReserveDTO(int peoplenum, String zipname, String ziptype, String zipaddr, int cost) {
@@ -46,12 +50,26 @@ public class HostReserveDTO {
 		this.cost = cost;
 	}
 	
-	public HostReserveDTO(String id, String reserve_startdate, String reserve_enddate, int status) {
+	public HostReserveDTO(String id, String reserver_startdate, String reserver_enddate, int status, int bbsidx) {
 		super();
+		this.bbsidx = bbsidx;
 		this.id = id;
-		this.reserve_startdate = reserve_startdate;
-		this.reserve_enddate = reserve_enddate;
+		this.reserver_startdate = reserver_startdate;
+		this.reserver_enddate = reserver_enddate;
 		this.status = status;
+	}
+
+	public HostReserveDTO(String reserver_startdate, String reserver_enddate, int peoplenum, int cost, int status,
+			String reserver_name, String payer, String reserver_phone) {
+		super();
+		this.reserver_startdate = reserver_startdate;
+		this.reserver_enddate = reserver_enddate;
+		this.peoplenum = peoplenum;
+		this.cost = cost;
+		this.status = status;
+		this.reserver_name = reserver_name;
+		this.payer = payer;
+		this.reserver_phone = reserver_phone;
 	}
 
 	public int getBbsidx() {
@@ -70,20 +88,20 @@ public class HostReserveDTO {
 		this.id = id;
 	}
 
-	public String getReserve_startdate() {
-		return reserve_startdate;
+	public String getReserver_startdate() {
+		return reserver_startdate;
 	}
 
-	public void setReserve_startdate(String reserve_startdate) {
-		this.reserve_startdate = reserve_startdate;
+	public void setReserver_startdate(String reserver_startdate) {
+		this.reserver_startdate = reserver_startdate;
 	}
 
-	public String getReserve_enddate() {
-		return reserve_enddate;
+	public String getReserver_enddate() {
+		return reserver_enddate;
 	}
 
-	public void setReserve_enddate(String reserve_enddate) {
-		this.reserve_enddate = reserve_enddate;
+	public void setReserver_enddate(String reserver_enddate) {
+		this.reserver_enddate = reserver_enddate;
 	}
 
 	public int getPeoplenum() {
@@ -149,8 +167,22 @@ public class HostReserveDTO {
 	public void setReserver_name(String reserver_name) {
 		this.reserver_name = reserver_name;
 	}
-	
-	
+
+	public String getPayer() {
+		return payer;
+	}
+
+	public void setPayer(String payer) {
+		this.payer = payer;
+	}
+
+	public String getReserver_phone() {
+		return reserver_phone;
+	}
+
+	public void setReserver_phone(String reserver_phone) {
+		this.reserver_phone = reserver_phone;
+	}
 	
 	
 }

@@ -49,7 +49,7 @@ public class HostReserveDAO {
 	public ArrayList<HostReserveDTO> reserveInfo2(String userid){
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="select binzip_reserve.reserve_startdate, binzip_reserve.reserve_enddate, binzip_reserve.binzip_member_id, binzip_reserve.status"
+			String sql="select binzip_reserve.reserve_startdate, binzip_reserve.reserve_enddate, binzip_reserve.binzip_member_id, binzip_reserve.status, binzip_reserve.binzip_host_bbs_idx"
 					+ " from binzip_host_bbs left join binzip_reserve on binzip_host_bbs.idx = binzip_reserve.binzip_host_bbs_idx"
 					+ " where binzip_host_bbs.binzip_member_id=?";
 			ps=conn.prepareStatement(sql);
@@ -57,11 +57,12 @@ public class HostReserveDAO {
 			rs=ps.executeQuery();
 			ArrayList<HostReserveDTO> arr=new ArrayList<HostReserveDTO>();
 			while(rs.next()) {
-				String reserve_startdate=rs.getString("reserve_startdate");
-				String reserve_enddate=rs.getString("reserve_enddate");
+				String reserver_startdate=rs.getString("reserve_startdate");
+				String reserver_enddate=rs.getString("reserve_enddate");
 				String binzip_member_id=rs.getString("binzip_member_id");
+				int bbsidx=rs.getInt("binzip_host_bbs_idx");
 				int status=rs.getInt("status");
-				HostReserveDTO dto=new HostReserveDTO(binzip_member_id, reserve_startdate, reserve_enddate, status);
+				HostReserveDTO dto=new HostReserveDTO(binzip_member_id, reserver_startdate, reserver_enddate, status, bbsidx);
 				arr.add(dto);
 			}
 			return arr;
@@ -78,7 +79,7 @@ public class HostReserveDAO {
 	}
 	
 	/**payCheck_ok.jsp 입금대기중을 입금완료로 바꿈 그 다음은 만료**/
-	public int payCheck(String userid) {
+	public int payCheck(String userid, int idx) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
 			String sql="update binzip_reserve"
@@ -86,9 +87,10 @@ public class HostReserveDAO {
 					+ " where binzip_reserve.binzip_host_bbs_idx=("
 					+ "select idx"
 					+ " from binzip_host_bbs"
-					+ " where binzip_member_id=?)";
+					+ " where binzip_member_id=? and idx=?)";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
+			ps.setInt(2, idx);
 			int count=ps.executeUpdate();
 			return count;
 		}catch(Exception e) {
@@ -125,6 +127,43 @@ public class HostReserveDAO {
 		}
 	}
 	
+	/**moreInfo.jsp**/
+	public HostReserveDTO moreInfo(String userid, int idx) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select status, reserver_name, payer, reserver_phone, reserve_startdate, reserve_enddate, peoplenum, cost"
+					+ " from binzip_reserve"
+					+ " where binzip_host_bbs_idx=("
+					+ "select idx"
+					+ " from binzip_host_bbs"
+					+ " where binzip_member_id=? and idx=?)";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			ps.setInt(2, idx);
+			rs=ps.executeQuery();
+			HostReserveDTO dto=null;
+			if(rs.next()) {
+				int status=rs.getInt("status");
+				String reserver_name=rs.getString("reserver_name");
+				String payer=rs.getString("payer");
+				String reserver_phone=rs.getString("reserver_phone");
+				String reserver_startdate=rs.getString("reserve_startdate");
+				String reserver_enddate=rs.getString("reserve_enddate");
+				int peoplenum=rs.getInt("peoplenum");
+				int cost=rs.getInt("cost");
+				dto=new HostReserveDTO(reserver_startdate, reserver_enddate, peoplenum, cost, status, reserver_name, payer, reserver_phone);
+			}
+			return dto;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				
+			}catch(Exception e2) {}
+		}
+	}
+	
 	/**zipClosed_ok.jsp**/
 	public int zipClosed(String userid) {
 		try {
@@ -144,6 +183,7 @@ public class HostReserveDAO {
 			}catch(Exception e2) {}
 		}
 	}
+	
 }
 
 
