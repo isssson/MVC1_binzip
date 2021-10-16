@@ -29,7 +29,6 @@ function openLogin(){
 				<img src="/binzip/img/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
 				<a href="javascript:openWhere();">WHERE ?</a>
 			</li>
-			<li><a href="/binzip/member/logout.jsp">임시로그아웃</a></li>
 			<li class="otherMenu">
 				<a href="/binzip/findzip/findZip.jsp">FIND ZIP</a>
 			</li>			
