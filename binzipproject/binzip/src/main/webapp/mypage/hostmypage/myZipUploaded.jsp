@@ -84,8 +84,6 @@ String userid = (String)session.getAttribute("sid");
              <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약 내역</a></li>
              <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
-             <li><a href="../mypage_host/total_Sales_host.jsp">총 매출</a></li>
-             <li><a href="../mypage_host/myq&a_host.jsp">나의 문의 내역</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>

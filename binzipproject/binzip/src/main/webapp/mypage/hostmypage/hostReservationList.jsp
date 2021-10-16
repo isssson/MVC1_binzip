@@ -85,8 +85,6 @@ System.out.println(userid);
              <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약내역</a></li>
              <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
-             <li><a href="../mypage_host/total_Sales_host.jsp">총 매출</a></li>
-             <li><a href="../mypage_host/myq&a_host.jsp">나의 문의 내역</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
@@ -154,13 +152,18 @@ System.out.println(userid);
 								<%
 							}else if(arr2.get(i).getStatus()==1){
 								%>
-								<td><input type="button" value="만료" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<td><input type="button" value="숙박시작" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
 								<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
 								<%	
+							}else if(arr2.get(i).getStatus()==2){
+								%>
+								<td><input type="button" value="숙박종료" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<td>취소불가</td>
+								<%
 							}else{
 								%>
-								<td>예약만료</td>
-								<td><input type="button" value="삭제" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
+								<td>숙박종료</td>
+								<td>취소불가</td>
 								<%
 							}
 							%>

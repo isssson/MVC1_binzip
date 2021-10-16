@@ -73,6 +73,15 @@ public class HostReserveDTO {
 		this.reserver_phone = reserver_phone;
 	}
 
+	public HostReserveDTO(String reserver_startdate, String reserver_enddate, String id, String zipname, int bbsidx) {
+		super();
+		this.reserver_startdate = reserver_startdate;
+		this.reserver_enddate = reserver_enddate;
+		this.id = id;
+		this.zipname =zipname;
+		this.bbsidx = bbsidx;
+	}
+
 	public int getBbsidx() {
 		return bbsidx;
 	}

@@ -21,9 +21,7 @@ public class HostDAO {
 	public HostDTO hostInfo(String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="select binzip_member.id, question, answer, name, birthdate, phone, email, binzip_host.bank, acnumber "
-					+ "from binzip_member, binzip_host "
-					+ "where binzip_member.id = binzip_host.binzip_member_id and binzip_host.binzip_member_id=?";
+			String sql="select id, question, answer, name, birthdate, phone, email from binzip_member where id = ?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
@@ -35,10 +33,35 @@ public class HostDAO {
 				String name=rs.getString("name");
 				String birthdate=rs.getString("birthdate");
 				String phone=rs.getString("phone");
+				String email=rs.getString("email");
+				dto=new HostDTO(id, question, answer, name, birthdate, phone, email);
+			}
+			return dto;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
+	/**hostMypage.jsp 은행 정보 보기**/
+	public HostDTO hostBankInfo(String userid) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select bank, acnumber from binzip_host where binzip_member_id = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs=ps.executeQuery();
+			HostDTO dto=null;
+			if(rs.next()) {
 				String bank=rs.getString("bank");
 				String acnumber=rs.getString("acnumber");
-				String email=rs.getString("email");
-				dto=new HostDTO(id, question, answer, name, birthdate, phone, bank, acnumber, email);
+				dto=new HostDTO(bank, acnumber);
 			}
 			return dto;
 		}catch(Exception e){

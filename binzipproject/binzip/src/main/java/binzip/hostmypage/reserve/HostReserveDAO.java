@@ -123,7 +123,8 @@ public class HostReserveDAO {
 			return -1;
 		}finally {
 			try {
-				
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
 			}catch(Exception e2) {}
 		}
 	}
@@ -135,7 +136,7 @@ public class HostReserveDAO {
 			String sql="select status, reserver_name, payer, reserver_phone, reserve_startdate, reserve_enddate, peoplenum, cost"
 					+ " from binzip_reserve"
 					+ " where binzip_host_bbs_idx=("
-					+ "select idx"
+					+ " select idx"
 					+ " from binzip_host_bbs"
 					+ " where binzip_member_id=? and idx=?)";
 			ps=conn.prepareStatement(sql);
@@ -160,7 +161,9 @@ public class HostReserveDAO {
 			return null;
 		}finally {
 			try {
-				
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
 			}catch(Exception e2) {}
 		}
 	}
@@ -185,6 +188,67 @@ public class HostReserveDAO {
 		}
 	}
 	
+	/**hostPastReservationList.jsp 지난 예약 내역 불러오기**/
+	public ArrayList<HostReserveDTO> pastReservation(String userid){
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select r.reserve_startdate, r.reserve_enddate, r.binzip_member_id, hb.zipname, hb.idx"
+					+ " from binzip_reserve r"
+					+ " left join binzip_host_bbs hb"
+					+ " on r.binzip_host_bbs_idx = hb.idx"
+					+ " where r.status = 3"
+					+ " and hb.binzip_member_id = ?"
+					+ " order by r.reserve_startdate";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs=ps.executeQuery();
+			ArrayList<HostReserveDTO> arr=new ArrayList<HostReserveDTO>();
+			while(rs.next()) {
+				String rsv_sdate=rs.getString("reserve_startdate");
+				String rsv_edate=rs.getString("reserve_enddate");
+				String bm_id=rs.getString("binzip_member_id");
+				String zip_name=rs.getString("zipname");
+				int bbsidx = rs.getInt("idx");
+				HostReserveDTO dto=new HostReserveDTO(rsv_sdate, rsv_edate, bm_id, zip_name, bbsidx);
+				arr.add(dto);
+			}
+			return arr;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
+	/**예약내역삭제**/
+	public int deleteData(String gid, String startdate, int bbsidx) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="delete from binzip_reserve"
+					+ " where binzip_member_id = ?"
+					+ " and reserve_startdate = ?"
+					+ " and binzip_host_bbs_idx = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, gid);
+			ps.setString(2, startdate);
+			ps.setInt(3, bbsidx);
+			int count=ps.executeUpdate();
+			return count;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
 }
 
 

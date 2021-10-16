@@ -84,8 +84,6 @@ String userid=(String)session.getAttribute("sid");
              <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약내역</a></li>
              <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
-             <li><a href="../mypage_host/total_Sales_host.jsp">총 매출</a></li>
-             <li><a href="../mypage_host/myq&a_host.jsp">나의 문의 내역</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
@@ -96,7 +94,7 @@ String userid=(String)session.getAttribute("sid");
 	</div>
 		<%
 		ArrayList<HostReserveDTO> arr=hostmypagereservedao.reserveInfo(userid);
-		ArrayList<HostReserveDTO> arr2=hostmypagereservedao.reserveInfo2(userid);
+		ArrayList<HostReserveDTO> arr2=hostmypagereservedao.pastReservation(userid);		
 		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
 			%>
 			<div class="info">
@@ -104,68 +102,46 @@ String userid=(String)session.getAttribute("sid");
 			</div>
 			<%
 		}else{
-			for(int i=0;i<arr.size();i++){
-				%>
-				<div class="info">
-					<div class="zipres">
-						<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
-					</div>
-					<div class="info2">
-						<h3> <%=arr.get(i).getZipname() %></h3>
-						<h3> <%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h3>
-						<h3>예약최대인원 :  <%=arr.get(i).getPeoplenum() %> 명</h3>
-						<h3>&#8361;<%=arr.get(i).getCost() %></h3>
-					</div>
-				</div>
-				<div>
-					<%
-					if(arr2==null||arr2.size()==0||arr2.get(0).getReserver_startdate()==null){
-						%>
-						<table>
-							<tr>
-								<td>예약날짜</td>
-								<td>아이디</td>
-								<td>상태</td>
-								<td>예약취소</td>
-							</tr>
-							<tr>
-								<td colspan="4" align="center"><h4>지난 예약내역이 없습니다.</h4></td>	
-							</tr>
-						</table>
+			%>
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>게시번호</th>
+							<th>ZIP이름</th>
+							<th>예약날짜</th>
+							<th>아이디</th>
+							<th>상태</th>
+							<th>삭제</th>
+						</tr>
+					</thead>
+					<tbody>
 						<%
-					}else{
-						%>
-						<table>
-							<tr>
-								<td>예약날짜</td>
-								<td>아이디</td>
-								<td>상태</td>
-								<td>예약취소</td>
-							</tr>
-							<%
-							for(int j=0;j<arr2.size();j++){
-								if(arr2.get(j).getStatus()==2){
-									%>
-									<tr>
-										<td><%=arr2.get(j).getReserver_startdate() %> ~ <%=arr2.get(j).getReserver_enddate() %></td>
-										<td><%=arr2.get(j).getId() %></td>
-										<td>정상종료</td>
-										<td><input type="button" value="내역삭제" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
-									</tr>
-									<%
-								}
+						for(int i=0;i<arr2.size();i++){
+							if(arr2.get(i).getId()==null||arr2.get(i).getId()==""){
+								%>
+								<tr>
+									<td colspan="6" align="center">지난 예약 내역이 없습니다.</td>
+								</tr>
+								<%
+							}else{
+								%>
+								<tr>
+									<td><%=arr2.get(i).getBbsidx() %></td>
+									<td><%=arr2.get(i).getZipname() %></td>
+									<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>
+									<td><%=arr2.get(i).getId() %></td>
+									<td>정상 종료</td>
+									<td><input type="button" value="내역삭제" onclick="location.href='/binzip/mypage/hostmypage/deleteData_ok.jsp?startdate=<%=arr2.get(i).getReserver_startdate() %>&gId=<%=arr2.get(i).getId()%>&bbsidx=<%=arr2.get(i).getBbsidx()%>'"></td>
+								</tr>
+								<%
 							}
-							%>
-						</table>
-						<%
-					}
-					%>
-				</div>
-				<br>
-				<hr>
-				<br>
-				<%
-			}
+						}
+						%>
+					</tbody>
+				</table>
+			</div>
+			<%
 		}
 		%>
 </section>

@@ -5,7 +5,7 @@
 <%
 String userid=(String)session.getAttribute("sid");
 HostDTO dto=hostmypagedao.hostInfo(userid);
-System.out.println(userid);
+HostDTO bankdto=hostmypagedao.hostBankInfo(userid);
 %>
 <!DOCTYPE html>
 <html>
@@ -89,8 +89,6 @@ function popupPhonecheck(){
              <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약 내역</a></li>
              <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
-             <li><a href="../mypage_host/total_Sales_host.jsp">총 매출</a></li>
-             <li><a href="../mypage_host/myq&a_host.jsp">나의 문의 내역</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
@@ -132,15 +130,26 @@ function popupPhonecheck(){
 					<td><input type="email" name="email" value=<%=dto.getEmail() %>></td>
 				</tr>
 				<%
-				if(!(dto.getBank()==null||dto.getBank()=="")){
+				if(bankdto==null||(bankdto.getBank()==null||bankdto.getBank()=="")||(bankdto.getAcnumber()==null||bankdto.getAcnumber()=="")){
 					%>
 					<tr>
 						<td>은행명</td>
-						<td><input type="text" name="bank" value=<%=dto.getBank() %>></td>
+						<td><input type="text" name="bank"></td>
 					</tr>
 					<tr>
 						<td>계좌번호</td>
-						<td><input type="text" name="acnumber" value=<%=dto.getAcnumber() %>></td>
+						<td><input type="text" name="acnumber"></td>
+					</tr>
+					<%
+				}else{
+					%>
+					<tr>
+						<td>은행명</td>
+						<td><input type="text" name="bank" value=<%=bankdto.getBank() %>></td>
+					</tr>
+					<tr>
+						<td>계좌번호</td>
+						<td><input type="text" name="acnumber" value=<%=bankdto.getAcnumber() %>></td>
 					</tr>
 					<%
 				}

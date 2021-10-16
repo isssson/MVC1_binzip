@@ -29,6 +29,23 @@ public class HostDTO {
 		this.acnumber = acnumber;
 		this.email = email;
 	}
+	
+	public HostDTO(String id, String question, String answer, String name, String birthdate, String phone, String email) {
+		super();
+		this.id = id;
+		this.question = question;
+		this.answer = answer;
+		this.name = name;
+		this.birthdate = birthdate;
+		this.phone = phone;
+		this.email = email;
+	}
+	
+	public HostDTO(String bank,String acnumber) {
+		super();
+		this.bank = bank;
+		this.acnumber = acnumber;
+	}
 
 	public String getId() {
 		return id;
