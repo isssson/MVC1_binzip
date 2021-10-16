@@ -52,7 +52,7 @@ public class HostReserveDAO {
 			conn=binzip.db.BinzipDB.getConn();
 			String sql="select binzip_reserve.reserve_startdate, binzip_reserve.reserve_enddate, binzip_reserve.binzip_member_id, binzip_reserve.status, binzip_reserve.binzip_host_bbs_idx"
 					+ " from binzip_host_bbs left join binzip_reserve on binzip_host_bbs.idx = binzip_reserve.binzip_host_bbs_idx"
-					+ " where binzip_host_bbs.binzip_member_id=?";
+					+ " where binzip_host_bbs.binzip_member_id=? and binzip_reserve.status >= 0";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();

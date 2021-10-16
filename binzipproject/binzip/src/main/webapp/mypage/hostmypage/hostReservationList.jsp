@@ -83,7 +83,7 @@ System.out.println(userid);
              <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약내역</a></li>
-             <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
+             <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청 내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
