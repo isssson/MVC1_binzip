@@ -5,20 +5,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>LOGIN</title>
-	<script>
-		function joinOpen() {
-		    self.close();
-		    opener.parent.location.replace("/binzip/member/join.jsp");
-		}
-		function findIdOpen() {
-		    self.close();
-		    opener.parent.location.replace("/binzip/member/findId.jsp");
-		}
-		function findPwdOpen() {
-		    self.close();
-		    opener.parent.location.replace("/binzip/member/findPwd.jsp");
-		}
-	</script>
+	<style>
+h3{
+	font-size: 40px;
+ 	text-align: center;
+	margin-top: 80px;
+	clear:both;
+}
+ul{
+	list-style: none;
+    padding-left: 0px;
+}	
+.btlogin{
+	background-color:gray;
+	color:white;
+	text-align:center;
+	font-size:16px;
+}
+</style>
+<script>
+function joinOpen(){
+    self.close();
+    opener.parent.location.replace("/binzip/member/join.jsp");
+}
+function findIdOpen(){
+    self.close();
+    opener.parent.location.replace("/binzip/member/findId.jsp");
+}
+function findPwdOpen(){
+    self.close();
+    opener.parent.location.replace("/binzip/member/findPwd.jsp");
+}
+</script>
 </head>
 <%
 	Cookie cks[] = request.getCookies();
