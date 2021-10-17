@@ -1,5 +1,7 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.*" %>
 <%
 request.setCharacterEncoding("utf-8");
 String ziptype=request.getParameter("ziptype");
@@ -62,7 +64,9 @@ String si_si = request.getParameter("si_si");
 if(si_si == null || si_si.equals("")){
 	si_si = "";
 }
-
+DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+Calendar nowdate = Calendar.getInstance();
+String today = df.format(nowdate.getTime());
 %>
 <section>
 	<article>
@@ -124,11 +128,11 @@ if(si_si == null || si_si.equals("")){
 				</div>
 				<div class="hosting_lb">
 					<label>시작날짜</label>
-					<input type="date" name="host_bbs_startdate" min="today" max="2023-12-31" required>
+					<input type="date" name="host_bbs_startdate" min="<%=today%>" max="2023-12-31" required>
 				</div>
 				<div class="hosting_lb">
 					<label>마지막날짜</label>
-					<input type="date" name="host_bbs_enddate" min="today" max="2023-12-31" required>
+					<input type="date" name="host_bbs_enddate" min="<%=today%>" max="2023-12-31" required>
 				</div>										
 				<div class="hosting_lb">
 					<label>이것만은 지켜주세요~</label>

@@ -45,6 +45,7 @@ int cost = dto.getCost();
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
+<link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 <style>
 .totalinfo{
 	width: 100%;
@@ -137,10 +138,10 @@ p{
 	margin-top: 30px;
 }
 #title label{
-	margin-right: 400px;
+	margin-right: 300px;	 
 }
 #reservebt{
-	margin-left: 400px;
+	margin-left: 300px;
 }
 h2{
 	align: center;
@@ -200,16 +201,6 @@ let banner = {
 	    banner.rollInit(4000); // 배너 롤링
 	});
 	
-	function dateCheck(){
-		
-		document.getElementById("choiceDate").disabled = true;
-		document.getElementById("cohiceDate").disabled = 'disabled';
-		
-		document.getElementById("cohiceDate").disabled = false;
-		document.getElementById("cohiceDate").removeAttribute("disabled");
-		
-	}
-	
 </script>
 </head>
 <body>
@@ -240,26 +231,20 @@ let banner = {
 	c1.setTime(sdate);
 	c2.setTime(edate);
 
-	%>
+	Calendar today = Calendar.getInstance();
+	
+	String nowdate = df.format(today.getTime());
+	
+	%>		<form name="reserve" action="reserve.jsp">		
 			<div id="title">
-				<label class="zipname"><%=dto.getZipname()%></label>
-				<select id="reDate" name="reservedate" size="10" multiple style="width:120px;">
-					<option value="" id="choiceDate">예약날짜</option>
-					<%
-					String str = "%tF\n";
-					while(c1.compareTo(c2) != 1){
-						String date = df.format(c1.getTime());
-						
-						%>
-						<option value="" onclick="dateCheck();"><%=df.format(c1.getTime())%></option>
-						<%
-						
-						c1.add(Calendar.DATE, 1);
-					}
-					%>
-				</select>
-				<input type="button" value="예약하기" id="reservebt">
+			<input type="hidden" name="idx" value="<%=idx%>">
+			<input type="hidden" name="cost" value="<%=cost%>">
+				<label class="zipname"><%=dto.getZipname()%></label>				
+				<input type="date" name="sdate" min="<%=nowdate%>" max="<%=s2%>">
+				<input type="date" name="edate" min="<%=nowdate%>" max="<%=s2%>">
+				<input type="submit" value="예약하기" class="btnreserve" id="reservebt">
 			</div>
+			</form>
 		<div class="totalinfo">
 			<div class="zipinfo">
 				<span>ROOM INFORMATION</span>
@@ -275,7 +260,10 @@ let banner = {
 			</div>
 			<%
 			String imgpath_s = dto.getImgpath();
-			String imgpath []= imgpath_s.split(",");
+			String imgpath[] = {};
+			if(imgpath_s != null){
+				imgpath= imgpath_s.split(",");
+			}
 			%>		
 			<div class="wrap_center">
 				<div class="container">
@@ -376,10 +364,3 @@ let banner = {
 <%@include file="/footer.jsp" %>
 </body>
 </html>
-
-
-
-
-
-
-

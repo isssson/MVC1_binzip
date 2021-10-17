@@ -33,9 +33,9 @@ public class Binzip_HostingDAO {
 				return false;
 			} finally {
 				try {
-					 if(rs != null)rs.close();
-					 if(ps != null)ps.close();
-					 if(conn != null)conn.close();
+					if(rs != null)rs.close();
+					if(ps != null)ps.close();
+					if(conn != null)conn.close();
 				} catch(Exception e2) {
 					
 				}
@@ -69,8 +69,9 @@ public class Binzip_HostingDAO {
 	         e.printStackTrace();
 	         return -1;
 	      } finally {
-	         try {
-	            
+	         try {	        	 
+				 if(ps != null)ps.close();
+				 if(conn != null)conn.close();
 	         }catch(Exception e2) {}
 	      }
 	   }
@@ -92,7 +93,9 @@ public class Binzip_HostingDAO {
 				return -1;
 			}finally {
 				try {
-					
+					if(rs != null)rs.close();
+					if(ps != null)ps.close();
+					if(conn != null)conn.close();
 				}catch(Exception e2) {}
 			}
 		}

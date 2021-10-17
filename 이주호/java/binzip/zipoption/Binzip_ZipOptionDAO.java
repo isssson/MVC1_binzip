@@ -3,8 +3,6 @@ package binzip.zipoption;
 import java.sql.*;
 import java.util.*;
 
-import binzip.findzip.FindzipDTO;
-
 public class Binzip_ZipOptionDAO {
 
 	private Connection conn;
@@ -181,30 +179,7 @@ public class Binzip_ZipOptionDAO {
 				}catch(Exception e2) {}
 			}
 		}
-		
-//		public String getZipOption(int idx) {						
-//			try{
-//				String zop [] = null;
-//				conn = binzip.db.BinzipDB.getConn();
-//				String sql = "select op,category from binzip_option where binzip_host_bbs_idx = ? and category = 1 order by idx asc";
-//				ps = conn.prepareStatement(sql);
-//				ps.setInt(1, idx);
-//				rs = ps.executeQuery();
-//				while(rs.next()) {
-//					
-//					zop[] = rs.getString("op").split("\\n");
-//				}
-//				return String zop[];
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//				return null;
-//			}finally {
-//				try {
-//					
-//				}catch(Exception e2) {}
-//			}
-//		}
-//		}
+
 		// 집 옵션 출력 관련 메서드
 		public ArrayList<Binzip_ZipOptionDTO> getZipOption(int idx, int category) {
 			try {
@@ -234,37 +209,7 @@ public class Binzip_ZipOptionDAO {
 				   }catch(Exception e2) {}
 			   }
 		   }
-		
-	
-//		public ArrayList<Binzip_ZipOptionDTO> getKitOption(int idx, int category) {
-//			try {
-//				   conn = binzip.db.BinzipDB.getConn();
-//				   String sql = "select category, op from binzip_option where binzip_host_bbs_idx = ? and category = ? order by idx asc";
-//				   ps = conn.prepareStatement(sql);
-//				   ps.setInt(1, idx);
-//				   ps.setInt(2, category);
-//				   rs = ps.executeQuery();
-//				   ArrayList<Binzip_ZipOptionDTO> kitarr = new ArrayList<Binzip_ZipOptionDTO>();
-//				   while(rs.next()) {
-//					  int ct = rs.getInt("category");
-//					  String op = rs.getString("op");
-//					   
-//					  Binzip_ZipOptionDTO dto = new Binzip_ZipOptionDTO(ct,op);
-//					  kitarr.add(dto);
-//				   }
-//				   return kitarr;
-//			   }catch(Exception e) {
-//				   e.printStackTrace();
-//				   return null;
-//			   }finally{
-//				   try {					   
-//					   if(rs!=null)rs.close();
-//					   if(ps!=null)ps.close();
-//					   if(conn!=null)conn.close();
-//				   }catch(Exception e2) {}
-//			   }
-//		   }
-		
+
 		
 		
 		
