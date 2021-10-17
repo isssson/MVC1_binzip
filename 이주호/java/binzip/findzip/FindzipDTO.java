@@ -1,8 +1,8 @@
-package binzip.hosting;
+package binzip.findzip;
 
 import java.sql.*;
 
-public class Binzip_HostingDTO {
+public class FindzipDTO {
 
 	private int idx;
 	private String binzip_member_id;
@@ -18,16 +18,21 @@ public class Binzip_HostingDTO {
 	private int peoplenum;
 	private Date todaydate;
 	private String contents;
-	private String host_bbs_startdate;
-	private String host_bbs_enddate;
+	private Date host_bbs_startdate;
+	private Date host_bbs_enddate;	
+	private String imgpath;
 	
-	public Binzip_HostingDTO() {
+	
+	public FindzipDTO() {
 		super();
 	}
 
-	public Binzip_HostingDTO(int idx, String binzip_member_id, String host_name, String host_email, String host_phone,
+	
+	
+	public FindzipDTO(int idx, String binzip_member_id, String host_name, String host_email, String host_phone,
 			String host_bank, String host_acnumber, String zipname, String ziptype, String zipaddr, int cost,
-			int peoplenum, Date todaydate, String contents, String host_bbs_startdate, String host_bbs_enddate) {
+			int peoplenum, Date todaydate, String contents, Date host_bbs_startdate, Date host_bbs_enddate,
+			String imgpath) {
 		super();
 		this.idx = idx;
 		this.binzip_member_id = binzip_member_id;
@@ -45,12 +50,40 @@ public class Binzip_HostingDTO {
 		this.contents = contents;
 		this.host_bbs_startdate = host_bbs_startdate;
 		this.host_bbs_enddate = host_bbs_enddate;
+		this.imgpath = imgpath;
+	}
+	public FindzipDTO(int idx, String zipname, String imgpath, int peoplenum, int cost, String ziptype, 
+			String host_phone, String zipaddr, Date host_bbs_startdate, Date host_bbs_enddate, String contents) {
+		this.idx = idx;
+		this.zipname = zipname;
+		this.imgpath = imgpath;
+		this.peoplenum = peoplenum;
+		this.cost = cost;
+		this.ziptype = ziptype;
+		this.host_phone = host_phone;
+		this.zipaddr = zipaddr;
+		this.host_bbs_startdate = host_bbs_startdate;
+		this.host_bbs_enddate = host_bbs_enddate;
+		this.contents = contents;
 	}
 
+	//list page DAO constructor
+	public FindzipDTO(int idx, String zipname, String ziptype, String zipaddr, int cost, int peoplenum, String imgpath) {
+		super();
+		this.idx = idx;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.cost = cost;
+		this.peoplenum = peoplenum;
+		this.imgpath = imgpath;
+	}
+
+	
 	public int getIdx() {
 		return idx;
 	}
-
+	
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
@@ -159,20 +192,30 @@ public class Binzip_HostingDTO {
 		this.contents = contents;
 	}
 
-	public String getHost_bbs_startdate() {
+	public Date getHost_bbs_startdate() {
 		return host_bbs_startdate;
 	}
 
-	public void setHost_bbs_startdate(String host_bbs_startdate) {
+	public void setHost_bbs_startdate(Date host_bbs_startdate) {
 		this.host_bbs_startdate = host_bbs_startdate;
 	}
 
-	public String getHost_bbs_enddate() {
+	public Date getHost_bbs_enddate() {
 		return host_bbs_enddate;
 	}
 
-	public void setHost_bbs_enddate(String host_bbs_enddate) {
+	public void setHost_bbs_enddate(Date host_bbs_enddate) {
 		this.host_bbs_enddate = host_bbs_enddate;
 	}
+
+	public String getImgpath() {
+		return imgpath;
+	}
+
+	public void setImgpath(String imgpath) {
+		this.imgpath = imgpath;
+	}
+	
+	
 	
 }

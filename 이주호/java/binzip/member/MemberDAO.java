@@ -269,13 +269,4 @@ public class MemberDAO {
 		}
 	}
 	
-	
-	
 }
-
-
-
-
-
-
-
