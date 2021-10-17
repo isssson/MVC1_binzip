@@ -1,5 +1,12 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="binzip.mypage.guest.help.*" %>
+<jsp:useBean id="gdao" class="binzip.mypage.guest.help.GuestHelpDAO"></jsp:useBean>
+<%
+String userid=(String)session.getAttribute("sid");
+System.out.println(userid);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +73,7 @@ margin-left: 250px;
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myrescancel.jsp">취소 내역</a></li>
              <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
@@ -74,18 +81,32 @@ margin-left: 250px;
     <article>
     	<h2>MY Q&A</h2>
 		<h4>내 문의 내역 보기</h4><hr>
+		<%
+		ArrayList<GuestHelpDTO>arr=gdao.helpList(userid);
+		if(arr==null||arr.size()==0||arr.get(0).getSubject()==null){
+		%>
+		<div class="info">
+			<h3>내 문의 내역이 없습니다</h3>
+		</div>	
+		<%}else{
+			for(int i=0;i<arr.size();i++){
+		%>
     <table>
     	<tr>
-    		<td><h3>제목</h3></td>
-    		<td><input type="text"></td>
+    		<td><h3>제목<%=arr.get(i).getSubject() %></h3></td>
+    		<td><%=arr.get(i).getContents() %></td>
     		<td><select name="질문"><option>질문</option></select></td>
-    		<td>조회수 15</td>
+    		<td>조회수 <%=arr.get(i).getReadnum() %></td>
     	</tr>
     	<tr>
     		<td>작성자</td>
     		<td>testname</td>
     	</tr>	
     </table>
+    <%
+			}
+		}
+    %>
     <hr>
     <div class="tx01"><textarea cols="100" rows="20"></textarea></div>
     <div class="bt01"><input type="button" value="수정">&nbsp;<input type="button" value="수정하기"></div>

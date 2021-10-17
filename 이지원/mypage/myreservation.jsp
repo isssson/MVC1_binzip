@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="binzip.mypage.guest.reserve.*" %>
+<%@page import="java.util.*" %>
+<jsp:useBean id="gdao" class="binzip.mypage.guest.reserve.GuestReserveDAO"></jsp:useBean>
+<jsp:useBean id="gdto" class="binzip.mypage.guest.reserve.GuestReserveDTO"></jsp:useBean>
+<%
+String userid=(String)session.getAttribute("sid");
+System.out.println(userid);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +63,7 @@ h4{
 }
 .info{
 	margin-bottom: 500px;
+	text-align: center;
 }
 .info2{
 	height: 380px;
@@ -71,7 +80,7 @@ h4{
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myrescancel.jsp">취소 내역</a></li>
              <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
@@ -82,22 +91,36 @@ h4{
 			<h2>MY RESERVATION</h2>
 			<h4>나의 예약 현황</h4><hr>
 		</div>
-		<form action="myreservation2.jsp">
+		<%
+		ArrayList<GuestReserveDTO>arr=gdao.reserveList(userid);
+		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
+		%>
 		<div class="info">
+			<h3>예약한 집이 없습니다.</h3>
+		</div>
+		<%	
+		}else{
+			for(int i=0;i<arr.size();i++){
+		%>
+		<div class="info" onclick="myreservation2.jsp">
 		<div class="zipres">
-			<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
+			<img src=<%=arr.get(i).getImgpath() %> alt="추천집이미지">
 		</div>
 		<div class="info2">
-			<h3> 모노가든</h3>
-			<h3> 디자인 하우스 /  제주</h3>
-			<h3>check in:      &nbsp;&nbsp;&nbsp; check out:   </h3>
-			<h3>예약인원 :   2명</h3>
-			<h3>가격</h3>
-			<h3>입금 대기 중</h3>
-			<input type="button" value="예약정보 변경">&nbsp;<input type="button" value="예약취소">
+			<h3> <%=arr.get(i).getZipname() %></h3>
+			<h3> <%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h3>
+			<h3>check in:<%=arr.get(i).getReserve_startdate() %>      &nbsp;&nbsp;&nbsp; check out: <%=arr.get(i).getReserve_enddate() %>  </h3>
+			<h3>예약인원 :   <%=arr.get(i).getPeoplenum() %>명</h3>
+			<h3><%= arr.get(i).getCost()%></h3>
+			<h3><%=arr.get(i).getStatus() %></h3>
+			<input type="button" value="예약정보 변경" onclick="location.href='myreservation2.jsp'">&nbsp;<input type="button" value="예약취소" onclick="location.href='myreservation2.jsp'">
 		</div>
 		</div>
-		</form>
+	<%
+		 	}
+		}
+		
+	%>
 	 </div>
 	<br>
 	</article>

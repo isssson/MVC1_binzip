@@ -72,12 +72,13 @@ table{
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myrescancel.jsp">취소 내역</a></li>
              <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
     </nav>
-    <form name="exitmember" action=exitmember_ok.jsp?id=<%= dto.getId() %>>
+    <form name="exitmember" action="exitmember_ok.jsp?id=<%=sid %>">
+    <input type="hidden" name="id" value="<%= sid %>">
 	<div>
 		<h2>EXIT MEMBER</h2>
 		<h4>회원 탈퇴</h4><hr>

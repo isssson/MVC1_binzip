@@ -70,7 +70,7 @@ h4{
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myrescancel.jsp">취소 내역</a></li>
              <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>

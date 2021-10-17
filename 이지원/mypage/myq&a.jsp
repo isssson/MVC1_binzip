@@ -1,5 +1,12 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="binzip.mypage.guest.help.*" %>
+<jsp:useBean id="gdao" class="binzip.mypage.guest.help.GuestHelpDAO"></jsp:useBean>
+<%
+String userid=(String)session.getAttribute("sid");
+System.out.println(userid);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +68,7 @@ table{
         <ul class="list">
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myrescancel.jsp">취소 내역</a></li>
              <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
@@ -69,6 +76,13 @@ table{
     <article>
 		<h2>MY PAGE</h2>
 		<h4>내 정보 보기</h4><hr>
+		<%
+		ArrayList<GuestHelpDTO>arr=gdao.helpList(userid);
+		if(arr==null||arr.size()==0||arr.get(0).getSubject()==null){
+			%>
+		<%}else{
+			for(int i=0;i<arr.size();i++){
+		%>
     	<table>
     		<tr>
     			<td>번호</td>
@@ -77,12 +91,16 @@ table{
     			<td>조회수</td>
     		</tr>
     		<tr>
-    			<td>testnum</td>
-    			<td>testsub</td>
-    			<td>testdate</td>
-    			<td>testread</td>
+    			<td><%=arr.get(i).getIdx() %></td>
+    			<td><%=arr.get(i).getSubject() %></td>
+    			<td><%=arr.get(i).getWritedate() %></td>
+    			<td><%=arr.get(i).getReadnum() %></td>
     		</tr>
     	</table>
+    	<%
+			}
+		}
+    	%>
     </article>
 </section>
 <%@include file="../footer.jsp" %>

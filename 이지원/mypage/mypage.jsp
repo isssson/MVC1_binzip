@@ -81,26 +81,15 @@ table{
 	margin: 0px auto;
 }
 </style>
-<script>
-function doDisplay(event){
-	if(document.getElementById('menu').style.display==='block'){
-		document.getElementById('list').style.display='none';
-		docunment.getElementById('menu').textContent='보이기';
-	}else{
-		document.getElementById('list').style.display='block';
-		document.getElementById('menu').textContent='숨기기';
-	}	
-}
-</script>
 </head>
 <body>
 <%@include file="../header.jsp" %>
 <section>
- 	<nav id="menu" class="alert_menu">
-        <ul class="list" id="list">
+ 	<nav id="menu">
+        <ul class="list" >
              <li><a href="../mypage/mypage.jsp">개인정보</a></li>
              <li><a href="../mypage/myreservation.jsp">예약현황</a></li>
-             <li><a href="../mypge/myrescancel.jsp">취소 내역</a></li>
+             <li><a href="../mypage/myrescancel.jsp">취소 내역</a></li>
              <li><a href="../mypage/myq&a.jsp">문의 내역</a></li>
              <li><a href="../mypage/bookmark.jsp">관심ZIP</a></li>
          </ul>
