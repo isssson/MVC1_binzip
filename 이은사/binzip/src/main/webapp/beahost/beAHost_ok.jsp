@@ -14,7 +14,7 @@
 	} else {
 		%>
 		<script type="text/javascript">
-			location.href = 'beAHost_next.jsp';
+			location.href = 'beAHost_inputInfo.jsp';
 		</script>
 		<%
 	}
