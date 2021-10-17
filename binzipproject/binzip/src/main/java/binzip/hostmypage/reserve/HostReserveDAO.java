@@ -249,7 +249,71 @@ public class HostReserveDAO {
 			}catch(Exception e2) {}
 		}
 	}
+	
+	/**예약취소 레코드 호출**/
+	public ArrayList<HostReserveDTO> cancelRequest(String userid){
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select r.reserve_startdate, r.reserve_enddate, r.binzip_member_id, hb.zipname, hb.idx"
+					+ " from binzip_reserve r"
+					+ " left join binzip_host_bbs hb"
+					+ " on r.binzip_host_bbs_idx = hb.idx"
+					+ " where r.status = -1"
+					+ " and hb.binzip_member_id = ?"
+					+ " order by r.reserve_startdate";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs=ps.executeQuery();
+			ArrayList<HostReserveDTO> arr=new ArrayList<HostReserveDTO>();
+			while(rs.next()) {
+				String rsv_sdate=rs.getString("reserve_startdate");
+				String rsv_edate=rs.getString("reserve_enddate");
+				String bm_id=rs.getString("binzip_member_id");
+				String zip_name=rs.getString("zipname");
+				int bbsidx = rs.getInt("idx");
+				HostReserveDTO dto=new HostReserveDTO(rsv_sdate, rsv_edate, bm_id, zip_name, bbsidx);
+				arr.add(dto);
+			}
+			return arr;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
+	/**예약취소승인**/
+	public int cancelPermission(String gid, String startdate, int bbsidx) {
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="delete from binzip_reserve"
+					+ " where binzip_member_id = ?"
+					+ " and reserve_startdate = ?"
+					+ " and binzip_host_bbs_idx = ? and status = -1";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, gid);
+			ps.setString(2, startdate);
+			ps.setInt(3, bbsidx);
+			int count=ps.executeUpdate();
+			return count;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			try {
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
 }
+
 
 
 

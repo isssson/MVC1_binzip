@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="binzip.hostmypage.reserve.*" %>
+<%@ page import="java.util.*" %>
+<jsp:useBean id="hostmypagereservedao" class="binzip.hostmypage.reserve.HostReserveDAO"></jsp:useBean>
+<jsp:useBean id="hostmypagereservedto" class="binzip.hostmypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,9 +91,76 @@ String userid = (String)session.getAttribute("sid");
 	<div>
 		<h2>CANCEL REQUEST</h2>
 		<h4>취소 요청 내역</h4><hr>
-		
 	</div>
+	<%
+	ArrayList<HostReserveDTO> arr=hostmypagereservedao.reserveInfo(userid);
+	ArrayList<HostReserveDTO> arr2=hostmypagereservedao.cancelRequest(userid);
+	if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
+		%>
+		<div class="info">
+			<h2>업로드한 집이 없습니다.</h2>
+		</div>
+		<%
+	}else{
+		%>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>게시번호</th>
+						<th>ZIP이름</th>
+						<th>예약날짜</th>
+						<th>아이디</th>
+						<th>취소승인</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					for(int i=0;i<arr2.size();i++){
+						if(arr2==null||arr2.get(i).getId()==null||arr2.get(i).getId()==""){
+							%>
+							<tr>
+								<td colspan="6" align="center">지난 예약 내역이 없습니다.</td>
+							</tr>
+							<%
+						}else{
+							%>
+							<tr>
+								<td><%=arr2.get(i).getBbsidx() %></td>
+								<td><%=arr2.get(i).getZipname() %></td>
+								<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>
+								<td><%=arr2.get(i).getId() %></td>
+								<td><input type="button" value="취소승인" onclick="location.href='/binzip/mypage/hostmypage/cancelRequest_ok.jsp?startdate=<%=arr2.get(i).getReserver_startdate() %>&gId=<%=arr2.get(i).getId()%>&bbsidx=<%=arr2.get(i).getBbsidx()%>'"></td>
+							</tr>
+							<%
+						}
+					}
+					%>
+				</tbody>
+			</table>
+		</div>
+		<%
+	}
+	%>
 </section>
 <%@include file="../../footer.jsp" %>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
