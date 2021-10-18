@@ -92,7 +92,6 @@ String userid = (String)session.getAttribute("sid");
 		<h2>MY ZIP</h2>
 		<h4>내가 등록한 집</h4><hr>
 	</div>
-	
 		<%
 		ArrayList<HostReserveDTO> arr=hostmypagereservedao.reserveInfo(userid);
 		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
@@ -102,27 +101,36 @@ String userid = (String)session.getAttribute("sid");
 			</div>
 			<%
 		}else{
-			for(int i=0;i<arr.size();i++){
-				%>
-				<div class="info">
-					<div class="zipres">
-						<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
-					</div>
-					<div class="info2">
-						<h2><%=arr.get(i).getZipname() %></h2>
-						<br>
-						<h4><%=arr.get(i).getZipaddr() %></h4>
-						<h4>예약최대인원 :  <%=arr.get(i).getPeoplenum() %> 명</h4>
-						<h4>&#8361;<%=arr.get(i).getCost() %></h4>
-						<input type="button" value="수정하기" onclick='location.href="/binzip/hosting/addHosting.jsp?bbsidx=<%=arr.get(i).getBbsidx() %>"'>
-						<input type="button" value="영업종료" onclick='location.href="/binzip/mypage/hostmypage/zipClosed_ok.jsp?bbsidx=<%=arr.get(i).getBbsidx() %>"'>						
-					</div>
-				</div>
-				<br>
-				<%
+			%>
+			<div>
+				<table>
+					<thead>
+						<th>게시번호</th>
+						<th>집이름</th>
+						<th>집주소</th>
+						<th>최대인원</th>
+						<th>가격</th>
+					</thead>
+					<tbody>
+					<%
+					for(int i=0;i<arr.size();i++){
+						%>
+						<tr>
+							<td><%=arr.get(i).getBbsidx() %></td>
+							<td><%=arr.get(i).getZipname() %></td>
+							<td><%=arr.get(i).getZipaddr() %></td>
+							<td><%=arr.get(i).getPeoplenum() %> 명</td>
+							<td>&#8361;<%=arr.get(i).getCost() %></td>
+						</tr>						
+						<%
+					}
+					%>
+					</tbody>
+				</table>
+			</div>
+			<%
 			}
-		}
-		%>	
+			%>	
 </section>
 <%@include file="../../footer.jsp" %>
 </body>

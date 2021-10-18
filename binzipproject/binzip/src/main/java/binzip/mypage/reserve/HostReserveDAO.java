@@ -18,7 +18,7 @@ public class HostReserveDAO {
 	public ArrayList<HostReserveDTO> reserveInfo(String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="select peoplenum, zipname, ziptype, zipaddr, cost, idx from binzip_host_bbs where binzip_member_id=?";
+			String sql="select peoplenum, zipname, ziptype, zipaddr, cost, idx from binzip_host_bbs where binzip_member_id=? order by idx";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
