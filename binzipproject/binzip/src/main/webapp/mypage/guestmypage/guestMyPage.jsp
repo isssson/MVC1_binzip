@@ -5,13 +5,12 @@
 <%
 String userid=(String)session.getAttribute("sid");
 InfoDTO dto=hostmypagedao.hostInfo(userid);
-InfoDTO bankdto=hostmypagedao.hostBankInfo(userid);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>호스트 마이페이지</title>
+<title>게스트 마이페이지</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
 .list{
@@ -84,11 +83,9 @@ function popupPhonecheck(){
 <%@include file="../../header.jsp" %>
  	<nav id="menu">
         <ul class="list">
-             <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
-             <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
-             <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약 내역</a></li>
-             <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청 내역</a></li>
-             <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
+             <li><a href="/binzip/mypage/guestmypage/guestMyPage.jsp">개인정보</a></li>
+             <li><a href="/binzip/mypage/guestmypage/guestReservationList.jsp">예약현황</a></li>
+             <li><a href="/binzip/mypage/guestmypage/guestCancelRequest.jsp">예약취소 요청내역</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
@@ -98,7 +95,7 @@ function popupPhonecheck(){
 		<h4>내 정보 보기</h4>
 	</article>
 	<article>
-		<form name="join" action="hostMyPage_ok.jsp">
+		<form name="join" action="guestMyPage_ok.jsp">
 			<table>
 				<tr>
 					<td>아이디</td>
@@ -129,35 +126,10 @@ function popupPhonecheck(){
 					<td>이메일</td>
 					<td><input type="email" name="email" value=<%=dto.getEmail() %> readonly></td>
 				</tr>
-				<%
-				if(bankdto==null||(bankdto.getBank()==null||bankdto.getBank()=="")||(bankdto.getAcnumber()==null||bankdto.getAcnumber()=="")){
-					%>
-					<tr>
-						<td>은행명</td>
-						<td><input type="text" name="bank"></td>
-					</tr>
-					<tr>
-						<td>계좌번호</td>
-						<td><input type="text" name="acnumber"></td>
-					</tr>
-					<%
-				}else{
-					%>
-					<tr>
-						<td>은행명</td>
-						<td><input type="text" name="bank" value=<%=bankdto.getBank() %>></td>
-					</tr>
-					<tr>
-						<td>계좌번호</td>
-						<td><input type="text" name="acnumber" value=<%=bankdto.getAcnumber() %>></td>
-					</tr>
-					<%
-				}
-				%>
 			</table>
 			<input type="submit" value="정보수정하기">
 		</form>
-		<input type="button" value="탈퇴하기" class="btjoin" onclick="location.href='bridgeDeleteMember.jsp'">
+		<input type="button" value="탈퇴하기" class="btjoin" onclick="location.href='/binzip/mypage/hostmypage/bridgeDeleteMember.jsp'">
 	</article>
 </section>
 <%@include file="../../footer.jsp" %>

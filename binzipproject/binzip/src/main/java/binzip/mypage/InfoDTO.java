@@ -1,6 +1,6 @@
-package binzip.hostmypage;
+package binzip.mypage;
 
-public class HostDTO {
+public class InfoDTO {
 	
 	private String id;
 	private String question;
@@ -12,11 +12,11 @@ public class HostDTO {
 	private String acnumber;
 	private String email;
 	
-	public HostDTO() {
+	public InfoDTO() {
 		super();
 	}
 
-	public HostDTO(String id, String question, String answer, String name, String birthdate, String phone, String bank,
+	public InfoDTO(String id, String question, String answer, String name, String birthdate, String phone, String bank,
 			String acnumber, String email) {
 		super();
 		this.id = id;
@@ -30,7 +30,7 @@ public class HostDTO {
 		this.email = email;
 	}
 	
-	public HostDTO(String id, String question, String answer, String name, String birthdate, String phone, String email) {
+	public InfoDTO(String id, String question, String answer, String name, String birthdate, String phone, String email) {
 		super();
 		this.id = id;
 		this.question = question;
@@ -41,7 +41,7 @@ public class HostDTO {
 		this.email = email;
 	}
 	
-	public HostDTO(String bank,String acnumber) {
+	public InfoDTO(String bank,String acnumber) {
 		super();
 		this.bank = bank;
 		this.acnumber = acnumber;

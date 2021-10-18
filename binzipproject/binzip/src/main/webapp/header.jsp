@@ -58,7 +58,7 @@ function openLogin(){
 				} else {
 					if(sgrade.equals(mdao_header.GUEST)) {
 						%>
-						<a href="/binzip/mypage/myPage.jsp">
+						<a href="/binzip/mypage/guestmypage/guestMyPage.jsp">
 						<%
 					} else if(sgrade.equals(mdao_header.HOST)) {
 						%>
@@ -66,7 +66,7 @@ function openLogin(){
 						<%
 					} else if(sgrade.equals(mdao_header.ADMIN)) {
 						%>
-						<a href="/binzip/mypage/myPage.jsp">
+						<a href="/binzip/mypage/adminmypage/adminMyPage.jsp">
 						<%
 					}
 				} 

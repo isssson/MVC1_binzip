@@ -5,9 +5,8 @@
 <jsp:useBean id="hostmypagedao" class="binzip.mypage.InfoDAO"></jsp:useBean>
 <%
 int result=hostmypagedao.hostUpdate(hostmypagedto);
-int result2=hostmypagedao.hostUpdate2(hostmypagedto);
 String msg="";
-if(result>0&&result2>0){
+if(result>0){
 	msg="정보수정성공";
 }else{
 	msg="정보수정실패. 고객센터로 문의바랍니다.";

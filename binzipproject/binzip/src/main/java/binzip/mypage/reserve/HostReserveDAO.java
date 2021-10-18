@@ -1,4 +1,4 @@
-package binzip.hostmypage.reserve;
+package binzip.mypage.reserve;
 
 import java.sql.*;
 import java.util.ArrayList;

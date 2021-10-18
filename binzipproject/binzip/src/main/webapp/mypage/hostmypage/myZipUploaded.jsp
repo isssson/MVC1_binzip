@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="binzip.hostmypage.reserve.*" %>
+<%@ page import="binzip.mypage.reserve.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="hostmypagereservedao" class="binzip.hostmypage.reserve.HostReserveDAO"></jsp:useBean>
-<jsp:useBean id="hostmypagereservedto" class="binzip.hostmypage.reserve.HostReserveDTO"></jsp:useBean>
+<jsp:useBean id="hostmypagereservedao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
+<jsp:useBean id="hostmypagereservedto" class="binzip.mypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>

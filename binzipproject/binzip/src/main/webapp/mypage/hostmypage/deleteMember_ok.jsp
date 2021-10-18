@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="binzip.hostmypage.*" %>
-<jsp:useBean id="hostmypagedao" class="binzip.hostmypage.HostDAO"></jsp:useBean>
+<%@ page import="binzip.mypage.*" %>
+<jsp:useBean id="hostmypagedao" class="binzip.mypage.InfoDAO"></jsp:useBean>
 <%
 String userid=(String)session.getAttribute("sid");
 int result=hostmypagedao.memberDel(userid);
@@ -11,6 +11,7 @@ if(result>0){
 }else{
 	msg="회원탈퇴 실패. 고객센터로 문의바랍니다.";
 }
+session.invalidate();
 %>
 <script>
 window.alert('<%=msg%>');

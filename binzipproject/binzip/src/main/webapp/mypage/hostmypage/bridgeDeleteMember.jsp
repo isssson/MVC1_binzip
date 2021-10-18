@@ -70,19 +70,6 @@ String userid=(String)session.getAttribute("sid");
 <body>
 <%@include file="../../header.jsp" %>
 <section>
-	<nav id="menu">
-        <ul class="list">
-             <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
-             <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
-             <li><a href="../mypage_host/last reservation.jsp">지난 예약현황</a></li>
-             <li><a href="../mypage_host/cancelReservation.jsp">취소 요청 내역</a></li>
-             <li><a href="../mypage_host/hosting_my_zip.jsp">내가 올린 집</a></li>
-             <li><a href="../mypage_host/total_Sales_host.jsp">총 매출</a></li>
-             <li><a href="../mypage_host/myq&a_host.jsp">나의 문의 내역</a></li>
-             <li><a href="../mypage_host/bookmark_host.jsp">관심ZIP</a></li>
-             <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
-         </ul>
-    </nav>
 	<div>
 		<h2>EXIT MEMBER</h2>
 		<h4>회원 탈퇴</h4><hr>

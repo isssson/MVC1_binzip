@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="binzip.hostmypage.reserve.*" %>
+<%@ page import="binzip.mypage.reserve.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="hostmypagereservedao" class="binzip.hostmypage.reserve.HostReserveDAO"></jsp:useBean>
-<jsp:useBean id="hostmypagereservedto" class="binzip.hostmypage.reserve.HostReserveDTO"></jsp:useBean>
+<jsp:useBean id="hostmypagereservedao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
+<jsp:useBean id="hostmypagereservedto" class="binzip.mypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,7 +93,6 @@ System.out.println(userid);
 		<h2>MY RESERVATION</h2>
 		<h4>내가 받은 예약 현황</h4><hr>
 	</div>
-	
 		<%
 		ArrayList<HostReserveDTO> arr=hostmypagereservedao.reserveInfo(userid);
 		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
@@ -110,10 +109,10 @@ System.out.println(userid);
 						<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
 					</div>
 					<div class="info2">
-						<h3> <%=arr.get(i).getZipname() %></h3>
-						<h3> <%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h3>
-						<h3>예약최대인원 :  <%=arr.get(i).getPeoplenum() %> 명</h3>
-						<h3>&#8361;<%=arr.get(i).getCost() %></h3>
+						<h2> <%=arr.get(i).getZipname() %></h2>
+						<h4> <%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h4>
+						<h4>예약최대인원 :  <%=arr.get(i).getPeoplenum() %> 명</h4>
+						<h2>&#8361;<%=arr.get(i).getCost() %></h2>
 						<input type="button" value="내가 올린 집으로 가기" onclick='location.href="/binzip/mypage/hostmypage/myZipUploaded.jsp"'>
 					</div>
 				</div>

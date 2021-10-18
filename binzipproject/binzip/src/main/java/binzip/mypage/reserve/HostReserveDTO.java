@@ -1,4 +1,4 @@
-package binzip.hostmypage.reserve;
+package binzip.mypage.reserve;
 
 public class HostReserveDTO {
 
