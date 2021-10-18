@@ -156,4 +156,67 @@ public class GuestReserveDAO {
 			}catch(Exception e2) {}
 		}
 	}
+	
+	/**guestCancelRequest.jsp 출력 관련**/
+	public ArrayList<GuestReserveDTO> gPrintCancelRequest(String userid){
+		try {
+			conn=binzip.db.BinzipDB.getConn();
+			String sql="select hb.idx, hb.zipname, hb.ziptype, hb.zipaddr, r.reserve_startdate, r.reserve_enddate, r.peoplenum, r.cost"
+					+ " from binzip_host_bbs hb"
+					+ " left join binzip_reserve r"
+					+ " on hb.idx = r.binzip_host_bbs_idx"
+					+ " where r.status = -1"
+					+ " and r.binzip_member_id = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs=ps.executeQuery();
+			ArrayList<GuestReserveDTO> arr=new ArrayList<GuestReserveDTO>();
+			while(rs.next()) {
+				int idx = rs.getInt("idx");
+				String zipname = rs.getString("zipname");
+				String ziptype = rs.getString("ziptype");
+				String zipaddr = rs.getString("zipaddr");
+				String reserve_startdate = rs.getString("reserve_startdate");
+				String reserve_enddate = rs.getString("reserve_enddate");
+				int peoplenum = rs.getInt("peoplenum");
+				int cost = rs.getInt("cost");
+				GuestReserveDTO dto=new GuestReserveDTO(idx, zipname, ziptype, zipaddr, reserve_startdate, reserve_enddate, peoplenum, cost);
+				arr.add(dto);
+			}
+			return arr;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			}catch(Exception e2) {}
+		}
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

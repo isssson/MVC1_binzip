@@ -138,7 +138,7 @@ System.out.println(userid);
 					</tr>
 					<%
 				}else{
-					for(int i=0;i<arr.size();i++){
+					for(int i=0;i<arr2.size();i++){
 						%>
 						<tr>
 							<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>

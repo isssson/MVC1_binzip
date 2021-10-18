@@ -52,6 +52,19 @@ public class GuestReserveDTO {
 		this.imgpath = imgpath;
 	}
 
+	public GuestReserveDTO(int bbsidx, String zipname, String ziptype, String zipaddr, String reserve_startdate,
+			String reserve_enddate, int peoplenum, int cost) {
+		super();
+		this.bbsidx = bbsidx;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.reserve_startdate = reserve_startdate;
+		this.reserve_enddate = reserve_enddate;
+		this.peoplenum = peoplenum;
+		this.cost = cost;
+	}
+
 	public int getBbsidx() {
 		return bbsidx;
 	}
