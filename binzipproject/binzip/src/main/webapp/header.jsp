@@ -2,31 +2,35 @@
     pageEncoding="UTF-8"%>
 <jsp:useBean id="mdao_header" class="binzip.member.MemberDAO"></jsp:useBean> 
 <%
-String sid = (String)session.getAttribute("sid");
-String sgrade = (String)session.getAttribute("sgrade");
+	String sid = (String)session.getAttribute("sid");
+	String sgrade = (String)session.getAttribute("sgrade");
+	
+	System.out.println(sgrade); //test code
 %>
     
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script>
-function openWhere(){
-	window.open("/binzip/where/where.jsp","where","width=800, height=400, left=700, top=300");
-}
-function openLogin(){
-	window.open("/binzip/member/login.jsp","where","width=500, height=300, left=800, top=300");
-}
-</script>
+	<meta charset="UTF-8">
+	<script>
+		function openWhere() {
+			window.open("/binzip/where/where.jsp", "where", "width=600, height=600");
+		}
+		function openLogin() {
+			window.open("/binzip/member/login.jsp", "where", "width=1000, height=600");
+		}
+	</script>
 </head>
 <header>
 	<div class="binzipLogo">
-		<a href="/binzip/index.jsp"><img src="/binzip/img/main_imgs/binzip_logo.png" alt="빈집로고"></a>
+		<a href="/binzip/index.jsp">
+			<img src="/binzip/main_imgs/binzip_logo.png" alt="빈집로고">
+		</a>
 	</div>
 	<nav>
 		<ul>
 			<li class="whereMenu">
-				<img src="/binzip/img/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
+				<img src="/binzip/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
 				<a href="javascript:openWhere();">WHERE ?</a>
 			</li>
 			<li class="otherMenu">
@@ -46,7 +50,7 @@ function openLogin(){
 				 %>
 			</li>			
 			<li class="otherMenu">
-				<a href="#">HELP</a>
+				<a href="/binzip/help/help.jsp">HELP</a>
 			</li>
 			<!-- mypage session area -->
 			<li class="myMenu">
@@ -66,12 +70,12 @@ function openLogin(){
 						<%
 					} else if(sgrade.equals(mdao_header.ADMIN)) {
 						%>
-						<a href="/binzip/mypage/adminmypage/adminMyPage.jsp">
+						<a href="/binzip/mypage/adminmypage/hostList.jsp">
 						<%
 					}
 				} 
 				%>
-					<img src="/binzip/img/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon">
+					<img src="/binzip/main_imgs/icon_mypage.png" alt="마이페이지 아이콘" id="myPageIcon">
 				</a>
 			</li>		
 		</ul>

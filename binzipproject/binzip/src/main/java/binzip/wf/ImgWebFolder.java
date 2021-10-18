@@ -5,7 +5,7 @@ import java.sql.*;
 
 public class ImgWebFolder {
 
-	public static final String HOST_HOME="C:\\이은사\\binzipproject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\binzip\\hosting\\imgupload";
+	public static final String HOST_HOME="C:\\권세윤\\semi\\binzipproject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\binzip\\hosting\\imgupload";
 	private String id;
 	private String host_bbs_idx;
 	private String crpath;

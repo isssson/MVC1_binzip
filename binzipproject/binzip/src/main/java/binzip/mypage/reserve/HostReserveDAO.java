@@ -18,7 +18,15 @@ public class HostReserveDAO {
 	public ArrayList<HostReserveDTO> reserveInfo(String userid) {
 		try {
 			conn=binzip.db.BinzipDB.getConn();
-			String sql="select peoplenum, zipname, ziptype, zipaddr, cost, idx from binzip_host_bbs where binzip_member_id=? order by idx";
+			String sql =
+					"select listagg(b.imgpath,',') within group (order by a.idx) as imgpath,a.*  "
+					+ "		from binzip_host_bbs a \n"
+					+ "		left join binzip_host_bbs_imgs b \n"
+					+ "		on a.idx = b.binzip_host_bbs_idx where binzip_member_id = ? "
+					+ "		group by a.idx,a.binzip_member_id,a.host_name,a.host_email,  "
+					+ "		a.host_phone,a.host_bank,a.host_acnumber,a.zipname,  "
+					+ "		a.ziptype,a.zipaddr,a.cost,a.peoplenum,a.todaydate,a.contents,  "
+					+ "		a.host_bbs_startdate,a.host_bbs_enddate";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs=ps.executeQuery();
@@ -28,9 +36,11 @@ public class HostReserveDAO {
 				String zipname=rs.getString("zipname");
 				String ziptype=rs.getString("ziptype");
 				String zipaddr=rs.getString("zipaddr");
+				String binzip_member_id = rs.getString("binzip_member_id");
 				int cost=rs.getInt("cost");
 				int bbsidx=rs.getInt("idx");
-				HostReserveDTO dto=new HostReserveDTO(peoplenum, zipname, ziptype, zipaddr, cost, bbsidx);
+				String imgpath = rs.getString("imgpath");
+				HostReserveDTO dto = new HostReserveDTO(bbsidx, peoplenum, zipname, ziptype, zipaddr, cost, binzip_member_id, imgpath);
 				arr.add(dto);
 			}
 			return arr;

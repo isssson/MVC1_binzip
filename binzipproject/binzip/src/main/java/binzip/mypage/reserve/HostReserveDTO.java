@@ -17,10 +17,15 @@ public class HostReserveDTO {
 	private String payer;
 	private String reserver_phone;
 	
+	private String binzip_member_id;
+	private int idx;
+	
 	public HostReserveDTO() {
 		super();
 		System.out.println("HostReserveDTO 호출");
 	}
+	
+	
 
 	public HostReserveDTO(int bbsidx, String id, String reserver_startdate, String reserver_enddate, int peoplenum, String zipname,
 			String ziptype, String zipaddr, int cost, int status, String imgpath, String reserver_name, String payer, String reserver_phone) {
@@ -39,6 +44,19 @@ public class HostReserveDTO {
 		this.reserver_name = reserver_name;
 		this.payer = payer;
 		this.reserver_phone = reserver_phone;
+	}
+
+	public HostReserveDTO(int bbsidx, int peoplenum, String zipname, String ziptype, String zipaddr, int cost,
+			String binzip_member_id,  String imgpath) {
+		super();
+		this.bbsidx = bbsidx;
+		this.peoplenum = peoplenum;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.cost = cost;
+		this.binzip_member_id = binzip_member_id;
+		this.imgpath = imgpath;
 	}
 
 	public HostReserveDTO(int peoplenum, String zipname, String ziptype, String zipaddr, int cost, int bbsidx) {
@@ -192,6 +210,22 @@ public class HostReserveDTO {
 
 	public void setReserver_phone(String reserver_phone) {
 		this.reserver_phone = reserver_phone;
+	}
+
+	public String getBinzip_member_id() {
+		return binzip_member_id;
+	}
+
+	public void setBinzip_member_id(String binzip_member_id) {
+		this.binzip_member_id = binzip_member_id;
+	}
+
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 	
 	

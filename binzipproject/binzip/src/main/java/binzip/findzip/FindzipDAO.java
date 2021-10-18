@@ -278,64 +278,66 @@ public class FindzipDAO {
 	   try {
 		   conn = binzip.db.BinzipDB.getConn(); 
 		   String sql = 
-				   "SELECT *\n"
-				   + "FROM\n"
-				   + "    (SELECT ROWNUM AS rnum, a.*\n"
-				   + "    FROM\n"
-				   + "        (SELECT *\n"
-				   + "        FROM\n"
-				   + "            (WITH TAB_PPL AS\n"
-				   + "                (SELECT BINZIP_HOST_BBS_IDX AS IDX\n"
-				   + "                   , COUNT(*) CNT\n"
-				   + "                FROM BINZIP_RESERVE\n"
-				   + "                GROUP BY BINZIP_HOST_BBS_IDX\n"
-				   + "                )\n"
-				   + "            ,TAB_IMG AS\n"
-				   + "                (SELECT BINZIP_HOST_BBS_IDX AS IDX\n"
-				   + "                , MAX(IMGPATH) AS IMGPATH\n"
-				   + "                FROM BINZIP_HOST_BBS_IMGS\n"
-				   + "                GROUP BY BINZIP_HOST_BBS_IDX\n"
-				   + "                )\n"
-				   + "            SELECT a.idx\n"
-				   + "             , b.imgpath\n"
-				   + "             , a.binzip_member_id\n"
-				   + "             , a.host_name\n"
-				   + "             , a.host_email\n"
-				   + "             , a.host_phone\n"
-				   + "             , a.host_bank\n"
-				   + "             , a.host_acnumber\n"
-				   + "             , a.zipname\n"
-				   + "             , a.ziptype\n"
-				   + "             , a.zipaddr\n"
-				   + "             , a.cost\n"
-				   + "             , a.peoplenum\n"
-				   + "             , a.todaydate\n"
-				   + "             , a.contents\n"
-				   + "             , a.host_bbs_startdate\n"
-				   + "             , a.host_bbs_enddate \n"
-				   + "             , NVL(c.cnt,0) AS CNT\n"
-				   + "             , TRUNC (DBMS_RANDOM.VALUE (1, 500000)) RDN_CNT\n"
-				   + "            FROM BINZIP_HOST_BBS A, TAB_IMG B, TAB_PPL C\n"
-				   + "            WHERE A.IDX = B.IDX(+)\n"
-				   + "            AND A.IDX = C.IDX(+)\n"
-				   + "            )\n"
-				   + "        ORDER BY RDN_CNT DESC\n"
-				   + "        ) a\n"
-				   + "    ) b    \n"
+				   "SELECT *\r\n"
+				   + "FROM\r\n"
+				   + "    (SELECT ROWNUM AS rnum, a.*\r\n"
+				   + "    FROM\r\n"
+				   + "        (SELECT *\r\n"
+				   + "        FROM\r\n"
+				   + "            (WITH TAB_PPL AS\r\n"
+				   + "                (SELECT BINZIP_HOST_BBS_IDX AS IDX\r\n"
+				   + "                   , COUNT(*) CNT\r\n"
+				   + "                FROM BINZIP_RESERVE\r\n"
+				   + "                GROUP BY BINZIP_HOST_BBS_IDX\r\n"
+				   + "                )\r\n"
+				   + "            ,TAB_IMG AS\r\n"
+				   + "                (SELECT BINZIP_HOST_BBS_IDX AS IDX\r\n"
+				   + "                , MAX(IMGPATH) AS IMGPATH\r\n"
+				   + "                FROM BINZIP_HOST_BBS_IMGS\r\n"
+				   + "                GROUP BY BINZIP_HOST_BBS_IDX\r\n"
+				   + "                )\r\n"
+				   + "            SELECT a.idx\r\n"
+				   + "             , b.imgpath\r\n"
+				   + "             , a.binzip_member_id\r\n"
+				   + "             , a.host_name\r\n"
+				   + "             , a.host_email\r\n"
+				   + "             , a.host_phone\r\n"
+				   + "             , a.host_bank\r\n"
+				   + "             , a.host_acnumber\r\n"
+				   + "             , a.zipname\r\n"
+				   + "             , a.ziptype\r\n"
+				   + "             , a.zipaddr\r\n"
+				   + "             , a.cost\r\n"
+				   + "             , a.peoplenum\r\n"
+				   + "             , a.todaydate\r\n"
+				   + "             , a.contents\r\n"
+				   + "             , a.host_bbs_startdate\r\n"
+				   + "             , a.host_bbs_enddate \r\n"
+				   + "             , NVL(c.cnt,0) AS CNT\r\n"
+				   + "             , TRUNC (DBMS_RANDOM.VALUE (1, 500000)) RDN_CNT\r\n"
+				   + "            FROM BINZIP_HOST_BBS A, TAB_IMG B, TAB_PPL C\r\n"
+				   + "            WHERE A.IDX = B.IDX(+)\r\n"
+				   + "            AND A.IDX = C.IDX(+)\r\n"
+				   + "            )\r\n"
+				   + "        ORDER BY RDN_CNT DESC\r\n"
+				   + "        ) a\r\n"
+				   + "    ) b    \r\n"
 				   + "WHERE rnum >= 1 AND rnum <= 6";
+		   System.out.println("::: 랜덤이미지 쿼리 :::  " + sql);                                 
 		   
 		   ps = conn.prepareStatement(sql);
 		   rs = ps.executeQuery();
 		   
 		   ArrayList<FindzipDTO> arr = new ArrayList<FindzipDTO>();
 		   while(rs.next()) {
-			   int bbs_idx = rs.getInt("idx");
+			   int idx = rs.getInt("idx");
+			   String binzip_member_id = rs.getString("binzip_member_id");
 			   String zipname = rs.getString("zipname");
 			   String imgpath = rs.getString("imgpath");
 			   String zipaddr = rs.getString("zipaddr");
 			   String contents = rs.getString("contents");
 			   
-			   FindzipDTO dto = new FindzipDTO(bbs_idx, sql, zipname, contents, zipaddr, bbs_idx, bbs_idx, imgpath);
+			   FindzipDTO dto = new FindzipDTO(idx, binzip_member_id, zipname, zipaddr, contents, imgpath);
 			   arr.add(dto);
 		   }
 		   return arr;

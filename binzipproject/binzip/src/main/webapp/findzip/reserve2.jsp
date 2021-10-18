@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.text.NumberFormat"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,9 +40,20 @@ String bank = request.getParameter("reserver_bank");
 String acnum = request.getParameter("reserver_acnumber");
 String cost_s = request.getParameter("cost");
 String req = request.getParameter("request");
+
+String format = "yyyy-MM-dd";
+
 int cost = Integer.parseInt(cost_s);
-int pnum = Integer.parseInt(pnum_s);
-NumberFormat nf = NumberFormat.getNumberInstance();
+SimpleDateFormat sdf = new SimpleDateFormat(format);
+Date startdate = sdf.parse(sdate);
+Date enddate = sdf.parse(edate);
+
+long date = startdate.getTime() - enddate.getTime();
+long resultdate = date / (24*60*60*1000);
+resultdate = Math.abs(resultdate);
+int lastdate = (int)(resultdate);
+
+int totalcost = (cost * lastdate);
 %>
 </head>
 <body>
@@ -70,7 +83,7 @@ String binzip_host_bbs_idx = request.getParameter("idx");
 				<tr>
 					<th>예약 인원</th>
 					<td>
-						<input type="text" name="peoplenum" value="<%=pnum%>" maxlength = "2" required readonly>
+						<input type="text" name="peoplenum" value="<%=pnum_s%>" maxlength = "2" required readonly>
 					</td>
 				</tr>
 				<tr>
@@ -106,7 +119,7 @@ String binzip_host_bbs_idx = request.getParameter("idx");
 				<tr>
 					<th>비용</th>
 					<td>
-						<input type="text" name="cost" id="cost" value="<%=cost%>" readonly required readonly>					
+						<input type="text" name="cost" id="cost" value="<%=totalcost%>" readonly required readonly>					
 					</td>
 				</tr>
 				<tr>

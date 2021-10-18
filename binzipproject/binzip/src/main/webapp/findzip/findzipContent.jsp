@@ -45,27 +45,33 @@ System.out.println(cost);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BOOKING</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 <style>
 .totalinfo{
 	width: 100%;
 }
+.findzip-section { 
+	background: #000;
+}
+.booking-white {
+	color: white;
+}
 .wrap_center{
-	width: 70%;
+	width: 100%;
 	height: 600px;
 	align: right;
 	clear: both;
 }
 .container{
     margin: 0 auto;
-    width: 900px;
+    width: 100%;
     height: 600px;
     overflow: hidden;
 }
 .img_wrap{
-    width: 900px;
+    width: 1200px;
     height: 600px;
     position: absolute;
     overflow: hidden;
@@ -76,14 +82,15 @@ System.out.println(cost);
     margin: 0;
 }
 .rollimgs li{
-    position: absolute;
-    width: 900px;
-    height: 600px;
+	position: absolute;
+    width: 1200px;
+    height: 100%;
     left: 900px;
 }
 .rollimgs li img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 .rollimgs li.currentroll{
     left: 0;
@@ -97,26 +104,39 @@ System.out.println(cost);
     transition: none;
 }
 .rollimgs li.nextroll{
-    left: 900px;
+    left: 1200px;
     display: block;
     transition: none;
 }
 .rollimgs.reverse li.nextroll{
     transition: left .5s ease-in-out, right .5s ease-in-out;
 }
-#Backbutton{
-	margin-top: 60px;	
-	margin-bottom: 40px;	
-	margin-left: 150px;
-	align: right;
+#backButton {
+	margin-bottom: 15px;	
 }
-.zipinfo{
-	width: 30%;	
-	margin-top: 40px;
-	float: left;
+#backButton a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black
+}
+.zipinfo {
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
 }
 #topArticle{
 	border-top: 1px solid gray;
+}
+#topArticle .zipname {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    display: inline;
+}
+#topArticle .zipname_info {
+    font-weight: bold;
+    text-align: center;
+    display: inline;
 }
 .optype{
 	width: 20%;
@@ -129,24 +149,81 @@ System.out.println(cost);
 	margin-top: 50px;
 	display: block;
 	float: right;	
+    text-align: left;
+}
+.op-box {
+	display: block;
+    width: 100%;
+    height: 360px;
+    text-align: center;
 }
 .zipopinfo{
 	margin-top: 40px;	
+	font-size: 12px;
+}
+p.content-box {
+	text-align: left;
+}
+.info-box {
+	text-align: left;
+    margin-left: 40px;
+    margin-bottom: 60px;	
+}
+.zip-title {
+margin-top: 60px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    color: gray; 	
+    font-weight: 100;
 }
 p{
 	font-size: 12px;
 }
 #title{
+    width: 100%;
+    height: 50px;
 	margin-top: 30px;
 }
 #title label{
-	margin-right: 300px;	 
+	margin-left:40px;
+	margin-right: 280px;	 
+	color: white;
 }
+.subject-box {
+	float: left;
+}
+.date-box {
+	float: right;
+    display: flex;
+}
+.date-box div {
+	line-height: 3.5;
+}
+.date-box .btnreserve2 {
+    background-color: #000000;
+    border: 1px solid #ffff;
+    border-radius: 35px;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 15px 30px;
+    margin: 0 40px 20px !important;
+    text-decoration: none;
+}
+
+.btnreserve2:hover {
+	background-color:#ffffff;
+	color:#000000;
+	border-radius: 35px;
+	font-weight: bold;
+}
+
 #reservebt{
-	margin-left: 300px;
+	margin-left: 0px;
 }
 h2{
-	align: center;
+	text-align: center;
 	font-size: 35px;
 }
 footer{
@@ -218,15 +295,15 @@ let banner = {
 </head>
 <body>
 <%@include file="/header.jsp" %>
-<section>
-	<article>
-		<div>
-			<h2>B&nbsp;O&nbsp;O&nbsp;K&nbsp;I&nbsp;N&nbsp;G</h2>
-		</div>
-		<div id="backButton">
-			<a href="/binzip/findzip/findZip.jsp">&#x02190;돌아가기</a>
-		</div>
-	</article>		
+<div>
+	<div>
+		<h2>B&nbsp;O&nbsp;O&nbsp;K&nbsp;I&nbsp;N&nbsp;G</h2>
+	</div>
+	<div id="backButton">
+		<a href="/binzip/findzip/findZip.jsp">&#x02190;돌아가기</a>
+	</div>
+</div>
+<section class="findzip-section">	
 	<article id="topArticle">
 	<%
 	
@@ -253,26 +330,38 @@ let banner = {
 			<input type="hidden" name="d_val">
 			<input type="hidden" name="cost" value="<%= cost %>"/>
 			<input type="hidden" name="idx" value="<%= idx_s %>"/>
-				<label class="zipname"><%=dto.getZipname()%></label>
+
 				
-				<input type="date" name="sdate" min="<%=nowdate%>" max="<%=s2%>">
-				<input type="date" name="edate" min="<%=nowdate%>" max="<%=s2%>">
-								
+				<div class="subject-box">
+					<label class="zipname booking-white"><%=dto.getZipname()%></label>
+				</div>
+				<div class="date-box">
+					<div>
+						<input type="date" name="sdate" min="<%=nowdate%>" max="<%=s2%>">
+						<input type="date" name="edate" min="<%=nowdate%>" max="<%=s2%>">					
+					</div>
+					<div>
+						<input type="submit" value="예약하기" class="btnreserve2" id="reservebt">	
+					</div>
+					
+				</div>				
 			
-				<input type="submit" value="예약하기" class="btnreserve" id="reservebt">
+				
 			</div>
 			</form>
-		<div class="totalinfo">
+		<div class="totalinfo booking-white">
 			<div class="zipinfo">
-				<span>ROOM INFORMATION</span>
-				<span class="zipname"><%=dto.getZipname()%></span>
-				<p>
-				<%=dto.getContents()%>
-				</p>
-				<p>
-				체크인 17:00 &#47; 체크아웃 12:00<br>
-				기준 인원 <%= dto.getPeoplenum() %>명 (최대 인원 <%= dto.getPeoplenum() %>)<br>
-				인원 기준 없이, 비&#46;성수기 구분없이 1일 <%= nf.format(cost) %>원
+			
+				<div class="info-box">
+					<span>ROOM INFORMATION </span>
+					<p class="content-box">
+					체크인 17:00 &#47; 체크아웃 12:00<br>
+					기준 인원 <%= dto.getPeoplenum() %>명 (최대 인원 <%= dto.getPeoplenum() %>)<br>
+					인원 기준 없이, 비&#46;성수기 구분없이 1일 <%= nf.format(cost) %>원
+					</p>
+				</div>
+				<p class="zip-title">
+					<%=dto.getContents()%>
 				</p>
 			</div>
 			<%
@@ -300,63 +389,64 @@ let banner = {
 			</div>
 		</div>
 		</article>
-		<div class="zipopinfo">
-			<span class="optype">
-				<label>기&nbsp;본&nbsp;옵&nbsp;션</label>
-			</span>
-			<span class="opname">
-				<label>화장실&nbsp;&nbsp;&nbsp;&nbsp;침구류&nbsp;&nbsp;&nbsp;&nbsp;화재경보기&nbsp;&nbsp;&nbsp;&nbsp;소화기&nbsp;&nbsp;&nbsp;&nbsp;구급상자</label>
-			</span>
-		</div>
-		<div class="zipopinfo">
-			<span class="optype">
-				<label>집&nbsp;옵&nbsp;션</label>			
-			</span>
-			<span class="opname">
-				<%
-				int ct1 = 1;
-				int ct2 = 2;
-				int ct3 = 3;
-				ArrayList<Binzip_ZipOptionDTO> ziparr = new ArrayList<Binzip_ZipOptionDTO>();
-				
-					ziparr = zipopdao.getZipOption(idx, ct1);
-					if(ziparr == null || ziparr.size() == 0){
-						%>
-							<h2>등록된 정보가 없습니다.</h2>
-						<%				
-					}else{
-						for(int i = 0; i < ziparr.size(); i++){						
-						%>
-							<label><%=ziparr.get(i).getOp()%></label>&nbsp;&nbsp;&nbsp;
-						<%
-						}
-					}							
-				%>
-			</span>
-		</div>
-		<div class="zipopinfo">
-			<span class="optype">
-				<label>주&nbsp;방&nbsp;옵&nbsp;션</label>			
-			</span>
-			<span class="opname">
-				<%
-					ziparr = zipopdao.getZipOption(idx, ct2);
+		<article class="op-box booking-white">
+			<div class="zipopinfo">
+				<span class="optype">
+					<label>기&nbsp;본&nbsp;옵&nbsp;션</label>
+				</span>
+				<span class="opname">
+					<label>화장실&nbsp;&nbsp;&nbsp;&nbsp;침구류&nbsp;&nbsp;&nbsp;&nbsp;화재경보기&nbsp;&nbsp;&nbsp;&nbsp;소화기&nbsp;&nbsp;&nbsp;&nbsp;구급상자</label>
+				</span>
+			</div>
+			<div class="zipopinfo">
+				<span class="optype">
+					<label>집&nbsp;옵&nbsp;션</label>			
+				</span>
+				<span class="opname">
+					<%
+					int ct1 = 1;
+					int ct2 = 2;
+					int ct3 = 3;
+					ArrayList<Binzip_ZipOptionDTO> ziparr = new ArrayList<Binzip_ZipOptionDTO>();
 					
-					if(ziparr == null || ziparr.size() == 0){
-						%>
-							<h2>등록된 주방 옵션이 없습니다.</h2>
-						<%
-					}else{
-						for(int i = 0; i < ziparr.size(); i++){
+						ziparr = zipopdao.getZipOption(idx, ct1);
+						if(ziparr == null || ziparr.size() == 0){
+							%>
+								등록된 정보가 없습니다.
+							<%				
+						}else{
+							for(int i = 0; i < ziparr.size(); i++){						
 							%>
 								<label><%=ziparr.get(i).getOp()%></label>&nbsp;&nbsp;&nbsp;
 							<%
-						}
-					}		
-				%>				
-			</span>
-		</div>
-		<div class="zipopinfo">
+							}
+						}							
+					%>
+				</span>
+			</div>
+			<div class="zipopinfo">
+				<span class="optype">
+					<label>주&nbsp;방&nbsp;옵&nbsp;션</label>			
+				</span>
+				<span class="opname">
+					<%
+						ziparr = zipopdao.getZipOption(idx, ct2);
+						
+						if(ziparr == null || ziparr.size() == 0){
+							%>
+								등록된 주방 옵션이 없습니다.
+							<%
+						}else{
+							for(int i = 0; i < ziparr.size(); i++){
+								%>
+									<label><%=ziparr.get(i).getOp()%></label>&nbsp;&nbsp;&nbsp;
+								<%
+							}
+						}		
+					%>				
+				</span>
+			</div>
+			<div class="zipopinfo">
 			<span class="optype">
 				<label>욕&nbsp;실&nbsp;옵&nbsp;션</label>			
 			</span>
@@ -366,7 +456,7 @@ let banner = {
 					
 					if(ziparr == null || ziparr.size() == 0){
 						%>
-							<h2>등록된 욕실 옵션이 없습니다.</h2>
+							등록된 욕실 옵션이 없습니다.
 						<%
 					}else{
 						for(int i = 0; i < ziparr.size(); i++){
@@ -378,14 +468,9 @@ let banner = {
 				%>				
 			</span>
 		</div>
+		</article>
 </section>
+
 <%@include file="/footer.jsp" %>
 </body>
 </html>
-
-
-
-
-
-
-

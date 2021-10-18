@@ -4,8 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HOSTING</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
+<style>
+h2{
+text-align: center;
+}
+
+</style>
 </head>
 <body>
 <%@include file="/header.jsp" %>

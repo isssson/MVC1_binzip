@@ -142,6 +142,7 @@
 			width: 400px;
 			height: 266px;
 			padding-bottom: 30px;
+			object-fit: cover;
 		}
 		.p_discribe {
 			margin: 50px 0 70px;
@@ -151,6 +152,18 @@
 			font-weight: bold;
 			font-size: 14pt;
 			margin-left: 40px;	
+		}
+		.lb_book a:link{
+			text-decoration: decoration;
+			color: black;
+		}
+		.lb_book a:visited{
+			text-decoration: none;
+			color: black;
+		}
+		.lb_book a:hover {
+			cursor: pointer;
+			color: lightgray;
 		}
 		.paginateon_area{
 			text-align: center;
@@ -246,7 +259,7 @@
 								<input type="text" name="zipaddr" value="<%= zipaddr %>"/>
 							</li>
 							<li class="let_empty" style=margin-left:50px>
-								<label>체크 인</label>
+								<label>체크 인&nbsp;&nbsp;</label>
 								<input type="date" name="inDate" min="<%= s_minDate %>" required pattern="\d{4}-\d{2}-\d{2}" value="<%= inDate %>"/>
 							</li>
 							<li class="let_empty" style=margin-left:50px>
@@ -254,7 +267,7 @@
 								<input type="date" name="outDate" required pattern="\d{4}-\d{2}-\d{2}" value="<%= outDate %>"/>
 							</li>
 						</ul>
-						<img src="findzip_imgs/button_reset.png" alt="초기화버튼" style="width:30px;float:right;" id="btn_init" onclick="formReset();">
+						<img src="findzip_imgs/button_reset.png" alt="초기화버튼" style="width:30px;float:right;" id="btn_init" onclick="location.href='findZip.jsp'">
 					</div>
 					<div class="search02" style="clear:both;">
 						<ul>

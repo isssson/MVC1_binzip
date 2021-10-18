@@ -9,7 +9,7 @@
 <body>
 <footer>
 	<div class="footerImg">
-		<img src="/binzip/img/main_imgs/binzip_logo_bottom.png" alt="하단로고">
+		<img src="/binzip/main_imgs/binzip_logo_bottom.png" alt="하단로고">
 	</div>
 	<p class="footerPanel">
 		상호 : (주) BINZIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대표자 : Tim of Two<br><br>

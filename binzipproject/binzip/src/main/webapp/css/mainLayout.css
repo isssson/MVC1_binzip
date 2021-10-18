@@ -99,12 +99,20 @@ footer{
 	margin: 0px auto;
 	
 }
-.zipOffer img{
-	width: 280px;
-	height: auto;
-	display: block;
-	margin: 0px auto;
-}
+
 .zipOffer a{
 	margin-left: 10px;
+}
+
+.lb_book a:link{
+			text-decoration: decoration;
+			color: black;
+		}
+.lb_book a:visited{
+		text-decoration: none;
+		color: black;
+	}
+.lb_book a:hover {
+	cursor: pointer;
+	color: lightgray;
 }

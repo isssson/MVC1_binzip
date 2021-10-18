@@ -1,10 +1,11 @@
-권세윤
+server/context.xml
 
-버튼스타일 추가
+<context> 안에
+<Resources>
+   <PostResources className="org.apache.catalina.webresources.DirResourceSet"
+                 webAppMount="/img" 
+                 base="C:\권세윤\semi\binzipproject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\binzip\hosting\imgupload"/>
+</Resources>
 
-슬라이드 참고
-https://codepen.io/kkt9102/pen/XWXbqKV
 
-***뺀기능
-
-join - 비밀번호 특수문자 포함
+삽입

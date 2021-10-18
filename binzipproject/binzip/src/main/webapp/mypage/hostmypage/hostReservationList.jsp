@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="binzip.mypage.reserve.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.text.*" %>
 <jsp:useBean id="hostmypagereservedao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
 <jsp:useBean id="hostmypagereservedto" class="binzip.mypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
@@ -50,6 +51,7 @@ h4{
 	float:left;
 	margin-left: 250px;
 	margin-right: 40px;
+	object-fit: cover;
 }
 .info{
 	margin-bottom: 500px;
@@ -94,25 +96,31 @@ System.out.println(userid);
 		<h4>내가 받은 예약 현황</h4><hr>
 	</div>
 		<%
-		ArrayList<HostReserveDTO> arr=hostmypagereservedao.reserveInfo(userid);
-		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
+		ArrayList<HostReserveDTO> arr = hostmypagereservedao.reserveInfo(userid);
+		if(arr == null || arr.size() == 0 || arr.get(0).getZipname() == null) {
 			%>
 			<div class="info">
 				<h3>업로드한 집이 없습니다.</h3>
 			</div>
 			<%
 		}else{
-			for(int i=0;i<arr.size();i++){
+			for(int i = 0; i < arr.size(); i++) {
+				String imgpath = arr.get(i).getImgpath();
+				String[] imgpath_main = imgpath.split(",");
+				
+				int cost = arr.get(i).getCost();
+				DecimalFormat df = new DecimalFormat("###,###,###");
+				String dfCost = df.format(cost);
 				%>
 				<div class="info">
 					<div class="zipres">
-						<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
+						<img src="/img/<%= arr.get(i).getBinzip_member_id() %>/<%= arr.get(i).getBbsidx() %>/<%= imgpath_main[0] %>" alt="추천집이미지">
 					</div>
 					<div class="info2">
 						<h2> <%=arr.get(i).getZipname() %></h2>
-						<h4> <%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h4>
-						<h4>예약최대인원 :  <%=arr.get(i).getPeoplenum() %> 명</h4>
-						<h2>&#8361;<%=arr.get(i).getCost() %></h2>
+						<h4> <%=arr.get(i).getZiptype() %> /  <%= arr.get(i).getZipaddr() %></h4>
+						<h4>예약최대인원 :  <%= arr.get(i).getPeoplenum() %> 명</h4>
+						<h2>&#8361;<%= dfCost %></h2>
 						<input type="button" value="내가 올린 집으로 가기" onclick='location.href="/binzip/mypage/hostmypage/myZipUploaded.jsp"'>
 					</div>
 				</div>

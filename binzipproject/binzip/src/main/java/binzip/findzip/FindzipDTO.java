@@ -94,7 +94,17 @@ public class FindzipDTO {
 		this.contents = contents;
 	}
 
-	
+	//random constructor
+	public FindzipDTO(int idx, String binzip_member_id, String zipname, String zipaddr, String contents,
+			String imgpath) {
+		super();
+		this.idx = idx;
+		this.binzip_member_id = binzip_member_id;
+		this.zipname = zipname;
+		this.zipaddr = zipaddr;
+		this.contents = contents;
+		this.imgpath = imgpath;
+	}
 	
 	
 	

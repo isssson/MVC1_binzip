@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>RESERVATION</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 <style>
