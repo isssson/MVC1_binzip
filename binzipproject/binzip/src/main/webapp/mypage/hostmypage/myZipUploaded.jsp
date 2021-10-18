@@ -117,7 +117,7 @@ String userid = (String)session.getAttribute("sid");
 						%>
 						<tr>
 							<td><%=arr.get(i).getBbsidx() %></td>
-							<td><%=arr.get(i).getZipname() %></td>
+							<td><a href='/binzip/findzip/findzipContent.jsp?idx=<%=arr.get(i).getBbsidx()%>'><%=arr.get(i).getZipname() %></a></td>
 							<td><%=arr.get(i).getZipaddr() %></td>
 							<td><%=arr.get(i).getPeoplenum() %> 명</td>
 							<td>&#8361;<%=arr.get(i).getCost() %></td>

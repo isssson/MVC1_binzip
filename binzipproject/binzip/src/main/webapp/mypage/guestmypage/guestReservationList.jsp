@@ -105,7 +105,7 @@ String userid=(String)session.getAttribute("sid");
 						<img src="/binzip/img/main_imgs/test_img_square.jpg" alt="추천집이미지">
 					</div>
 					<div class="info2">
-						<h2><%=arr.get(i).getZipname() %></h2>
+						<h2><a href='/binzip/findzip/findzipContent.jsp?idx=<%=arr.get(i).getBbsidx()%>'><%=arr.get(i).getZipname() %></a></h2>
 						<h4><%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h4>
 						<h4>check in:<%=arr.get(i).getReserve_startdate()%></h4>
 						<h4>check out:<%=arr.get(i).getReserve_enddate()%></h4>
