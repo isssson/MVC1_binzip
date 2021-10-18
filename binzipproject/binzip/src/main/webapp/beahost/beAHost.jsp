@@ -4,55 +4,62 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BINZIP-BE A HOST</title>
-<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
-<style type="text/css">	
-.beahost_main_text{
-	text-align: center
-}
-
-.terms_box{
-	border: 2px solid lightgray;
-	text-align: center; 
-}
-</style>
-
-<script type="text/javascript">
-	function selectAll(selectAll){
-		 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-		 checkboxes.forEach((checkbox) => {checkbox.checked = selectAll.checked})
-	}
-</script>
+<title>BE A HOST</title>
+	<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
+	<style type="text/css">
+		
+		.beahost_main_text{
+			text-align: center
+		}
+		.terms_box{
+			border: 2px solid lightgray;
+			text-align: center; 
+		}
+	</style>
+	
+	<script type="text/javascript">
+		function selectAll(selectAll)  {
+			  const checkboxes 
+			     = document.querySelectorAll('input[type="checkbox"]');
+			  
+			  checkboxes.forEach((checkbox) => {
+			    checkbox.checked = selectAll.checked
+			  })
+		}
+	</script>
+	
 </head>
+
 <body>
-<%@include file="../header.jsp" %>
-<%
-	if(sid == null || sid.equals("")) {
-%>
-		<script>
-			window.alert('로그인 후 이용가능한 서비스 입니다.');
-			location.href = '/binzip';
-		</script>
-<%
-		return;
-	}
-%>
-<section>
-	<div class="beahost_main_text">
-		<h1>HOST 등록 요청하기</h1>
-	</div>		
-	<form name="fm_terms" action="beAHost_ok.jsp">
-		<div class="terms_box">
-			<div class="terms_agreement">
-				<h3>약관동의</h3>
-				<hr>
-			</div>
-			<div class="terms_use">
-				<h4>이용약관</h4>
-				<div class="terms_check_all">
-					<b>이용약관, 개인정보취급방침에 모두 동의 합니다.</b>
-					<input type="checkbox" name="agreement_all" value='selectall' onclick='selectAll(this)'/>
+	<%@include file="../header.jsp" %>
+	<%
+		if(sid == null || sid.equals("")) {
+	%>
+			<script>
+				window.alert('로그인 후 이용가능한 서비스 입니다.');
+				location.href = '/binzip';
+			</script>
+	<%
+			return;
+		}
+	%>
+	<section>
+		<div class="beahost_main_text">
+			<h1>HOST 등록 요청하기</h1>
+		</div>
+		
+		<form name="fm_terms" action="beAHost_ok.jsp">
+			<div class="terms_box">
+				<div class="terms_agreement">
+					<h3>약관동의</h3>
+					<hr>
 				</div>
+				<div class="terms_use">
+					<h4>이용약관</h4>
+					<div class="terms_check_all">
+						<b>이용약관, 개인정보취급방침에 모두 동의 합니다.</b>
+						<input type="checkbox" name="agreement_all" value='selectall' onclick='selectAll(this)'/>
+					</div>
 					<br>
 					<textarea rows="15" cols="100" readonly>
 개인정보 수집 및 이용 동의
@@ -67,13 +74,13 @@
 3. 개인정보를 제공받는 자의 이용목적: 사업자회원과 예약이용자의 원활한 거래 진행, 고객상담, 불만처리 등 민원 처리, 분쟁조정 해결을 위한 기록보존
 4. 개인정보를 제공받는 자의 개인정보 보유 및 이용기간: 개인정보 이용목적 달성 시 까지 보존합니다.
 5. 동의 거부권 등에 대한 고지: 정보주체는 개인정보 제공 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.
-				</textarea><br>
-				<div class="input_check">
-					<label>서비스 이용 약관 동의(필수)</label>
-					<input type="checkbox" name="termsOfService"/>
-				</div>
-				<h4>가입정보관리정책</h4>
-				<textarea rows="15" cols="100" readonly>
+					</textarea><br>
+					<div class="input_check">
+						<label>서비스 이용 약관 동의(필수)</label>
+						<input type="checkbox" name="termsOfService"/>
+					</div>
+					<h4>가입정보관리정책</h4>
+					<textarea rows="15" cols="100" readonly>
 제 1조 (총칙)
 1. 개인정보란 생존하는 개인에 관한 정보로서 당해 정보에 포함되어 있는 성명, 주민등록번호 등의 사항에 의하여 당해 개인을 식별할 수 있는 정보 (당해 정보만으로는 특정 개인을 식별할 수 없더라도 다른 정보와 용이하게 결합하여 식별할 수 있는 것을 포함합니다.) 를 말합니다.
 2. 빈집은 귀하의 개인정보 보호를 매우 중요시하며, ‘정보통신망이용촉진 및 정보보호에 관한 법률’ 상의 개인정보 보호규정 및 정보통신부가 제정한 ‘개인정보 보호지침’을 준수하고 있습니다.
@@ -96,21 +103,21 @@
 6. 비회원의 개인정보보호
 - 빈집은 비회원 주문의 경우에도 예약정보, 대금결제, 예약내역 조회 및 예약확인, 실명여부 확인을 위하여 필요한 개인정보만을 요청하고 있으며, 이 경우 그 정보는 대금결제 및 객실예약 관련된 용도 이외에는 다른 어떠한 용도로도 사용되지 않습니다.
 - 빈집은 비회원의 개인정보도 회원과 동등한 수준으로 보호합니다.
-				</textarea><br>
-				<div class="input_check">
-					<label>개인정보 취급방침 동의 (필수)</label>
-					<input type="checkbox" name="privacyPolicy"/>
+					</textarea><br>
+					<div class="input_check">
+						<label>개인정보 취급방침 동의 (필수)</label>
+						<input type="checkbox" name="privacyPolicy"/>
+					</div>
+					<br>
+					<div>
+						<button type="reset">선택해제</button>
+						<button type="submit" value="next_button" name="next_button">다음으로</button>
+					</div>
 				</div>
 				<br>
-				<div>
-					<button type="reset">선택해제</button>
-					<button type="submit" value="next_button" name="next_button">다음으로</button>
-				</div>
 			</div>
-			<br>
-		</div>
-	</form>
-</section>
-<%@include file="../footer.jsp" %>
+		</form>
+	</section>
+	<%@include file="../footer.jsp" %>
 </body>
 </html>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="binzip.zipoption.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="binzipoptiondao" class="binzip.zipoption.Binzip_ZipOptionDAO" scope="session"></jsp:useBean>
+<jsp:useBean id="zipopdao" class="binzip.zipoption.Binzip_ZipOptionDAO" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +62,7 @@ long freeSize=imgwf.getFreeSize()/1024;
 <div class="hosting_lb">
 	<label>집 옵션</label>
 	<%
-	ArrayList<Binzip_ZipOptionDTO> arr1=binzipoptiondao.zipOptionList();
+	ArrayList<Binzip_ZipOptionDTO> arr1=zipopdao.zipOptionList();
 	if(arr1==null||arr1.size()==0){
 		%>
 		<label><input type="checkbox" name="zipop" value="benotin">없음</label>
@@ -79,7 +79,7 @@ long freeSize=imgwf.getFreeSize()/1024;
 <div class="hosting_lb">
 	<label>주방 옵션</label>
 	<%
-	ArrayList<Binzip_ZipOptionDTO> arr2=binzipoptiondao.kitchenOptionList();
+	ArrayList<Binzip_ZipOptionDTO> arr2=zipopdao.kitchenOptionList();
 	if(arr2==null||arr2.size()==0){
 		%>
 		<label><input type="checkbox" name="zipop" value="benotin">없음</label>
@@ -96,7 +96,7 @@ long freeSize=imgwf.getFreeSize()/1024;
 <div class="hosting_lb">
 	<label>욕실 옵션</label>
 	<%
-	ArrayList<Binzip_ZipOptionDTO> arr3=binzipoptiondao.bathOptionList();
+	ArrayList<Binzip_ZipOptionDTO> arr3=zipopdao.bathOptionList();
 	if(arr3==null||arr3.size()==0){
 		%>
 		<label><input type="checkbox" name="zipop" value="benotin">없음</label>

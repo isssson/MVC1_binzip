@@ -18,8 +18,8 @@ public class Binzip_HostingDTO {
 	private int peoplenum;
 	private Date todaydate;
 	private String contents;
-	private Date host_bbs_startdate;
-	private Date host_bbs_enddate;
+	private String host_bbs_startdate;
+	private String host_bbs_enddate;
 	
 	public Binzip_HostingDTO() {
 		super();
@@ -27,7 +27,7 @@ public class Binzip_HostingDTO {
 
 	public Binzip_HostingDTO(int idx, String binzip_member_id, String host_name, String host_email, String host_phone,
 			String host_bank, String host_acnumber, String zipname, String ziptype, String zipaddr, int cost,
-			int peoplenum, Date todaydate, String contents, Date host_bbs_startdate, Date host_bbs_enddate) {
+			int peoplenum, Date todaydate, String contents, String host_bbs_startdate, String host_bbs_enddate) {
 		super();
 		this.idx = idx;
 		this.binzip_member_id = binzip_member_id;
@@ -159,19 +159,19 @@ public class Binzip_HostingDTO {
 		this.contents = contents;
 	}
 
-	public Date getHost_bbs_startdate() {
+	public String getHost_bbs_startdate() {
 		return host_bbs_startdate;
 	}
 
-	public void setHost_bbs_startdate(Date host_bbs_startdate) {
+	public void setHost_bbs_startdate(String host_bbs_startdate) {
 		this.host_bbs_startdate = host_bbs_startdate;
 	}
 
-	public Date getHost_bbs_enddate() {
+	public String getHost_bbs_enddate() {
 		return host_bbs_enddate;
 	}
 
-	public void setHost_bbs_enddate(Date host_bbs_enddate) {
+	public void setHost_bbs_enddate(String host_bbs_enddate) {
 		this.host_bbs_enddate = host_bbs_enddate;
 	}
 	

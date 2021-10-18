@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.oreilly.servlet.*"%>
-<jsp:useBean id="imgwf" class="binzip.wf.ImgWebFolder" scope="session"></jsp:useBean>
-<%
-String savePath = imgwf.HOST_HOME+"/"+imgwf.getCrpath(); 
-try{
-MultipartRequest mr = new MultipartRequest(request,savePath,(int)imgwf.getFreeSize(),"utf-8");
-}catch(Exception e){
-	%>
-	<script>
-	window.alert('파일 업로드 실패! 용량 확인 후 다시 시도해 주세요');
-	window.self.close();
-	</script>
-	<%
-}
-%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <script>
-window.alert('파일 업로드 성공!');
-location.href='addHosting.jsp?=cp<%=imgwf.getCrpath()%>';
+	function plusFile(){
+	   var uploadEl = document.all.uploadLabel.innerHTML;
+	   document.all.uploadLabel.innerHTML = uploadEl+'<br> <input type="file" name="imgupload" accept="image/*">';
+	}
 </script>
+</head>
+<body>
+<form name="imgUpload" action="imgUpload_ok.jsp" method="post" enctype="multipart/form-data">
+	<fieldset>
+		<legend>이미지업로드</legend>
+		<label id="uploadLabel">ZIP 사진 올리기</label><br>
+		<input type="file" name="imgupload" accept="image/*"><a onclick="plusFile();" style="cursor:pointer; color:blue;">추가</a><br>
+		<input type="submit" value="이미지올리기">
+	</fieldset>
+</form>
+</body>
+</html>

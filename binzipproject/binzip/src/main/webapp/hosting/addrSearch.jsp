@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="binzip.addr.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="binzipaddrdao" class="binzip.addr.Binzip_AddrDAO"></jsp:useBean>
+<jsp:useBean id="binzipaddrdao" class="binzip.addr.Binzip_AddrDAO" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +24,10 @@ String ziptype = request.getParameter("ziptype");
 		var workType = status;
 		location.href="/binzip/hosting/addrSearch.jsp?si_do="+sido+"&si_gun_gu="+sigungu+"&road_name="+roadname+"&workType="+workType;
 	}	
-	
-	function finalSelect(){
-		let result = document.addrsido.value + " " + document.all.addsigungu.value + " " + document.all.addrro.value;
-		opener.firstAddr.value=result;
-		window.close();
+	function finalSelect() {
+		var result = document.all.addrsido.value + " "+ document.all.addrsigungu.value + " " + document.all.addrro.value+" "+document.all.de_addr.value;		
+		opener.firstAddr.value = result;
+		window.close();		
 	}
 	
 </script>
@@ -40,7 +39,7 @@ String ziptype = request.getParameter("ziptype");
 </head>
 <body>
 <section>
-	<form name="addr_search_div" action="addrSearch_ok.jsp" method="post">
+	<form name="addr_search_div">
 	<input type="hidden" name="ziptype" value="<%=ziptype%>">
 		<div class="addrsearch">
 			<select name="addrsido" onchange="selectVal('getGu');">
@@ -48,6 +47,7 @@ String ziptype = request.getParameter("ziptype");
 				<%
 					ArrayList<String> si = binzipaddrdao.si(workType,"si_do");				
 					for(int i = 0;i<si.size();i++){
+						System.out.println("");
 						si_do = si_do+"";
 						String temp = si.get(i);
 						if(!(si_do.equals(temp))){
@@ -75,7 +75,7 @@ String ziptype = request.getParameter("ziptype");
 					}				
 				%>				
 			</select>
-			<select name="addrro">
+			<select name="addrro" >
 				<option value="">도로명</option>
 				<%
 					ArrayList<String> road = binzipaddrdao.ro(workType,si_do,si_gun_gu);
@@ -87,12 +87,13 @@ String ziptype = request.getParameter("ziptype");
 							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%									
 						}else{
 							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%
-						}
+					}
 				}
 
 				%>
-			</select>			
-			<input type="button" value="선택하기" onclick="finalSelect();">	
+			</select><br>
+			<input type="text" name="de_addr" placeholder="상세주소를 입력해주세요">
+			<input type="button" value="선택하기" onclick = "finalSelect();">	
 		</div>
 	</form>
 </section>

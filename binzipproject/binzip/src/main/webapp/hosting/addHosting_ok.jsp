@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h2>hi</h2>
-</body>
-</html>
+<%request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="hostdto" class="binzip.hosting.Binzip_HostingDTO" scope="session"></jsp:useBean>
+<jsp:setProperty property="*" name="hostdto"/>    
+<jsp:useBean id="hostdao" class="binzip.hosting.Binzip_HostingDAO" scope="session"></jsp:useBean>
+<%
+int result = hostdao.hostingWrite(hostdto);
+String msg = result>0?"거의 다 왔어요 :) 조금만 더 작성해주세요 !":"호스팅중 문제가 발생했습니다. 다시 작성해주세요.";
+%>
+<script>
+window.alert('<%=msg%>');
+location.href='addHosting_2.jsp';
+</script>

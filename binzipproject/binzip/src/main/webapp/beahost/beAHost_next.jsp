@@ -1,39 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BINZIP-BE A HOST</title>
-<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
-<style type="text/css">
-.beahost_main_text{
-	text-align: center
-}
-table {
-	margin: 0px auto;
-	width: 1000px;
-	border-top: 3px double gray;
-	border-bottom: 3px double gray;
-	text-align: center;
-}	
-table th{
-	background-color: lightgray;
-}
-.submitbt{
-	text-align: center
-}	
-</style>
+<title>BE A HOST</title>
+	<link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
+	<style type="text/css">
+		.beahost_main_text{
+			text-align: center
+		}
+		table {
+			margin: 0px auto;
+			width: 1000px;
+			border-top: 3px double gray;
+			border-bottom: 3px double gray;
+			text-align: center;
+		}	
+		table th{
+			background-color: lightgray;
+		}
+		.submitbt{
+			text-align: center
+		}	
+	</style>
 	
-<script type="text/javascript">
-	function selectAll(selectAll)  {
-		  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-		  
-		  checkboxes.forEach((checkbox) => {checkbox.checked = selectAll.checked})
-	}
-</script>
+	<script type="text/javascript">
+		function selectAll(selectAll)  {
+			  const checkboxes 
+			     = document.querySelectorAll('input[type="checkbox"]');
+			  
+			  checkboxes.forEach((checkbox) => {
+			    checkbox.checked = selectAll.checked
+			  })
+		}
+	</script>
 </head>
 <body>
-<%@include file="../header.jsp" %>
+	<%@include file="../header.jsp" %>
 	<section>
 		<div class="beahost_main_text">
 			<h1>HOST 등록 요청하기</h1>
@@ -88,6 +92,6 @@ table th{
 			</div>
 		</form>
 	</section>
-<%@include file="../footer.jsp" %>
+	<%@include file="../footer.jsp" %>
 </body>
 </html>

@@ -104,7 +104,9 @@
 				for(int i = 0; i < arr.size(); i++) {
 					%>
 					<tr>
-						<td><%= arr.get(i).getIdx() %></td>
+						<td>
+							<%= arr.get(i).getIdx() %>
+						</td>
 						<td>
 						<%
 							switch(arr.get(i).getStatus()) {
@@ -117,11 +119,11 @@
 						</td>
 						<td>
 							<%
-							for(int k = 0; k < arr.get(i).getLev(); k++) {
+							for(int j = 0; j < arr.get(i).getLev(); j++) {
 								out.println("&nbsp;&nbsp;");
 							}
 							%>
-							<a href="helpContents.jsp?idx=<%=arr.get(i).getIdx() %>">
+							<a href="helpContents.jsp?idx=<%= arr.get(i).getIdx() %>">
 								<%= arr.get(i).getSubject() %>
 							</a>
 						</td>

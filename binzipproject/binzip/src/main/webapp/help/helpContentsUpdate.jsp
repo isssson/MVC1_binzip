@@ -76,7 +76,7 @@
 							%>
 						</label>
 						<label>
-							<b><%= dto.getSubject().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></b>
+							<b><%= dto.getSubject().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;") %></b>
 						</label>
 					</span>
 					<span class="help_write_readnum">
@@ -86,7 +86,7 @@
 				<hr>
 				<div class="help_write_contents">
 					<textarea rows="30" cols="120" name="contents">
-						<%= dto.getContents().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
+						<%= dto.getContents().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;") %>
 					</textarea>
 				</div>
 				<br>
