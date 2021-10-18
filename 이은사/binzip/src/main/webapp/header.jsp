@@ -13,11 +13,11 @@
 <head>
 	<meta charset="UTF-8">
 	<script>
-		function openWhere(){
-			window.open("/binzip/where/where.jsp","where","width=500, height=300, left=800, top=300");
+		function openWhere() {
+			window.open("/binzip/where/where.jsp", "where", "width=800, height=400, left=700, top=300");
 		}
-		function openLogin(){
-			window.open("/binzip/member/login.jsp","where","width=500, height=300, left=800, top=300");
+		function openLogin() {
+			window.open("/binzip/member/login.jsp", "where", "width=500, height=300, left=800, top=300");
 		}
 	</script>
 </head>
@@ -31,7 +31,7 @@
 		<ul>
 			<li class="whereMenu">
 				<img src="/binzip/main_imgs/icon_locate.jpg" alt="위치로고" id="locateIcon">
-				<a href="#">WHERE ?</a>
+				<a href="javascript:openWhere();">WHERE ?</a>
 			</li>
 			<li class="otherMenu">
 				<a href="/binzip/findzip/findZip.jsp">FIND ZIP</a>
@@ -66,7 +66,7 @@
 						<%
 					} else if(sgrade.equals(mdao_header.HOST)) {
 						%>
-						<a href="/binzip/mypage/myPage.jsp">
+						<a href="/binzip/mypage/hostmypage/hostMyPage.jsp">
 						<%
 					} else if(sgrade.equals(mdao_header.ADMIN)) {
 						%>
