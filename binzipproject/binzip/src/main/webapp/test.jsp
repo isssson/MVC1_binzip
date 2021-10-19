@@ -13,6 +13,6 @@
 <%= request.getSession().getServletContext().getRealPath("/") %>
 <h1>2</h1>
 <%= application.getRealPath("/img") %>
-<img alt="test" src="/img/1111/13/ignant-design-michelle-wentworth-ns-residence-04.jpg">
+<img alt="test" src="/img/test.png">
 </body>
 </html>

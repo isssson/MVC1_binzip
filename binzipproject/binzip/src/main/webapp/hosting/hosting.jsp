@@ -10,7 +10,22 @@
 h2{
 text-align: center;
 }
-
+.hostMyButton {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 20px;
+}
+.hostMyButton:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
 </style>
 </head>
 <body>
@@ -43,8 +58,8 @@ text-align: center;
 			<label><input type="radio" name="ziptype" value="outhoues"></label>
 		</div>
 		<div>
-			<input type="submit" value="다음으로">
-			<input type="button" value="취소" onclick="javascript:location.href='/binzip/index.jsp';">
+			<input type="submit" class="hostMyButton" value="다음으로">
+			<input type="button" class="hostMyButton" value="취소" onclick="javascript:location.href='/binzip/index.jsp';">
 		</div>
 	</form>	
 </section>

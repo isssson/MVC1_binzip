@@ -30,10 +30,13 @@ InfoDTO dto=hostmypagedao.hostInfo(userid);
 #menu ul li a{
  	display: block;
  	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
 }
 #menu ul li a:hover{
-	background: gray;
-	color: black;
+	color: white;
 }
 h2{
 	font-size: 40px;
@@ -72,6 +75,26 @@ th, td {
     border-bottom: 1px solid #444444;
     padding: 10px;
 }
+.btjoin {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 2px;
+}
+.btjoin:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
+.btalign{
+	text-align: center;
+}
+
 </style>
 </head>
 <script>
@@ -127,9 +150,16 @@ function popupPhonecheck(){
 					<td><input type="email" name="email" value=<%=dto.getEmail() %> readonly></td>
 				</tr>
 			</table>
-			<input type="submit" value="정보수정하기">
+			<br>
+			<div style="text-align: center;">
+			<input type="submit" value="정보수정하기" class="btjoin">
+			</div>
+			<br>
 		</form>
+		
+		<div style="text-align: center;">
 		<input type="button" value="탈퇴하기" class="btjoin" onclick="location.href='/binzip/mypage/hostmypage/bridgeDeleteMember.jsp'">
+		</div>
 	</article>
 </section>
 <%@include file="../../footer.jsp" %>

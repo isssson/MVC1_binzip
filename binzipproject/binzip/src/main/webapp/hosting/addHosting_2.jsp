@@ -28,11 +28,22 @@ section{
 	font-size:17px;
 	padding:6px 19px;
 	text-decoration:none;
+	margin-top: 15px;
+	margin-bottom: 18px;
 }
 .myButton:hover {
 	background-color:#ffffff;
 	color:#000000;
 }
+label{ 
+	display:inline-block; 
+	width:150px; 
+	line-height:35px; 
+	text-align: left;
+	margin-left: 10px;
+}
+
+
 </style>
 </head>
 <body>
@@ -78,11 +89,11 @@ imgwf.host_BbsImgFolderExist();
 				<%
 			}else{
 				for(int i=0;i<arr1.size();i++){
-					if(i % 8 == 0){
+					if(i % 6 == 0){
 						%><br><%
 					}
 					%>
-					<label><input type="checkbox" name="zop" value="<%=arr1.get(i).getOp()%>"><%=arr1.get(i).getOp()%></label>
+					<label class="chbsize"><input type="checkbox" name="zop" value="<%=arr1.get(i).getOp()%>"><%=arr1.get(i).getOp()%></label>
 					<%
 				}
 			}
@@ -101,11 +112,11 @@ imgwf.host_BbsImgFolderExist();
 				<%
 			}else{
 				for(int i=0;i<arr2.size();i++){
-					if(i % 8 == 0){
+					if(i % 6 == 0){
 						%><br><%
 					}
 					%>
-					<label><input type="checkbox" name="kop" value="<%=arr2.get(i).getOp()%>"><%=arr2.get(i).getOp()%></label>
+					<label class="chbsize"><input type="checkbox" name="kop" value="<%=arr2.get(i).getOp()%>"><%=arr2.get(i).getOp()%></label>
 					<%
 				}
 			}
@@ -124,11 +135,11 @@ imgwf.host_BbsImgFolderExist();
 				<%
 			}else{
 				for(int i=0;i<arr3.size();i++){
-					if(i % 8 == 0){
+					if(i % 6 == 0){
 						%><br><%
 					}
 					%>
-					<label><input type="checkbox" name="bop" value="<%=arr3.get(i).getOp()%>"><%=arr3.get(i).getOp()%></label>
+					<label class="chbsize"><input type="checkbox" name="bop" value="<%=arr3.get(i).getOp()%>"><%=arr3.get(i).getOp()%></label>
 					<%
 				}
 			}

@@ -4,8 +4,6 @@
 <%
 	String sid = (String)session.getAttribute("sid");
 	String sgrade = (String)session.getAttribute("sgrade");
-	
-	System.out.println(sgrade); //test code
 %>
     
 <!DOCTYPE html>

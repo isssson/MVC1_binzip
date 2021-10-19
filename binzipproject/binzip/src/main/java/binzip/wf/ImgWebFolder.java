@@ -15,8 +15,7 @@ public class ImgWebFolder {
 	private PreparedStatement ps;
 	
 	public ImgWebFolder() {
-		System.out.println("이미지웹폴더 생성자 호출");
-		totalSize = 1024 * 1024 * 10;
+		totalSize = 1024 * 1024 * 1024;
 	}
 
 	public String getId() {

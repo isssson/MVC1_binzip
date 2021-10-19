@@ -4,7 +4,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
 <jsp:useBean id="hostmypagereservedao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
-<jsp:useBean id="hostmypagereservedto" class="binzip.mypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +28,13 @@
 #menu ul li a{
  	display: block;
  	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
 }
 #menu ul li a:hover{
-	background: gray;
-	color: black;
+	color: white;
 }
 h2{
 	font-size: 40px;
@@ -54,7 +56,7 @@ h4{
 	object-fit: cover;
 }
 .info{
-	margin-bottom: 500px;
+	height: 500px;
 }
 .info2{
 	height: 380px;
@@ -63,7 +65,7 @@ h4{
 	float:left;
 }
 table{
-	margin: 0px auto;
+	margin: 50px auto;
 	width: 500px;
 	height: 300px;
 	text-align: center;
@@ -72,10 +74,32 @@ th, td {
     border-bottom: 1px solid #444444;
     padding: 10px;
 }
+.bthost {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 2px;
+}
+.bthost:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
+.id_a{
+	text-decoration: none;
+	color: black;
+}
+.id_a:hover {
+	color: darkgray;
+}
 </style>
 <%
 String userid=(String)session.getAttribute("sid");
-System.out.println(userid);
 %>
 </head>
 <body>
@@ -85,7 +109,7 @@ System.out.println(userid);
              <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약내역</a></li>
-             <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청 내역</a></li>
+             <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
@@ -100,7 +124,7 @@ System.out.println(userid);
 		if(arr == null || arr.size() == 0 || arr.get(0).getZipname() == null) {
 			%>
 			<div class="info">
-				<h3>업로드한 집이 없습니다.</h3>
+				<h2>예약 내역이 없어요 :(</h2>
 			</div>
 			<%
 		}else{
@@ -121,7 +145,7 @@ System.out.println(userid);
 						<h4> <%=arr.get(i).getZiptype() %> /  <%= arr.get(i).getZipaddr() %></h4>
 						<h4>예약최대인원 :  <%= arr.get(i).getPeoplenum() %> 명</h4>
 						<h2>&#8361;<%= dfCost %></h2>
-						<input type="button" value="내가 올린 집으로 가기" onclick='location.href="/binzip/mypage/hostmypage/myZipUploaded.jsp"'>
+						<input type="button" value="내가 올린 집으로 가기" class="bthost" onclick='location.href="/binzip/mypage/hostmypage/myZipUploaded.jsp"'>
 					</div>
 				</div>
 				<hr>
@@ -142,29 +166,29 @@ System.out.println(userid);
 				if(arr2==null||arr2.size()==0||arr2.get(0).getReserver_startdate()==null){
 					%>
 					<tr>
-						<td colspan="4" align="center"><h2>예약내역이 없습니다.</h2></td>	
+						<td colspan="4" align="center"><h2>예약 내역이 없어요 :(</h2></td>	
 					</tr>
 					<%
 				}else{
 					for(int i=0;i<arr2.size();i++){
 						%>
 						<tr>
-							<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>
+							<td><%=(arr2.get(i).getReserver_startdate()).substring(0,11) %> ~ <%=(arr2.get(i).getReserver_enddate()).substring(0,11) %></td>
 							<td><a href="/binzip/mypage/hostmypage/moreInfo.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>"><%=arr2.get(i).getId() %></a></td>
 							<%
 							if(arr2.get(i).getStatus()==0){
 								%>
-								<td><input type="button" value="입금확인" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
-								<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
+								<td><input type="button" value="입금확인" class="bthost" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<td><input type="button" value="예약취소" class="bthost" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
 								<%
 							}else if(arr2.get(i).getStatus()==1){
 								%>
-								<td><input type="button" value="숙박시작" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
-								<td><input type="button" value="예약취소" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
+								<td><input type="button" value="숙박시작" class="bthost" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<td><input type="button" value="예약취소" class="bthost" onclick="location.href='/binzip/mypage/hostmypage/cancelReservation_ok.jsp'"></td>
 								<%	
 							}else if(arr2.get(i).getStatus()==2){
 								%>
-								<td><input type="button" value="숙박종료" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
+								<td><input type="button" value="숙박종료" class="bthost" onclick="location.href='/binzip/mypage/hostmypage/payCheck_ok.jsp?bbsidx=<%=arr2.get(i).getBbsidx() %>'"></td>
 								<td>취소불가</td>
 								<%
 							}else{

@@ -37,6 +37,22 @@
 		table th{
 			background-color: lightgray;
 		}
+		.helpButton {
+			background-color:#000000;
+			border-radius:18px;
+			border:1px solid #000000;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:12px;
+			padding:5px 22px;
+			text-decoration:none;
+			margin-top: 20px;
+		}
+		.helpButton:hover {
+			background-color:#ffffff;
+			color:#000000;
+		}
 	</style>
 </head>
 
@@ -144,7 +160,7 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="5" align="center">
+					<td colspan="5" align="center" style="margin-left: 30px;">
 					<!-- paging area -->
 					<%
 						if(userGroup != 0) {
@@ -180,7 +196,7 @@
 					%>
 					</td>
 					<td>
-						<button type="button" onclick="location.href='helpWrite.jsp'">글쓰기</button>
+						<button type="button" class="helpButton" onclick="location.href='helpWrite.jsp'">글쓰기</button>
 					</td>
 				</tr>
 			</tfoot>

@@ -31,6 +31,22 @@
 		.help_write_subject{
 			margin-right: 435px;
 		}
+		.helpButton {
+			background-color:#000000;
+			border-radius:18px;
+			border:1px solid #000000;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:12px;
+			padding:5px 22px;
+			text-decoration:none;
+			margin-top: 20px;
+		}
+		.helpButton:hover {
+			background-color:#ffffff;
+			color:#000000;
+		}
 	</style>
 </head>
 <body>
@@ -65,8 +81,8 @@
 				</div>
 				<br>
 				<span>
-					<button type="button" onclick="location.href='help.jsp'">이전으로</button>
-					<button type="submit">작성완료</button>
+					<button type="button" class="helpButton" onclick="location.href='help.jsp'">이전으로</button>
+					<button type="submit" class="helpButton">작성완료</button>
 				</span>
 			</form>
 		</div>

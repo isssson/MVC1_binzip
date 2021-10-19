@@ -9,11 +9,6 @@ public class HostReserveDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	public HostReserveDAO() {
-		super();
-		System.out.println("HostReserveDAO 호출");
-	}
-	
 	/**hostReservationList.jsp에 정보 불러오기**/
 	public ArrayList<HostReserveDTO> reserveInfo(String userid) {
 		try {

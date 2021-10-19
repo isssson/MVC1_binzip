@@ -27,10 +27,13 @@
 #menu ul li a{
  	display: block;
  	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
 }
 #menu ul li a:hover{
-	background: gray;
-	color: black;
+	color: white;
 }
 h2{
 	font-size: 40px;
@@ -61,7 +64,7 @@ h4{
 }
 table{
 	margin: 0px auto;
-	width: 500px;
+	width: 700px;
 	height: 300px;
 	text-align: center;
 }
@@ -88,14 +91,14 @@ String userid=(String)session.getAttribute("sid");
 	<div>
 		<h2>CANCEL REQUEST</h2>
 		<h4>예약 취소 요청 내역</h4><hr>
-		<h5>호스트가 승인하면 자동으로 내역이 삭제됩니다 :)</h5>
+		<h5>호스트가 승인하면 자동으로 내역을 삭제해요! :)</h5>
 	</div>
 		<%
 		ArrayList<GuestReserveDTO> arr=guestmypagereservedao.gPrintCancelRequest(userid);		
 		if(arr==null||arr.size()==0||arr.get(0).getZipname()==""){
 			%>
 			<div class="info">
-				<h2>취소 요청 내역이 없습니다.</h2>
+				<h2>취소 요청 내역이 없어요! :)</h2>
 			</div>
 			<%
 		}else{
@@ -119,8 +122,8 @@ String userid=(String)session.getAttribute("sid");
 							<tr>
 								<td><%=arr.get(i).getBbsidx() %></td>
 								<td><%=arr.get(i).getZipname() %></td>
-								<td><%=arr.get(i).getReserve_startdate() %></td>
-								<td><%=arr.get(i).getReserve_enddate() %></td>
+								<td><%=arr.get(i).getReserve_startdate().substring(0, 11) %></td>
+								<td><%=arr.get(i).getReserve_enddate().substring(0, 11) %></td>
 								<td><%=arr.get(i).getPeoplenum() %></td>
 								<td><%=arr.get(i).getCost() %></td>
 							</tr>

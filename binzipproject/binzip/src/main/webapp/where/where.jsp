@@ -19,6 +19,12 @@
 			font-size: 20px;
 			font-weight: bold;
 		}
+		table{
+			padding-left: 50px;
+		}
+		.wheretitle{
+			padding-left: 50px;
+		}
 	</style>
 	<script>
 		function whereNext() {
@@ -32,7 +38,7 @@
 </head>
 <body>
 	<form name="where">
-		<h3>어디로 떠날까요 ?</h3>
+		<h3 class="wheretitle">어디로 떠날까요 ?</h3>
 		<table>
 			<tr>
 				<td>
@@ -53,7 +59,7 @@
 					</select>
 				</td>
 		</table>
-		<h3>언제 떠날까요 ?</h3>
+		<h3 class="wheretitle">언제 떠날까요 ?</h3>
 		<table>
 		<%
 			Calendar myDate = Calendar.getInstance();
@@ -84,7 +90,7 @@
 			</tr>
 		</table>
 		<br>
-		<input type="button" value="SEARCH" class="myButton" onclick="whereNext();">
+		<input type="button" value="SEARCH" class="myButton" onclick="whereNext();" style="margin-left: 50px;">
 	</form>
 </body>
 </html>

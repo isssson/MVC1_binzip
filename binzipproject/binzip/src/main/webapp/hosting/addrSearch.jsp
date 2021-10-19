@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HOSTING</title>
 <%
 request.setCharacterEncoding("utf-8");
 String si_do = request.getParameter("si_do");
@@ -35,6 +35,22 @@ String ziptype = request.getParameter("ziptype");
 #addrtext{
 	width: 200px;
 }
+.hostMyButton {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 20px;
+}
+.hostMyButton:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
 </style>
 </head>
 <body>
@@ -42,12 +58,11 @@ String ziptype = request.getParameter("ziptype");
 	<form name="addr_search_div">
 	<input type="hidden" name="ziptype" value="<%=ziptype%>">
 		<div class="addrsearch">
-			<select name="addrsido" onchange="selectVal('getGu');">
+			<select name="addrsido" onchange="selectVal('getGu');" style="width: 130px;">
 				<option value="">시/도</option>
 				<%
 					ArrayList<String> si = binzipaddrdao.si(workType,"si_do");				
-					for(int i = 0;i<si.size();i++){
-						System.out.println("");
+					for(int i = 0;i<si.size();i++){					
 						si_do = si_do+"";
 						String temp = si.get(i);
 						if(!(si_do.equals(temp))){
@@ -58,7 +73,7 @@ String ziptype = request.getParameter("ziptype");
 					}
 				%>
 			</select>
-			<select name="addrsigungu" onchange="selectVal('getRo');">
+			<select name="addrsigungu" onchange="selectVal('getRo');" style="width: 130px;">
 				<option value="">시/군/구</option>
 				<%
 					ArrayList<String> gun = binzipaddrdao.gu(workType,si_do);				
@@ -75,7 +90,7 @@ String ziptype = request.getParameter("ziptype");
 					}				
 				%>				
 			</select>
-			<select name="addrro" >
+			<select name="addrro" style="width: 200px;">
 				<option value="">도로명</option>
 				<%
 					ArrayList<String> road = binzipaddrdao.ro(workType,si_do,si_gun_gu);
@@ -89,11 +104,10 @@ String ziptype = request.getParameter("ziptype");
 							%><option value="<%=road.get(k) %>"><%=road.get(k) %></option><%
 					}
 				}
-
 				%>
 			</select><br>
-			<input type="text" name="de_addr" placeholder="상세주소를 입력해주세요">
-			<input type="button" value="선택하기" onclick = "finalSelect();">	
+			<input type="text" name="de_addr" placeholder="상세주소를 입력해주세요" size="40">
+			<input type="button" value="선택하기" class="hostMyButton" onclick = "finalSelect();">	
 		</div>
 	</form>
 </section>

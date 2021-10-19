@@ -11,11 +11,7 @@ public class InfoDAO {
 	// P/F
 	public static final int ERROR=-1;
 	public static final int SUCCESS=0;	
-	
-	public InfoDAO() {
-		super();
-		System.out.println("HostDAO 호출");
-	}
+
 	
 	/**hostMyPage.jsp, guestMyPage.jsp 내 정보 보기**/
 	public InfoDTO hostInfo(String userid) {

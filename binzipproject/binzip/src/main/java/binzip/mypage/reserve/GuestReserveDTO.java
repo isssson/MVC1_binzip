@@ -2,7 +2,7 @@ package binzip.mypage.reserve;
 
 public class GuestReserveDTO {
 
-	private int bbsidx;
+	
 	private String id;
 	private String reserve_startdate;
 	private String reserve_enddate;
@@ -17,7 +17,85 @@ public class GuestReserveDTO {
 	private String request;
 	private String host_name;
 	private String host_phone;
+	
+	private String binzip_member_id;
+	private String r_id;
+	
+	private int bbsidx;
+	private int r_cost;
+	private int r_pnum;
+	
+	private int hcost;
+	private int hpeoplenum;
+	private String contents;
+	
+	
+	public GuestReserveDTO(int bbsidx, String reserve_startdate, String reserve_enddate, int r_pnum, int r_cost,
+			int status, String zipname, String ziptype, String zipaddr, String imgpath, String binzip_member_id) {
+		super();
+		this.bbsidx = bbsidx;
+		this.reserve_startdate = reserve_startdate;
+		this.reserve_enddate = reserve_enddate;
+		this.r_pnum = r_pnum;
+		this.r_cost = r_cost;
+		this.status = status;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.imgpath = imgpath;
+		this.binzip_member_id = binzip_member_id;
+	}
+	
+	
+	public GuestReserveDTO(String reserve_startdate, String reserve_enddate, int peoplenum, String zipname,
+			String ziptype, String zipaddr, int cost, int status, String imgpath, String binzip_member_id, int bbsidx) {
+		super();
+		this.reserve_startdate = reserve_startdate;
+		this.reserve_enddate = reserve_enddate;
+		this.peoplenum = peoplenum;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.cost = cost;
+		this.status = status;
+		this.imgpath = imgpath;
+		this.binzip_member_id = binzip_member_id;
+		this.bbsidx = bbsidx;
+	}
 
+	public GuestReserveDTO() {
+		super();
+	}
+
+	//use
+	public GuestReserveDTO(String id, String reserve_startdate, String reserve_enddate, int peoplenum, String zipname,
+			String ziptype, String zipaddr, int cost, int status, String imgpath, String payer, String request,
+			String host_name, String host_phone, String binzip_member_id, int bbsidx) {
+		super();
+		this.id = id;
+		this.reserve_startdate = reserve_startdate;
+		this.reserve_enddate = reserve_enddate;
+		this.peoplenum = peoplenum;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.cost = cost;
+		this.status = status;
+		this.imgpath = imgpath;
+		this.payer = payer;
+		this.request = request;
+		this.host_name = host_name;
+		this.host_phone = host_phone;
+		this.binzip_member_id = binzip_member_id;
+		this.bbsidx = bbsidx;
+	}
+
+	
+	
+	
+	
+	
+	
 	public GuestReserveDTO(int bbsidx, String reserve_startdate, String reserve_enddate, int peoplenum, int cost,
 			int status, String zipname, String ziptype, String zipaddr, String imgpath) {
 		super();
@@ -33,6 +111,7 @@ public class GuestReserveDTO {
 		this.imgpath = imgpath;
 	}
 
+	
 	public GuestReserveDTO(String zipname, String ziptype, String zipaddr, String reserve_startdate,
 			String reserve_enddate, int peoplenum, int cost, int status, String host_name, String host_phone,
 			String payer, String request, String imgpath) {
@@ -64,6 +143,64 @@ public class GuestReserveDTO {
 		this.peoplenum = peoplenum;
 		this.cost = cost;
 	}
+	
+	
+	
+	
+
+	public GuestReserveDTO(int bbsidx, String reserve_startdate, String reserve_enddate, int r_pnum, int r_cost,
+			int status, String zipname, String ziptype, String zipaddr, String imgpath, String binzip_member_id,
+			String host_name, String host_phone, int hcost, String payer, int hpeoplenum, String contents) {
+		super();
+		this.bbsidx = bbsidx;
+		this.reserve_startdate = reserve_startdate;
+		this.reserve_enddate = reserve_enddate;
+		this.r_pnum = r_pnum;
+		this.r_cost = r_cost;
+		this.status = status;
+		this.zipname = zipname;
+		this.ziptype = ziptype;
+		this.zipaddr = zipaddr;
+		this.imgpath = imgpath;
+		this.binzip_member_id = binzip_member_id;
+		this.host_name = host_name;
+		this.host_phone = host_phone;
+		this.hcost = hcost;
+		this.payer = payer;
+		this.hpeoplenum = hpeoplenum;
+		this.contents = contents;
+	}
+
+
+	public int getHcost() {
+		return hcost;
+	}
+
+
+	public void setHcost(int hcost) {
+		this.hcost = hcost;
+	}
+
+
+	public int getHpeoplenum() {
+		return hpeoplenum;
+	}
+
+
+	public void setHpeoplenum(int hpeoplenum) {
+		this.hpeoplenum = hpeoplenum;
+	}
+
+
+	public String getContents() {
+		return contents;
+	}
+
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
 
 	public int getBbsidx() {
 		return bbsidx;
@@ -184,5 +321,39 @@ public class GuestReserveDTO {
 	public void setHost_phone(String host_phone) {
 		this.host_phone = host_phone;
 	}
+
+	public String getBinzip_member_id() {
+		return binzip_member_id;
+	}
+
+	public void setBinzip_member_id(String binzip_member_id) {
+		this.binzip_member_id = binzip_member_id;
+	}
+
+	public String getR_id() {
+		return r_id;
+	}
+
+	public void setR_id(String r_id) {
+		this.r_id = r_id;
+	}
+
+	public int getR_cost() {
+		return r_cost;
+	}
+
+	public void setR_cost(int r_cost) {
+		this.r_cost = r_cost;
+	}
+
+	public int getR_pnum() {
+		return r_pnum;
+	}
+
+	public void setR_pnum(int r_pnum) {
+		this.r_pnum = r_pnum;
+	}
+	
+	
 
 }

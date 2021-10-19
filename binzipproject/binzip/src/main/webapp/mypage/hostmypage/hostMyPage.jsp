@@ -31,10 +31,13 @@ InfoDTO bankdto=hostmypagedao.hostBankInfo(userid);
 #menu ul li a{
  	display: block;
  	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
 }
 #menu ul li a:hover{
-	background: gray;
-	color: black;
+	color: white;
 }
 h2{
 	font-size: 40px;
@@ -73,6 +76,25 @@ th, td {
     border-bottom: 1px solid #444444;
     padding: 10px;
 }
+.btjoin {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 2px;
+}
+.btjoin:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
+.btalign{
+	text-align: center;
+}
 </style>
 </head>
 <script>
@@ -86,8 +108,8 @@ function popupPhonecheck(){
         <ul class="list">
              <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
-             <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약 내역</a></li>
-             <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청 내역</a></li>
+             <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약내역</a></li>
+             <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
@@ -155,9 +177,15 @@ function popupPhonecheck(){
 				}
 				%>
 			</table>
-			<input type="submit" value="정보수정하기">
+			<br>
+			<div style="text-align: center;">
+			<input type="submit" class="btjoin" value="정보수정하기">
+			</div>
+			<br>
 		</form>
+		<div style="text-align: center;">
 		<input type="button" value="탈퇴하기" class="btjoin" onclick="location.href='bridgeDeleteMember.jsp'">
+		</div>
 	</article>
 </section>
 <%@include file="../../footer.jsp" %>

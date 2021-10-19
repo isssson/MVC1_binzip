@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HOSTING</title>
 <script>
 	function plusFile(){
 	   var uploadEl = document.all.uploadLabel.innerHTML;
@@ -17,7 +17,7 @@
 	<fieldset>
 		<legend>이미지업로드</legend>
 		<label id="uploadLabel">ZIP 사진 올리기</label><br>
-		<input type="file" name="imgupload" accept="image/*"><a onclick="plusFile();" style="cursor:pointer; color:blue;">추가</a><br>
+		<input type="file" name="imgupload" accept="image/*" required="required"><a onclick="plusFile();" style="cursor:pointer; color:blue;">추가</a><br>
 		<input type="submit" value="이미지올리기">
 	</fieldset>
 </form>

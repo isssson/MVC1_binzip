@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HOSTING</title>
 <%@include file="/header.jsp" %>
 <%
 //String zop[] = request.getParameterValues("zop");

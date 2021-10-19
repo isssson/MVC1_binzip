@@ -39,13 +39,12 @@ if(dto==null){
 
 NumberFormat nf = NumberFormat.getNumberInstance();
 int cost = dto.getCost();
-System.out.println(cost);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BOOKING</title>
+<title>RESERVATION</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 <style>
@@ -366,7 +365,6 @@ let banner = {
 			</div>
 			<%
 			String imgpath_s = dto.getImgpath();
-			System.out.println("### INFO imgpath_s : " + imgpath_s);
 			String imgpath[] = {};
 			if(imgpath_s != null){
 				imgpath= imgpath_s.split(",");

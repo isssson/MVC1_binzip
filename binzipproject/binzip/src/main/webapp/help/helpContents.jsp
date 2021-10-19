@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>    
 <%@ page import="binzip.help.*" %>
 <jsp:useBean id="hdao" class="binzip.help.HelpDAO" scope="session"/>
-    
+
 <%
 	String idx_s = request.getParameter("idx");
 	if(idx_s == null || idx_s.equals("")) {
@@ -59,6 +58,22 @@
 		.rewrite{
 			margin-left: 550px;
 		}
+		.helpButton {
+			background-color:#000000;
+			border-radius:18px;
+			border:1px solid #000000;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:12px;
+			padding:5px 22px;
+			text-decoration:none;
+			margin-top: 20px;
+		}
+		.helpButton:hover {
+			background-color:#ffffff;
+			color:#000000;
+		}
 	</style>
 </head>
 <body>
@@ -102,12 +117,12 @@
 			</div>
 			<br>
 			<span>
-				<button type="button" onclick="location.href='help.jsp'">이전으로</button>
+				<button type="button" class="helpButton" onclick="location.href='help.jsp'">이전으로</button>
 				<%
 				if(sid.equals(dto.getBinzip_member_id()) || sgrade.equals(mdao_header.ADMIN)) {
 					%>
-					<button type="button" onclick="location.href='helpContentsUpdate.jsp?idx=<%= dto.getIdx() %>'">수정하기</button>
-					<button type="button" onclick="location.href='helpContentsDelete.jsp?idx=<%= dto.getIdx() %>'">삭제하기</button>						
+					<button type="button" class="helpButton" onclick="location.href='helpContentsUpdate.jsp?idx=<%= dto.getIdx() %>'">수정하기</button>
+					<button type="button" class="helpButton" onclick="location.href='helpContentsDelete.jsp?idx=<%= dto.getIdx() %>'">삭제하기</button>						
 					<%
 				}
 				%>
@@ -116,7 +131,7 @@
 				<% 
 				if(sid.equals(dto.getBinzip_member_id()) || sgrade.equals(mdao_header.ADMIN)) {
 					%>
-					<button type="button" onclick="location.href='helpReWrite.jsp?idx=<%= dto.getIdx() %>&subject=<%= dto.getSubject() %>&ref=<%= dto.getRef() %>&lev=<%= dto.getLev() %>&step=<%= dto.getStep() %>'">
+					<button type="button" class="helpButton" onclick="location.href='helpReWrite.jsp?idx=<%= dto.getIdx() %>&subject=<%= dto.getSubject() %>&ref=<%= dto.getRef() %>&lev=<%= dto.getLev() %>&step=<%= dto.getStep() %>'">
 					답변쓰기
 					</button>
 					<%

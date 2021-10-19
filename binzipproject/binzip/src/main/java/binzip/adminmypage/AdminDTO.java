@@ -13,10 +13,10 @@ public class AdminDTO {
 		this.name = name;
 		this.id = id;
 	}
-	public String getHost_name() {
+	public String getName() {
 		return name;
 	}
-	public void setHost_name(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public String getId() {

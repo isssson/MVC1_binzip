@@ -72,7 +72,6 @@ th, td {
 <%
 String userid = (String)session.getAttribute("sid");
 int bbsidx = Integer.parseInt(request.getParameter("bbsidx"));
-System.out.println(bbsidx);
 HostReserveDTO dto = hostreservedao.moreInfo(userid, bbsidx);
 String msg="test";
 if(dto.getStatus()==0){
@@ -80,7 +79,6 @@ if(dto.getStatus()==0){
 }else{
 	msg="입금완료";
 }
-System.out.println(msg);
 %>
 </head>
 <body>
@@ -123,7 +121,7 @@ System.out.println(msg);
 				</tr>
 				<tr>
 					<td>기간</td>
-					<td><%=dto.getReserver_startdate() %> ~ <%=dto.getReserver_enddate() %></td>
+					<td><%=dto.getReserver_startdate().substring(0, 11) %> ~ <%=dto.getReserver_enddate().substring(0, 11) %></td>
 				</tr>
 				<tr>
 					<td>인원</td>

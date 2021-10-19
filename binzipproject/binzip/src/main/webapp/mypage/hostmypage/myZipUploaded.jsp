@@ -3,7 +3,6 @@
 <%@ page import="binzip.mypage.reserve.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="hostmypagereservedao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
-<jsp:useBean id="hostmypagereservedto" class="binzip.mypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +27,13 @@
 #menu ul li a{
  	display: block;
  	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
 }
 #menu ul li a:hover{
-	background: gray;
-	color: black;
+	color: white;
 }
 h2{
 	font-size: 40px;
@@ -62,7 +64,7 @@ h4{
 }
 table{
 	margin: 0px auto;
-	width: 500px;
+	width: 1000px;
 	height: 300px;
 	text-align: center;
 }
@@ -97,7 +99,7 @@ String userid = (String)session.getAttribute("sid");
 		if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
 			%>
 			<div class="info">
-				<h3>업로드한 집이 없습니다.</h3>
+				<h2	>업로드한 집이 없어요 :(</h2>
 			</div>
 			<%
 		}else{
@@ -110,6 +112,7 @@ String userid = (String)session.getAttribute("sid");
 						<th>집주소</th>
 						<th>최대인원</th>
 						<th>가격</th>
+						<th>집내리기</th>
 					</thead>
 					<tbody>
 					<%
@@ -117,10 +120,11 @@ String userid = (String)session.getAttribute("sid");
 						%>
 						<tr>
 							<td><%=arr.get(i).getBbsidx() %></td>
-							<td><%=arr.get(i).getZipname() %></td>
+							<td><a href='/binzip/findzip/findzipContent.jsp?idx=<%=arr.get(i).getBbsidx()%>'><%=arr.get(i).getZipname() %></a></td>
 							<td><%=arr.get(i).getZipaddr() %></td>
 							<td><%=arr.get(i).getPeoplenum() %> 명</td>
 							<td>&#8361;<%=arr.get(i).getCost() %></td>
+							<td><input type="button" value="집내리기" onclick="location.href='/binzip/mypage/hostmypage/zipClosed_ok.jsp?bbsidx=<%=arr.get(i).getBbsidx()%>'"></td>
 						</tr>						
 						<%
 					}

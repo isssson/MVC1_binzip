@@ -46,6 +46,22 @@
 		.rewrite{
 			margin-left: 550px;
 		}
+		.helpButton {
+			background-color:#000000;
+			border-radius:18px;
+			border:1px solid #000000;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:12px;
+			padding:5px 22px;
+			text-decoration:none;
+			margin-top: 20px;
+		}
+		.helpButton:hover {
+			background-color:#ffffff;
+			color:#000000;
+		}
 	</style>
 </head>
 <body>
@@ -91,7 +107,7 @@
 				</div>
 				<br>
 				<span class="rewrite">
-					<button type="submit">수정완료</button>
+					<button type="submit" class="helpButton">수정완료</button>
 				</span>
 			</form>
 		</div>

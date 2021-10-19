@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>GUEST MYPAGE</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
 h2, h4{
@@ -32,8 +32,44 @@ table th{
 table caption{
 	display: none;
 }
+.adminButton {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 2px;
+}
+.adminButton:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
 </style>
 </head>
+<%
+int guestGrade = 5;
+int totalCnt = admindao.getHostTotalCnt(guestGrade);
+int listSize = 20;
+int pageSize = 5;
+
+String cp_s = request.getParameter("cp");
+if(cp_s== null || cp_s.equals("")){
+	cp_s = "1";
+}
+
+int cp = Integer.parseInt(cp_s);
+
+int totalPage = (totalCnt / listSize) + 1;
+if(totalCnt % listSize == 0) totalPage--;
+
+
+int group = cp / pageSize;
+if(cp % pageSize == 0) group--;
+%>
 <body>
 <%@include file="/header.jsp" %>
 <section>
@@ -63,7 +99,7 @@ table caption{
 			</thead>
 			<tbody>
 				<%
-				ArrayList<AdminDTO> arr = admindao.getGuestList();
+				ArrayList<AdminDTO> arr = admindao.getList(cp, listSize, guestGrade);
 				if(arr == null || arr.size() == 0){
 					%>
 					<tr>
@@ -74,11 +110,11 @@ table caption{
 					for(int i = 0; i < arr.size(); i++){
 						%>
 						<tr>
-							<td><%=arr.get(i).getHost_name()%></td>
+							<td><%=arr.get(i).getName()%></td>
 							<td><%=arr.get(i).getId()%></td>
 							<td>
 								<input type="hidden" name="guestdelid" value="<%=arr.get(i).getId()%>">
-								<input type="button" value="탈퇴" onclick="javasctipt:location.href='guestDelete.jsp?guestdelid=<%=arr.get(i).getId()%>';">
+								<input type="button" class="adminButton" value="탈퇴" onclick="javasctipt:location.href='guestDelete.jsp?guestdelid=<%=arr.get(i).getId()%>';">
 							</td>
 						</tr>
 						<%
@@ -86,6 +122,35 @@ table caption{
 				}
 				%>
 			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" align="center">
+						<%
+						if(group != 0){
+							%>
+							<a href="hostList.jsp?cp=<%=(group - 1) * pageSize + pageSize%>">&#8856;&#8856;</a>
+							<%
+						}
+						%>
+						<%			
+						for(int i = group * pageSize + 1; i <= group * pageSize + pageSize; i++){
+							%>&nbsp;&nbsp;<a href="hostList.jsp?cp=<%=i%>"><%=i%></a>&nbsp;&nbsp;<%
+							
+							if(i == totalPage){
+								break;
+							}
+						}
+						%>
+						<%
+						if(group != (totalPage / pageSize) - (totalPage % pageSize == 0 ? 1 : 0)){
+							%>
+							<a href="hostList.jsp?cp=<%=(group + 1) * pageSize + 1%>">&#8858;&#8858;</a>
+							<%
+						}
+						%>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 	</article>
 </section>

@@ -13,10 +13,6 @@ String ziptype=request.getParameter("ziptype");
 </head>
 <style>
 <style>
-.hosting_lb meter{
-	width: 250px;
-}
-
 h2{
 	font-size: 40px;
 	text-align: center;
@@ -31,28 +27,39 @@ h4{
 fieldset{
 	width: 60%;
 	margin: 0px auto;
-	padding: 10px;	
+	padding: 10px;
 	text-align: left;
 }
-.hosting_tr, .hosting_lb{
-	width: auto;
-	padding-right: 30px;	
+.hosting label{
+	display: block;
+	float: left;
+	width: 180px;
+
 }
-.hosting_tx{
-	width: 0px auto;
-	float: right;
-	margin-right: 400px;
-}
-.hosting_tx2{
-	width: 0px auto;
-	float: right;
-	margin-right: 250px;
+.hosting{
+	padding-bottom: 20px;
 }
 .bt01{
 	text-align:center;
 	display:block;
 	margin: 0px auto;
-	}
+}
+.hostMyButton {
+	background-color:#000000;
+	border-radius:18px;
+	border:1px solid #000000;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:5px 22px;
+	text-decoration:none;
+	margin-top: 20px;
+}
+.hostMyButton:hover {
+	background-color:#ffffff;
+	color:#000000;
+}
 </style>
 <script>
 	var width = '650';
@@ -106,74 +113,70 @@ if(si_si == null || si_si.equals("")){
 	<form name="addhosting" action="addHosting_ok.jsp" method="post">
 	<input type="hidden" name="binzip_member_id" value="<%=sid%>">
 		<div>
-			<fieldset>
-			
+			<fieldset class="fdset1">			
 				<legend>호스트 정보 입력</legend>
-				<div class="hosting_div">
-					<label class="hosting_lb">이름</label>
-					<input type="text" name="host_name">
+				<div class="hosting">
+					<label>이름</label>
+					<input type="text" name="host_name" required="required">
 				</div>
-				<div class="hosting_div">
-					<label class="hosting_lb">이메일</label>
-					<input type="text" name="host_email">
+				<div class="hosting">
+					<label>이메일</label>
+					<input type="text" name="host_email" required="required" size="25">
 				</div>
-				<div class="hosting_div">
-					<label class="hosting_lb">전화번호</label>
-					<input type="text" name="host_phone" id="hostphone" minlength="10" maxlength="11" placeholder="- 빼고 입력해주세요.">
+				<div class="hosting">
+					<label>전화번호</label>
+					<input type="text" name="host_phone" size="25" id="hostphone" minlength="10" maxlength="11" placeholder="- 빼고 입력해주세요." required="required">
 				</div>
-				<div class="hosting_div">
-					<label class="hosting_lb">은행명</label>
-					<input type="text" name="host_bank">
+				<div class="hosting">
+					<label>은행명</label>
+					<input type="text" name="host_bank" required="required">
 				</div>
-				<div class="hosting_div">
-					<label class="hosting_lb">계좌번호</label>
-					<input type="text" name="host_acnumber" placeholder="- 빼고 입력해주세요.">
+				<div class="hosting">
+					<label>계좌번호</label>
+					<input type="text" name="host_acnumber" size="25" placeholder="- 빼고 입력해주세요." required="required">
 				</div>				
 			</fieldset>
 		</div>
 	<article><h4>ZIP 정보 입력</h4></article>
 		<div>
-			<fieldset>
+			<fieldset class="fdset2">
 				<legend>집 정보 입력</legend>
-				<div class="hosting_lb">
-					<label class="hosting_lb">ZIP 이름</label>
-					<input type="text" name="zipname">
+				<div class="hosting">
+					<label>ZIP 이름</label>
+					<input type="text" name="zipname" required="required">
 				</div>
-				<div class="hosting_lb">
-					<label class="hosting_lb">ZIP 유형</label>
-					<input type="text" name="ziptype" value="<%=ziptype%>" readonly>
+				<div class="hosting">
+					<label>ZIP 유형</label>
+					<input type="text" name="ziptype" value="<%=ziptype%>" readonly required="required">
 				</div>
-				<div class="hosting_lb">
-					<label class="hosting_lb">주소</label>
-					<input type="text" name="zipaddr" id="firstAddr" readonly> 
-					<input type="button" value="주소검색" readonly onclick="addrSearch();">
+				<div class="hosting">
+					<label>주소</label>
+					<input type="text" name="zipaddr" size="35" id="firstAddr" readonly required="required"> 
+					<input type="button" value="주소검색" class="hostMyButton" readonly onclick="addrSearch();">
 				</div>				
-				<div class="hosting_lb">
-					<label class="hosting_lb">비용</label>
-					<input type="text" name="cost" placeholder="1일기준">
+				<div class="hosting">
+					<label>비용</label>
+					<input type="text" name="cost" placeholder="1일기준" required="required">
 				</div>
-				<div class="hosting_lb">
-					<label class="hosting_lb">인원</label>
-					<input type="text" name="peoplenum" placeholder="최대인원">
+				<div class="hosting">
+					<label>인원</label>
+					<input type="text" name="peoplenum" placeholder="최대인원" required="required">
+				</div>				
+				<div class="hosting">					
+					<input type="hidden" name="host_bbs_startdate" min="today" max="2023-12-31" required="required" value="2023-12-31">
 				</div>
-				
-				<div class="hosting_lb">
-					
-					<input type="hidden" name="host_bbs_startdate" min="today" max="2023-12-31" required value="2023-12-31">
-				</div>
-				<div class="hosting_lb">
-					
-					<input type="hidden" name="host_bbs_enddate" min="today" max="2023-12-31" required value="2023-12-31">
+				<div class="hosting">					
+					<input type="hidden" name="host_bbs_enddate" min="today" max="2023-12-31" required="required" value="2023-12-31">
 				</div>										
-				<div class="hosting_lb">
-					<label class="hosting_lb">집에 대한 한줄 소개글</label>
-					<textarea cols="35" rows="12" name="contents"></textarea>
+				<div class="hosting">
+					<label id="contitle">집에 대한 한줄 소개글</label>
+					<textarea cols="35" rows="12" name="contents" required="required"></textarea>
 				</div>
 			</fieldset>
 		</div>
 		<div class="bt01">
-			<input type="button" value="이전으로" onclick="javascript:location.href='/binzip/hosting/hosting.jsp';">
-			<input type="submit" value="호스팅 하기" >
+			<input type="button" class="hostMyButton" value="이전으로" onclick="javascript:location.href='/binzip/hosting/hosting.jsp';">
+			<input type="submit" class="hostMyButton" value="호스팅 하기" >
 		</div>
 	</form>
 </section>

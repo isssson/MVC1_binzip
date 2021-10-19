@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="hostreservationdao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
+<%@ page import="java.text.*"%>
+<%@ page import="java.util.*" %>
 <%
 int bbsidx=Integer.parseInt(request.getParameter("bbsidx"));
-String startdate=request.getParameter("startdate");
+
+String s_sdate=request.getParameter("sdate");
+DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+Date d_sdate=sdf.parse(s_sdate);
+String sdate = sdf.format(d_sdate);
+
 String gid=request.getParameter("gId");
-int result=hostreservationdao.cancelPermission(gid, startdate, bbsidx);
+int result=hostreservationdao.cancelPermission(gid, sdate, bbsidx);
 String msg=result>0?"예약 취소 승인 완료":"고객센터로 문의바랍니다.";
 %>
 <script>

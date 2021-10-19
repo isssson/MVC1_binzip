@@ -1,4 +1,4 @@
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.oreilly.servlet.*"%>
@@ -19,7 +19,7 @@ MultipartRequest mr = new MultipartRequest(request,savePath,(int)imgwf.getFreeSi
 }catch(Exception e){
 	%>
 	<script>
-	window.alert('파일 업로드 실패! 용량 확인 후 다시 시도해 주세요<%=idx%>');
+	window.alert('파일 업로드 실패! 용량 확인 후 다시 시도해 주세요');
 	window.self.close();
 	</script>
 	<%
@@ -27,7 +27,7 @@ MultipartRequest mr = new MultipartRequest(request,savePath,(int)imgwf.getFreeSi
 imgwf.imgPath();
 %>
 <script>
-window.alert('파일 업로드 성공!<%=idx%>');
+window.alert('파일 업로드 성공!');
 location.href='addHosting_2.jsp';
 window.self.close();
 </script>

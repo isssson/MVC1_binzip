@@ -3,7 +3,6 @@
 <%@ page import="binzip.mypage.reserve.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="hostmypagereservedao" class="binzip.mypage.reserve.HostReserveDAO"></jsp:useBean>
-<jsp:useBean id="hostmypagereservedto" class="binzip.mypage.reserve.HostReserveDTO"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +27,13 @@
 #menu ul li a{
  	display: block;
  	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
 }
 #menu ul li a:hover{
-	background: gray;
-	color: black;
+	color: white;
 }
 h2{
 	font-size: 40px;
@@ -70,6 +72,23 @@ th, td {
     border-bottom: 1px solid #444444;
     padding: 10px;
 }
+.myButton {
+  	background-color:#000000;
+  	border-radius:30px;
+  	border:1px solid #000000;
+  	cursor:pointer;
+  	color:#ffffff;
+  	font-family:Arial;
+  	font-size:14px;
+  	padding:6px 19px;
+  	text-decoration:none;
+  	margin-top: 15px;
+  	margin-bottom: 18px;
+}
+.myButton:hover {
+ 	background-color:#ffffff;
+ 	color:#000000;
+}
 </style>
 <%
 String userid = (String)session.getAttribute("sid");
@@ -98,7 +117,7 @@ String userid = (String)session.getAttribute("sid");
 	if(arr==null||arr.size()==0||arr.get(0).getZipname()==null){
 		%>
 		<div class="info">
-			<h2>업로드한 집이 없습니다.</h2>
+			<h2>예약 취소 요청이 없어요 :)</h2>
 		</div>
 		<%
 	}else{
@@ -128,9 +147,9 @@ String userid = (String)session.getAttribute("sid");
 							<tr>
 								<td><%=arr2.get(i).getBbsidx() %></td>
 								<td><%=arr2.get(i).getZipname() %></td>
-								<td><%=arr2.get(i).getReserver_startdate() %> ~ <%=arr2.get(i).getReserver_enddate() %></td>
+								<td><%=arr2.get(i).getReserver_startdate().substring(0, 11) %> ~ <%=arr2.get(i).getReserver_enddate().substring(0, 11) %></td>
 								<td><%=arr2.get(i).getId() %></td>
-								<td><input type="button" value="취소승인" onclick="location.href='/binzip/mypage/hostmypage/cancelRequest_ok.jsp?startdate=<%=arr2.get(i).getReserver_startdate() %>&gId=<%=arr2.get(i).getId()%>&bbsidx=<%=arr2.get(i).getBbsidx()%>'"></td>
+								<td><input type="button" value="취소승인" class="myButton" onclick="location.href='/binzip/mypage/hostmypage/cancelRequest_ok.jsp?sdate=<%=arr2.get(i).getReserver_startdate() %>&gId=<%=arr2.get(i).getId()%>&bbsidx=<%=arr2.get(i).getBbsidx()%>'"></td>
 							</tr>
 							<%
 						}

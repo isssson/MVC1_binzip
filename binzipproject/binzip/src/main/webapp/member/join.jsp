@@ -57,7 +57,7 @@ function popupPhonecheck(){
 <body>
 <%@include file="/header.jsp" %>
 <section>
-<form name="join" action="join_ok.jsp" method="post">
+<form name="join" action="join_ok.jsp">
 	<article>
 	<h1>J O I N</h1>
 	<h4>회 원 가 입</h4>

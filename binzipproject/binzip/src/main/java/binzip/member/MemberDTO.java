@@ -19,7 +19,7 @@ public class MemberDTO {
 	private int grade;
 	
 	public MemberDTO() {
-		System.out.println("MemberDTO 생성자 호출");
+		super();
 	}
 
 	public MemberDTO(int idx, String id, String pwd, String question, String answer, String name, String birthdate,
