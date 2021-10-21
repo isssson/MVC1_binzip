@@ -14,26 +14,36 @@
 	list-style: none;
 }
 #menu{
-	width:1200px;
-	height: 50px;
-	margin-left: 350px;
+	width:100%;
+	height: auto;
+    position: relative;
+}
+#menu ul.list {
+    position: absolute;
+    right: 10px;
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    background: gray;
+    border-radius: 35px;
+    padding: 0 30px;
 }
 #menu ul li{
-	float: left;
-	line-height: 30px;
-	text-align: center;
-	background: lightgray;
+    display: inline-block;
+    line-height: 2.5;
+    text-align: center;
 }
 #menu ul li a{
- 	display: block;
- 	padding: 5px;
- 	text-decoration: none;
-}
-#menu ul li a:visited{
- 	color: black; 	
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 #menu ul li a:hover{
-	color: white;
+	background: gray;
+	color: black;
+	font-weight: bold;
 }
 h2{
 	font-size: 40px;
@@ -100,13 +110,13 @@ String userid=(String)session.getAttribute("sid");
         <ul class="list">
              <li><a href="/binzip/mypage/hostmypage/hostMyPage.jsp">개인정보</a></li>
              <li><a href="/binzip/mypage/hostmypage/hostReservationList.jsp">예약현황</a></li>
-             <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp">지난 예약내역</a></li>
+             <li><a href="/binzip/mypage/hostmypage/hostPastReservationList.jsp" style="color: #000000;">지난 예약내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/cancelRequest.jsp">취소 요청내역</a></li>
              <li><a href="/binzip/mypage/hostmypage/myZipUploaded.jsp">내가 올린 집</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
-<section>
+<section style="margin-top: 140px;">
 	<div>
 		<h2>PAST RESERVATION</h2>
 		<h4>지난 예약 내역</h4><hr>

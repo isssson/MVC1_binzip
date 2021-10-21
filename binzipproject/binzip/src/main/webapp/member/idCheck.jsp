@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BINZIP-아이디 중복검사</title>
+<title>ID CHECK</title>
 </head>
 <body>
 	<form name="idcheck" action="idCheck_ok.jsp">

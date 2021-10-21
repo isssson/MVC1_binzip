@@ -10,6 +10,31 @@
 <title>GUEST MYPAGE</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <style>
+.list{
+	list-style: none;
+}
+#menu{
+	width:1200px;
+	height: 50px;
+	margin-left: 650px;	
+}
+#menu ul li{
+	float: left;
+	line-height: 30px;
+	text-align: center;
+	background: lightgray;
+}
+#menu ul li a{
+ 	display: block;
+ 	padding: 5px;
+ 	text-decoration: none;
+}
+#menu ul li a:visited{
+ 	color: black; 	
+}
+#menu ul li a:hover{
+	color: white;
+}
 h2, h4{
 	text-align: center;
 }
@@ -74,8 +99,8 @@ if(cp % pageSize == 0) group--;
 <%@include file="/header.jsp" %>
 <section>
 	<article>
-		<nav>
-			<ul>
+		<nav id="menu">
+			<ul class="list">
 				<li><a href="/binzip/mypage/adminmypage/hostList.jsp">호스트 회원 관리</a></li>
 				<li><a href="/binzip/mypage/adminmypage/guestList.jsp">게스트 회원 관리</a></li>
 				<li><a href="/binzip/member/logout.jsp">로그아웃</a></li>

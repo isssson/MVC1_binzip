@@ -17,26 +17,36 @@ InfoDTO dto=hostmypagedao.hostInfo(userid);
 	list-style: none;
 }
 #menu{
-	width:1200px;
-	height: 50px;
-	margin-left: 350px;
+	width:100%;
+	height: auto;
+    position: relative;
+}
+#menu ul.list {
+    position: absolute;
+    right: 10px;
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    background: gray;
+    border-radius: 35px;
+    padding: 0 30px;
 }
 #menu ul li{
-	float: left;
-	line-height: 30px;
-	text-align: center;
-	background: lightgray;
+    display: inline-block;
+    line-height: 2.5;
+    text-align: center;
 }
 #menu ul li a{
- 	display: block;
- 	padding: 5px;
- 	text-decoration: none;
-}
-#menu ul li a:visited{
- 	color: black; 	
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 #menu ul li a:hover{
-	color: white;
+	background: gray;
+	color: black;
+	font-weight: bold;
 }
 h2{
 	font-size: 40px;
@@ -112,7 +122,7 @@ function popupPhonecheck(){
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
-<section>
+<section style="margin-top: 140px;">
 	<article>
 		<h2>MY PAGE</h2>
 		<h4>내 정보 보기</h4>

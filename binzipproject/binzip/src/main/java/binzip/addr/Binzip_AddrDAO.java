@@ -10,7 +10,7 @@ public class Binzip_AddrDAO {
 	private ResultSet rs;
 		
 	public Binzip_AddrDAO() {
-		System.out.println("주소 DAO 호출");
+		super();
 	}
 	
 	//시도 셀렉트박스 관련 메서드

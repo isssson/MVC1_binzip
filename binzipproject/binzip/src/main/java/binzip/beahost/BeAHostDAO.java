@@ -13,7 +13,7 @@ public class BeAHostDAO {
 	private ResultSet rs;
 	
 	public BeAHostDAO() {
-		System.out.println("beAHost 생성자 호출");
+		super();
 	}
 	
 	 public int inputHostTable(BeAHostDTO dto) {

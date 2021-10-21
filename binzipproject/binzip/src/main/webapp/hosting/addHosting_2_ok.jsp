@@ -23,8 +23,8 @@ int idx = hostdao.idxSearch(sid);
 zipopdto.setBinzip_host_bbs_idx(idx);
 
 int zresult = zipopdao.setZipOption(zipopdto);
-int kresult = zipopdao.setZipOption(zipopdto);
-int bresult = zipopdao.setZipOption(zipopdto);
+int kresult = zipopdao.setKitchenOption(zipopdto);
+int bresult = zipopdao.setBathOption(zipopdto);
 String msg = zresult>0?"호스팅 완료!":"호스팅 실패!";
 if(zresult > 0){
 	%>

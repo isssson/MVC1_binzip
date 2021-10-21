@@ -51,6 +51,7 @@ h4{
 	float:left;
 	margin-left: 250px;
 	margin-right: 40px;
+	object-fit: cover;
 }
 .info{
 	margin-bottom: 500px;

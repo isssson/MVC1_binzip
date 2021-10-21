@@ -102,8 +102,8 @@
 		}
 		hr {
 			border-width: 2px;
-			margin-top: 30px;
-			margin-bottom: 25px;
+			margin-top: 40px;
+			margin-bottom: 50px;
 		}
 		.findzip_list_row {
 			display: inline-block;
@@ -134,6 +134,9 @@
 			width: 180px;
 			float: left;
 		}
+		.findzip_list_cont h1{
+			text-align: center;
+		}
 		.findzip_list_img {
 			width: 420px;
 			float: right;
@@ -141,17 +144,19 @@
 		.findzip_list_img img {
 			width: 400px;
 			height: 266px;
-			padding-bottom: 30px;
+			padding-bottom: 80px;
 			object-fit: cover;
 		}
 		.p_discribe {
-			margin: 50px 0 70px;
+		    margin: 50px 0 40px;
 			text-align: center;
 		}
 		.lb_book {
-			font-weight: bold;
-			font-size: 14pt;
-			margin-left: 40px;	
+		    font-weight: bold;
+		    font-size: 14pt;
+		    display: block;
+		    text-align: center;
+		    margin: 10px auto;
 		}
 		.lb_book a:link{
 			text-decoration: decoration;
@@ -237,7 +242,7 @@
 			<div class="findzipMainText">
 				<h1>F&nbsp; I&nbsp; N&nbsp;
 					D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Z&nbsp; I&nbsp; P</h1>
-				<span>머무는 것 자체로 여행이 되는 공간</span>
+				<span>머무는&nbsp;것&nbsp; 자체로 &nbsp;여행이 &nbsp;되는 &nbsp;공간</span>
 			</div>
 		</article>
 		<!-- Navigation Area -->
@@ -264,7 +269,7 @@
 							</li>
 							<li class="let_empty" style=margin-left:50px>
 								<label>체크 아웃</label>
-								<input type="date" name="outDate" required pattern="\d{4}-\d{2}-\d{2}" value="<%= outDate %>"/>
+								<input type="date" name="outDate" min="<%= s_minDate %>" required pattern="\d{4}-\d{2}-\d{2}" value="<%= outDate %>"/>
 							</li>
 						</ul>
 						<img src="findzip_imgs/button_reset.png" alt="초기화버튼" style="width:30px;float:right;" id="btn_init" onclick="location.href='findZip.jsp'">
@@ -364,12 +369,10 @@
 					
 					%>
 						<div class="findzip_list_left">
-							<div class="findzip_list_sub">
-								<h1><%= arr.get(i).getZipname() %></h1>
-								<h5><%= arr.get(i).getZiptype() %></h5>
-							</div>
 							<div class="devided_zip">
 								<div class="findzip_list_cont">
+									<h1><%= arr.get(i).getZipname() %></h1>
+									<h5><%= arr.get(i).getZiptype() %></h5>
 									<p class="p_discribe">
 										<%= zipaddr_sido[0] %> / <%= zipaddr_sido[1] %><br>
 										최대 <%= arr.get(i).getPeoplenum() %>명<br>

@@ -20,6 +20,10 @@ public class HostReserveDTO {
 	private String binzip_member_id;
 	private int idx;
 	
+	
+	public HostReserveDTO() {
+		super();
+	}
 
 	public HostReserveDTO(int bbsidx, String id, String reserver_startdate, String reserver_enddate, int peoplenum, String zipname,
 			String ziptype, String zipaddr, int cost, int status, String imgpath, String reserver_name, String payer, String reserver_phone) {

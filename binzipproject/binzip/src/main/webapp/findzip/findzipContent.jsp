@@ -44,7 +44,7 @@ int cost = dto.getCost();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RESERVATION</title>
+<title>BOOKING</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
 <link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 <style>
@@ -84,7 +84,7 @@ int cost = dto.getCost();
 	position: absolute;
     width: 1200px;
     height: 100%;
-    left: 900px;
+    left: 1200px;
 }
 .rollimgs li img{
     width: 100%;
@@ -96,7 +96,7 @@ int cost = dto.getCost();
     transition: left .5s ease-in-out, right .5s ease-in-out;
 }
 .rollimgs li.prevroll{
-    left: -900px;
+    left: -1200px;
     transition: left .5s ease-in-out, right .5s ease-in-out;
 }
 .rollimgs.reverse li.prevroll{
@@ -232,7 +232,7 @@ footer{
 <script>
 let banner = {
 	    rollId: null,
-	    interval: 2000,
+	    interval: 1000,
 
 	    
 	    rollInit: function (newinterval) {
@@ -336,8 +336,8 @@ let banner = {
 				</div>
 				<div class="date-box">
 					<div>
-						<input type="date" name="sdate" min="<%=nowdate%>" max="<%=s2%>">
-						<input type="date" name="edate" min="<%=nowdate%>" max="<%=s2%>">					
+						<input type="date" name="sdate" min="<%=nowdate%>" max="<%=s2%>" required>
+						<input type="date" name="edate" min="<%=nowdate%>" max="<%=s2%>" required>					
 					</div>
 					<div>
 						<input type="submit" value="예약하기" class="btnreserve2" id="reservebt">	

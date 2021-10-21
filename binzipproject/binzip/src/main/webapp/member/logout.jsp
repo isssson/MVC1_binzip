@@ -3,5 +3,5 @@
 
 <%
 	session.invalidate();
-	response.sendRedirect("/binzip/index.jsp");
+	response.sendRedirect("/binzip/index.jsp"); 
 %>

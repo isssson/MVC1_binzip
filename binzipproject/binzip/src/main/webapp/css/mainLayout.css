@@ -37,9 +37,11 @@ header nav a{
 }
 header nav a:hover {
 	color: black;
+	font-weight: bold;
 }
 header nav a:active {
 	color: black;
+	font-weight: bold;
 }
 #locateIcon{
 	width: 20px;

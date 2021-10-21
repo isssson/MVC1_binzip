@@ -5,13 +5,11 @@
 String question=request.getParameter("question");
 String answer=request.getParameter("answer");
 String id=request.getParameter("id");
-
 boolean result=mdao.findPwdInfo(question, answer, id);
-
 if(result){
 	%>
 	<script>
-	location.href="/binzip/member/editPwd.jsp?id=<%=id%>";
+	location.href='/binzip/member/editPwd.jsp?id=<%=id%>';
 	</script>
 	<%
 }else{

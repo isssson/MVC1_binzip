@@ -184,23 +184,3 @@ if(cp % pageSize == 0) group--;
 <%@include file="/footer.jsp" %>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

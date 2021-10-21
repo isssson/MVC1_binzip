@@ -12,7 +12,9 @@ public class Binzip_HostingDAO {
 	public static final int ZIP_OPTION_KITCHEN = 2;
 	public static final int ZIP_OPTION_BATH = 3;
 	
-	public Binzip_HostingDAO() {}
+	public Binzip_HostingDAO() {
+		super();
+	}
 	
 	
 	//호스팅_휴대폰 중복체크

@@ -9,7 +9,9 @@ public class HelpDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
-	public HelpDAO() {}
+	public HelpDAO() {
+		super();
+	}
 	
 	/**ref 마지막 값 구하기 관련 메서드*/
 	public int getMaxRef() {

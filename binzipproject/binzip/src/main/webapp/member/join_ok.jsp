@@ -5,10 +5,12 @@
 <jsp:useBean id="mdao" class="binzip.member.MemberDAO"></jsp:useBean>
 
 <%
-int result=mdao.memberJoin(mdto);
-String msg=result>0?"회원가입 성공":"회원가입 실패";
+	request.setCharacterEncoding("utf-8");
+
+	int result = mdao.memberJoin(mdto);
+	String msg = result > 0 ? "BINZIP의 회원이 되신 것을 축하합니다. 로그인 후 이용해주세요." : "고객센터로 연락바랍니다.";
 %>
 <script>
-window.alert('<%=msg%>');
-location.href='/binzip/index.jsp';
+	window.alert('<%= msg %>');
+	location.href = '/binzip/index.jsp';
 </script>

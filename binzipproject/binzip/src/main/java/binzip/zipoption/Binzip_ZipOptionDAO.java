@@ -14,7 +14,7 @@ public class Binzip_ZipOptionDAO {
    private String binzip_host_bbs_idx;
    
    public Binzip_ZipOptionDAO() {
-      System.out.println("옵션 DAO 생성");
+      super();
    }
    
    //집옵션 체크박스 세팅 관련 메서드
@@ -220,8 +220,6 @@ public class Binzip_ZipOptionDAO {
                  Binzip_ZipOptionDTO dto = new Binzip_ZipOptionDTO(op);
                  ziparr.add(dto);
                }
-               System.out.println(idx);
-               System.out.println(category);
                return ziparr;
             }catch(Exception e) {
                e.printStackTrace();

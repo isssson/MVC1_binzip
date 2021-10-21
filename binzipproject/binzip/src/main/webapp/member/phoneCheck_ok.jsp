@@ -3,12 +3,12 @@
 <jsp:useBean id="mdao" class="binzip.member.MemberDAO"></jsp:useBean>
 <%
 String userphone=request.getParameter("userphone");
-boolean result=mdao.phoneCheck(userphone);
+boolean result=mdao.checkId(userphone);
 if(result){
 %>
 	<script>
-	window.alert('이미 등록되어있는 전화번호 입니다.');
-	self.close();
+	window.alert('이미 등록되어있는 ID입니다.');
+	location.href='idCheck.jsp';
 	</script>
 	<%
 }else{

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BINZIP-비밀번호 중복확인</title>
+<title>PHONE CHECK</title>
 </head>
 <body>
 	<form name="phonecheck" action="phoneCheck_ok.jsp">

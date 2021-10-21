@@ -8,6 +8,10 @@ public class BinzipDB {
 	
 	static DataSource ds;
 	
+	public BinzipDB() {
+		super();
+	}
+
 	static{ //static블럭
 		try {
 		Context initContext = new InitialContext();

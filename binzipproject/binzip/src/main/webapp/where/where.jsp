@@ -13,17 +13,18 @@
 	<link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 	<style>
 		form{
-			margin: 0px; auto;
+			margin: 0 auto;
+		    width: 250px;
+		    height: auto;
+		    padding: 90px 0;
 		}
 		.sp-bold{
 			font-size: 20px;
 			font-weight: bold;
 		}
-		table{
-			padding-left: 50px;
-		}
-		.wheretitle{
-			padding-left: 50px;
+		.myButton {
+			margin: 25px 0 auto;
+		    text-align: center;
 		}
 	</style>
 	<script>
@@ -38,11 +39,11 @@
 </head>
 <body>
 	<form name="where">
-		<h3 class="wheretitle">어디로 떠날까요 ?</h3>
+		<h3>어디로 떠날까요 ?</h3>
 		<table>
 			<tr>
 				<td>
-					<h3>장소</h3>
+					<h3 style="margin:0;">장소</h3>
 				</td>
 				
 				<td>
@@ -59,7 +60,7 @@
 					</select>
 				</td>
 		</table>
-		<h3 class="wheretitle">언제 떠날까요 ?</h3>
+		<h3 style="margin-top: 67px;">언제 떠날까요 ?</h3>
 		<table>
 		<%
 			Calendar myDate = Calendar.getInstance();
@@ -79,7 +80,6 @@
 					<input type="date" name="cInDate" min="<%= s_minDate %>" required pattern="\d{4}-\d{2}-\d{2}">
 				</td>
 			</tr>
-			<br>
 			<tr>
 				<td>
 					<span class="sp-bold">체크아웃&nbsp;</span>
@@ -90,7 +90,7 @@
 			</tr>
 		</table>
 		<br>
-		<input type="button" value="SEARCH" class="myButton" onclick="whereNext();" style="margin-left: 50px;">
+		<input type="button" value="SEARCH" class="myButton" onclick="whereNext();">
 	</form>
 </body>
 </html>

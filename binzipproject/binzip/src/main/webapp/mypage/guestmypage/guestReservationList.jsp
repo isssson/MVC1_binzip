@@ -15,26 +15,36 @@
 	list-style: none;
 }
 #menu{
-	width:1200px;
-	height: 50px;
-	margin-left: 350px;
+	width:100%;
+	height: auto;
+    position: relative;
+}
+#menu ul.list {
+    position: absolute;
+    right: 10px;
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    background: gray;
+    border-radius: 35px;
+    padding: 0 30px;
 }
 #menu ul li{
-	float: left;
-	line-height: 30px;
-	text-align: center;
-	background: lightgray;
+    display: inline-block;
+    line-height: 2.5;
+    text-align: center;
 }
 #menu ul li a{
- 	display: block;
- 	padding: 5px;
- 	text-decoration: none;
-}
-#menu ul li a:visited{
- 	color: black; 	
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 #menu ul li a:hover{
-	color: white;
+	background: gray;
+	color: black;
+	font-weight: bold;
 }
 h2{
 	font-size: 40px;
@@ -53,6 +63,7 @@ h4{
 	float:left;
 	margin-left: 250px;
 	margin-right: 40px;
+	object-fit: cover;
 }
 .info{
 	margin-bottom: 500px;
@@ -108,12 +119,12 @@ String userid=(String)session.getAttribute("sid");
 	<nav id="menu">
         <ul class="list">
              <li><a href="/binzip/mypage/guestmypage/guestMyPage.jsp">개인정보</a></li>
-             <li><a href="/binzip/mypage/guestmypage/guestReservationList.jsp">예약현황</a></li>
+             <li><a href="/binzip/mypage/guestmypage/guestReservationList.jsp" style="color: #000000;">예약현황</a></li>
              <li><a href="/binzip/mypage/guestmypage/guestCancelRequest.jsp">예약취소 요청내역</a></li>
              <li><a href="/binzip/member/logout.jsp">로그아웃</a></li>
          </ul>
     </nav>
-<section>
+<section  style="margin-top: 140px;">
 	<div>
 		<h2>MY RESERVATION</h2>
 		<h4>나의 예약 현황</h4><hr>
@@ -132,7 +143,7 @@ String userid=(String)session.getAttribute("sid");
 			String imgpath = arr.get(i).getImgpath();
 			String[] imgpath_main = imgpath.split(",");
 			
-			int cost = arr.get(i).getCost();
+			int cost = arr.get(i).getR_cost();
 			DecimalFormat df = new DecimalFormat("###,###,###");
 			String dfCost = df.format(cost);
 			%>
@@ -145,7 +156,7 @@ String userid=(String)session.getAttribute("sid");
 						<h4><%=arr.get(i).getZiptype() %> /  <%=arr.get(i).getZipaddr() %></h4>
 						<h4>check in:<%=(arr.get(i).getReserve_startdate()).substring(0,11)%></h4>
 						<h4>check out:<%=(arr.get(i).getReserve_enddate()).substring(0,11)%></h4>
-						<h4>예약 인원 :  <%=arr.get(i).getPeoplenum() %> 명</h4>
+						<h4>예약 인원 :  <%=arr.get(i).getR_pnum() %> 명</h4>
 						<h2>&#8361;<%= dfCost %></h2>
 						<%
 						if(arr.get(i).getStatus()==0){

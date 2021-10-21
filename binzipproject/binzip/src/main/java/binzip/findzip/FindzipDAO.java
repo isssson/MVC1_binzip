@@ -12,11 +12,11 @@ public class FindzipDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	
+		
 	public FindzipDAO() {
-		System.out.println("findzipDAO 호출");
+		super();
 	}
-	
+
 	/**총 게시물 수 반환 관련 메서드*/
 	public int getTotalCnt() {
 		try {
@@ -49,8 +49,6 @@ public class FindzipDAO {
 			int start = (params.getCp() - 1) * params.getListSize() + 1;
 			int end = params.getCp() * params.getListSize();
 			int pCnt = 1;
-			
-			System.out.println("체크인 날짜 : " + params.getInDate());
 			
 			String sql = "";
 			
@@ -158,10 +156,7 @@ public class FindzipDAO {
 					    }                                                              
 					 sql += "          ) a                                             \n";
 					 sql += "      ) b                                                 \n";
-					 sql += "  WHERE rnum >= "+ start +" AND rnum <= "+ end +"         \n";
-			                                                                           
-			System.out.println("인원 : " + params.getPeoplenum());		
-			System.out.println("::: QUERY START : \n" + sql + "\n ::: QUERY END");
+					 sql += "  WHERE rnum >= "+ start +" AND rnum <= "+ end +"         \n";			                                                                         
 			
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -206,7 +201,6 @@ public class FindzipDAO {
 		   		+ "		a.host_phone,a.host_bank,a.host_acnumber,a.zipname, \n"
 		   		+ "		a.ziptype,a.zipaddr,a.cost,a.peoplenum,a.todaydate,a.contents, \n"
 		   		+ "		a.host_bbs_startdate,a.host_bbs_enddate\n";
-		   System.out.println("### INFO QUERY :::\n"+ sql);
 		   ps = conn.prepareStatement(sql);
 		   rs = ps.executeQuery();
 		   FindzipDTO dto = null;
@@ -322,8 +316,7 @@ public class FindzipDAO {
 				   + "        ORDER BY RDN_CNT DESC\r\n"
 				   + "        ) a\r\n"
 				   + "    ) b    \r\n"
-				   + "WHERE rnum >= 1 AND rnum <= 6";
-		   System.out.println("::: 랜덤이미지 쿼리 :::  " + sql);                                 
+				   + "WHERE rnum >= 1 AND rnum <= 6";                        
 		   
 		   ps = conn.prepareStatement(sql);
 		   rs = ps.executeQuery();

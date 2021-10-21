@@ -10,6 +10,13 @@ public class GuestReserveDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	
+	
+	public GuestReserveDAO() {
+		super();
+	}
+
+
 	/**guestReservation.jsp 게스트 정보 불러오기**/
 	public ArrayList<GuestReserveDTO> reserveInfo(String userid){
 		try {
@@ -118,7 +125,6 @@ public class GuestReserveDAO {
 					+ "and RESERVE_STARTDATE = ?\n"
 					+ "and STATUS = ?";
 			ps=conn.prepareStatement(sql);
-			System.out.println(":::sql :::\n" + sql);
 			
 			ps.setInt(1, bbsidx);
 			ps.setString(2, reserve_startdate);

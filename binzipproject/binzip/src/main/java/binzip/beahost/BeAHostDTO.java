@@ -9,7 +9,9 @@ public class BeAHostDTO {
 	private String acnumber;
 	private Date stardate;
 	
-	public BeAHostDTO() {}
+	public BeAHostDTO() {
+		super();
+	}
 
 	public BeAHostDTO(int idx, String binzip_member_id, String bank, String acnumber, Date stardate) {
 		super();

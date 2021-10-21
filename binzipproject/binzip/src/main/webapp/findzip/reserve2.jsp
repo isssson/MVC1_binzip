@@ -7,8 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RESERVATION</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/binzip/css/mainLayout.css">
+<link rel="stylesheet" type="text/css" href="/binzip/css/btn.css">
 <style>
 h2{
 	text-align: center;
@@ -26,22 +27,6 @@ table{
 }
 table td{
 	padding-left: 20px;
-}
-.reserMyButton {
-	background-color:#000000;
-	border-radius:18px;
-	border:1px solid #000000;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:12px;
-	padding:5px 22px;
-	text-decoration:none;
-	margin-top: 20px;
-}
-.reserMyButton:hover {
-	background-color:#ffffff;
-	color:#000000;
 }
 </style>
 <%
@@ -145,8 +130,8 @@ String binzip_host_bbs_idx = request.getParameter("idx");
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="button" value="예약 취소하기" class="reserMyButton" onclick="javascript:location='/binzip/findzip/findZip.jsp';">
-						<input type="submit" value="예약완료" class="reserMyButton">
+						<input type="button" value="예약 취소하기" class="myButton" onclick="javascript:location='/binzip/findzip/findZip.jsp';">
+						<input type="submit" value="예약완료" class="myButton">
 					</td>
 				</tr>
 			</table>
